@@ -1,6 +1,6 @@
 import pickle
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import PickleType, Time
+from sqlalchemy import PickleType
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.orm import validates
 
@@ -15,8 +15,9 @@ class Bus(db.Model,SerializerMixin):
     name = db.Column(db.String)
     seats = db.Column(db.Integer)
     route = db.Column(db.String)
-    availability = db.Column(db.Boolean)
-    departure = db.Column(Time)
+    availability = db.Column(db.String)
+    departure = db.Column(db.String)
+    cost = db.Column(db.Integer)
     bookings = db.relationship('Booking', backref='bus')
 
 
