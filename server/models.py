@@ -19,7 +19,16 @@ class Bus(db.Model,SerializerMixin):
     departure = db.Column(db.String)
     cost = db.Column(db.Integer)
     bookings = db.relationship('Booking', backref='bus')
-
+    def to_dict(self):
+        return {
+            "id":self.id,
+            "name":self.name,
+            "seats":self.seats,
+            "route":self.route,
+            "availability":self.availability,
+            "departure":self.departure,
+            "cost":self.cost,
+        }
 
 class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
@@ -30,6 +39,13 @@ class User(db.Model, SerializerMixin):
     password = db.Column(db.PickleType)
     role = db.Column(db.String)
     bookings = db.relationship('Booking', backref='user')
+    def to_dict(self):
+        return {
+            "id":self.id,
+            "name":self.name,
+            "password":self.password,
+            "role":self.role,
+        }
     
 class Booking(db.Model,SerializerMixin):
     __tablename__ = 'bookings'
