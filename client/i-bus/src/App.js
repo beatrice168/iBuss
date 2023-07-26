@@ -3,7 +3,8 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import { Routes, Route } from "react-router-dom";
 import Booking from './components/Booking'
-import Signup from './components/Signup'
+import Signin from './components/Signin'
+import Signup from './components/signup';
 
 
 function App() {
@@ -13,13 +14,19 @@ function App() {
       
       <Navbar/>
       <Routes>
-        <Route  exact path="/" element={<Home />}/>
+        <Route exact path="/" element={<Home />}/>
+      </Routes>
+      <Routes>
+        <Route exact path="/components/Home" element={<Home />}/>
       </Routes>
       <Routes>
         <Route path="/Booking" element={<Booking />}/>
       </Routes>
       <Routes>
-        <Route path="/Signup" element={<Signup />}/>
+        <Route path="/Signin" element={<Signin />}/>
+      </Routes>
+      <Routes>
+        <Route path='signup' element={<Signup/>}/>
       </Routes>
     </div>
     </>
