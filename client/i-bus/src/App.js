@@ -8,12 +8,10 @@ function App() {
     <div className="App">
       <Navbar/>
       <Routes>
-              <Route path="/components/Home" element={<Home />}/>
-            </Routes>
-     
+        <Route path="/components/Home" element={<Home />}/>
+      </Routes>
     </div>
     </>
   );
 }
-
 export default App;
