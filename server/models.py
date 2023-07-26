@@ -14,7 +14,8 @@ class Bus(db.Model,SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     seats = db.Column(db.Integer)
-    route = db.Column(db.String)
+    From = db.Column(db.String)
+    To = db.Column(db.String)
     availability = db.Column(db.String)
     departure = db.Column(db.String)
     cost = db.Column(db.Integer)
@@ -24,7 +25,8 @@ class Bus(db.Model,SerializerMixin):
             "id":self.id,
             "name":self.name,
             "seats":self.seats,
-            "route":self.route,
+            "From":self.From,
+            "To":self.To,
             "availability":self.availability,
             "departure":self.departure,
             "cost":self.cost,

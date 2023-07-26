@@ -13,13 +13,15 @@ with app.app_context():
 
     
     availability = ['True', 'False']
-    routes = ['nrb-msa', 'nrb-ksm', 'eld-msa', 'entebbe-dar', 'kigali-kampala']
+    From = ['nrb', 'nrb', 'eld', 'entebbe', 'kigali']
+    To=['msa','ksm','msa',"dar",'kampala']
     buses = []
     for n in range(30):
         b = Bus(name=fake.name(),
                 seats=random.randint(1,40),
                 cost=random.randint(1000,2000),
-                route=rc(routes),
+                From=rc(From),
+                To=rc(To),
                 departure=fake.time(),
                 availability=rc(availability))
         buses.append(b)
