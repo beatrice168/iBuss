@@ -98,6 +98,66 @@ class BusesByID(Resource):
 
 api.add_resource(BusesByID,"/buses/<int:id>")
 
+class Users(Resource):
+    def get (self):
+        user_dict_list = [user.to_dict() for user in User.query.all()]
+        response = make_response(
+            jsonify(user_dict_list),
+            200,
+        )
+        return response
+    
+    def post (self):
+        form=request.get_json()
+        new_user = User (
+            name = form["name"],
+            password = form["password"],
+            role = form["role"],
+        ) 
+        db.session.add(new_user)
+        db.session.commit()
+        return make_response(
+            jsonify(new_user.to_dict()),
+            201,
+        )     
+api.add_resource(Users, '/users')
+
+class UsersByID(Resource):
+    def get (self, id):
+        user = User.query.filter_by(id=id).first().to_dict()
+        response = make_response(
+            jsonify(user),
+            200,
+        )
+        return response
+
+    def patch (self, id):
+        person = User.query.filter_by(id=id).first()
+        for attr in request.form:
+            setattr(person, attr, request.form[attr])
+
+        db.session.add(person)
+        db.session.commit()
+        person_dict = person.to_dict()
+        response= make_response(
+            jsonify(person_dict),
+            200
+        )
+        return response
+    
+    def delete (self, id):
+        users = User.query.filter_by(id=id).first()
+        db.session.delete(users)
+        db.session.commit()
+        response_dict = "User deleted successfull"
+
+        response = make_response(
+            jsonify(response_dict),
+            200,
+        )
+        return response
+api.add_resource(UsersByID, '/users/<int:id>')
+
 
     
 
