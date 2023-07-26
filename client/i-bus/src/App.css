@@ -5,3 +5,53 @@
 .home{
   background-image: url(blob:https://web.whatsapp.com/c5e72aca-c551-4b8d-a44a-53f8a1053fdb);
 }
+
+.home-image{
+  display: block;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+}
+
+.navigation-bar{
+  /* background-color: #000000; */
+  width: 635px;
+  padding: 10px;
+  margin-top: 20px;
+  margin-left: 20px;
+  z-index: +1;
+  position: absolute;
+  top: 5%;
+}
+
+.navLink {
+  color: #779af8;
+  padding-right: 69px;
+  font-size: 190%;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  text-decoration: none;
+  /* text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5); */
+}
+
+
+
+.sign-up-div{
+  background-color: #000742;
+  width: 200px;
+  height: 80px;
+  text-align: center;
+  display: flex;
+  align-items: center; /* Vertically center the content */
+  justify-content: center; /* Horizontally center the content (optional) */
+  position: absolute;
+  right: 100px;
+  top: 55px;
+  
+}
+
+.sign-up{
+  color: white;
+  text-decoration: none;
+  font-size: 200%;
+  font-weight: bold;
+}
