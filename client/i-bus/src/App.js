@@ -4,7 +4,7 @@ import Home from './components/Home';
 import { Routes, Route } from "react-router-dom";
 import Booking from './components/Booking'
 import Signin from './components/Signin'
-import Signup from './components/signup';
+import Signup from './components/signu
 
 
 function App() {
@@ -17,16 +17,16 @@ function App() {
         <Route exact path="/" element={<Home />}/>
       </Routes>
       <Routes>
-        <Route exact path="/components/Home" element={<Home />}/>
+        <Route path="/Booking" element={<Booking />}/>
       </Routes>
       <Routes>
         <Route path="/Booking" element={<Booking />}/>
       </Routes>
       <Routes>
-        <Route path="/Signin" element={<Signin />}/>
+        <Route path='signup' element={<Signup/>}/>
       </Routes>
       <Routes>
-        <Route path='signup' element={<Signup/>}/>
+        <Route path="/Signin" element={<Signin />}/>
       </Routes>
     </div>
     </>
