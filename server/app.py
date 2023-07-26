@@ -62,6 +62,41 @@ class Buses(Resource):
         )
     
 api.add_resource(Buses, '/buses')
+class BusesByID(Resource):
+    def get (self, id):
+        response_dict = Bus.query.filter_by(id=id).first().to_dict()
+        response = make_response(
+            jsonify(response_dict),
+            200,
+        )
+        return response
+    
+    def patch (self,id):
+        bus= Bus.query.filter_by(id=id).first()
+        for attr in request.form:
+            setattr(bus, attr, request.form[attr])
+
+        db.session.add(bus)
+        db.session.commit()
+
+        response_dict = bus.to_dict()
+        response = make_response(
+            jsonify(response_dict),
+            200
+        )
+        return response 
+    def delete(self, id):
+        bus = Bus.query.filter_by(id=id).first()
+        db.session.delete(bus)
+        db.session.commit()
+        response_dict = "Bus deleted Successfull"
+        response = make_response(
+            jsonify(response_dict),
+            200,
+        )
+        return response
+
+api.add_resource(BusesByID,"/buses/<int:id>")
 
 
     
