@@ -10,7 +10,7 @@ function Home() {
     <img className='home-image' src='/images/Homeimage.jpg' alt='Homeimage' />
     <div className='sign-up-div'>
     <NavLink className='sign-up' to='/components/Signup'>
-        SIGN UP 
+        SIGN IN 
       </NavLink>
     </div>
     
