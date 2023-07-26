@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import { Routes, Route } from "react-router-dom";
 import Booking from './components/Booking'
-import Signup from './components/Signin'
+import Signin from './components/Signin'
 
 
 function App() {
@@ -16,13 +16,10 @@ function App() {
         <Route exact path="/" element={<Home />}/>
       </Routes>
       <Routes>
-        <Route exact path="/components/Home" element={<Home />}/>
+        <Route path="/Booking" element={<Booking />}/>
       </Routes>
       <Routes>
-        <Route path="/components/Booking" element={<Booking />}/>
-      </Routes>
-      <Routes>
-        <Route path="/components/Signup" element={<Signup />}/>
+        <Route path="/Signin" element={<Signin />}/>
       </Routes>
     </div>
     </>
