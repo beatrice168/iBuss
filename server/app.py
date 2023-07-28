@@ -9,7 +9,7 @@ from flask_jwt_extended import JWTManager, create_access_token, jwt_required, ge
 # from dotenv import load_dotenv
 # from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity
 # import sendgrid
-# from sendgrid.helpers.mail import Mail, Email, To, Content
+# from sendgrid.helpers.mail import Mail, Email, To, Contents
 from flask_cors import CORS
 
 app = Flask(__name__)
