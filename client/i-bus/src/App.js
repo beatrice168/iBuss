@@ -4,7 +4,7 @@ import Home from './components/Home';
 import { Routes, Route } from "react-router-dom";
 import Booking from './components/Booking'
 import Signin from './components/Signin'
-import Signup from './components/signu
+import Signup from './components/signup'
 
 
 function App() {
