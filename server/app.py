@@ -156,6 +156,7 @@ class UsersByID(Resource):
             200,
         )
         return response
+    
 api.add_resource(UsersByID, '/users/<int:id>')
 
 
