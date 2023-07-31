@@ -6,8 +6,8 @@ function Navbar() {
       <NavLink className='navLink' exact to='/'>
         Home 
       </NavLink>
-      <NavLink className='navLink' to='/Booking'>
-        Booking 
+      <NavLink className='navLink' to='/Book'>
+        Book
       </NavLink>
       <NavLink className='navLink' to='/Payment'>
         Payment 
