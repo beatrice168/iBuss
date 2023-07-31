@@ -6,7 +6,12 @@ import Booking from './components/Booking'
 import Signup from './components/signup';
 import Customer from './components/Customer';
 import Signin from './components/Signin'
+
+import Payment from "./components/Payment";
+
+
 import Book from './components/Book';
+
 
 function App() {
   return (
@@ -22,7 +27,10 @@ function App() {
       </Routes>
       <Routes><Route path="/booking/:busId" element={<Booking />} /></Routes>
       <Routes>
-        <Route path='signup' element={<Signup/>}/>
+        
+        <Route path="/Payment" element={<Payment />}/>
+
+
       </Routes>
       <Routes>
         <Route path='signup' element={<Signup/>}/>

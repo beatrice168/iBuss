@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import axiosInstance from './axiosInstance';
+import './Home.css'; 
 
 function Home() {
   const [userData, setUserData] = useState(null);
@@ -18,7 +19,7 @@ function Home() {
   }, []);
 
   return (
-    <div className='home'>
+    <div className='home-background'>
     {/* <h1>Your safari just began</h1> */}
     {/* Display user data */}
     {/* {userData ? (
@@ -31,10 +32,22 @@ function Home() {
       )} */}
 
 
-    <img className='home-image' src='/images/Homeimage.jpg' alt='Homeimage' />
     
-    
-    
+    <div className='home-text'>
+      <div className='title-div'>
+      <h1>I-BUS BOOKING</h1>
+      </div>
+      <div className='why-us-div'>
+      <h2 className='why-us-title'>WHY US</h2>
+      <ul className='why-us-list'>
+        <li>We cover multiple routes </li>
+        <li>We are affordable </li>
+        <li>We ensure you comfort</li>
+        <li>Easy booking and payment</li>
+      </ul>
+      <h3>YOUR SAFARI JUST <br></br>BEGUN</h3>
+      </div>
+      </div>
     </div>
   )
 }

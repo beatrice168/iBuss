@@ -15,12 +15,12 @@ from images import book.jpeg
 }
 
 .navigation-bar{
-  background-color: #2A51B7;
+  background-color: #016db4;
   height: 90px;
   width: 100%;
   padding: 10px;
-  z-index: 1;
-  position: fixed;
+ 
+ 
   top: 0;
   left: 0;
 }
@@ -37,6 +37,7 @@ from images import book.jpeg
 }
 
 
+
 .sign-in-container{
   position: relative;
   bottom: 45px;
@@ -51,7 +52,7 @@ from images import book.jpeg
   align-items: center; /* Vertically center the content */
   justify-content: center; /* Horizontally center the content (optional) */
   position: absolute;
-  right: 238px;
+  right: 280px;
   top: 55px;
   
 }
@@ -98,7 +99,7 @@ th {
   align-items: center; /* Vertically center the content */
   justify-content: center; /* Horizontally center the content (optional) */
   position: absolute;
-  right: 36px;
+  right: 79px;
   top: 55px;
   border: 2px solid #ffffff; /* Replace #000 with the desired color for the stroke */
   background-color: transparent;
@@ -118,6 +119,7 @@ th {
   font-size: 120%;
   font-weight: bold;
 }
+
 
 /* SeatSelector.css */
 
@@ -301,5 +303,6 @@ th {
   text-align: center;
   padding: 10PX;
 }
+
 
 
