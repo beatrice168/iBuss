@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Payment.css'
 
 function Payment(){
     const [fullName, setFullName] = useState('');

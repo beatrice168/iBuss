@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import axiosInstance from './axiosInstance';
+import './Home.css'; 
 
 function Home() {
   const [userData, setUserData] = useState(null);
