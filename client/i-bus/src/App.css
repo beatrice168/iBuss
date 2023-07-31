@@ -14,12 +14,12 @@
 }
 
 .navigation-bar{
-  background-color: #2A51B7;
+  background-color: #016db4;
   height: 90px;
   width: 100%;
   padding: 10px;
-  z-index: 1;
-  position: fixed;
+ 
+ 
   top: 0;
   left: 0;
 }
@@ -36,6 +36,7 @@
 }
 
 
+
 .sign-in-container{
   position: relative;
   bottom: 45px;
@@ -50,7 +51,7 @@
   align-items: center; /* Vertically center the content */
   justify-content: center; /* Horizontally center the content (optional) */
   position: absolute;
-  right: 238px;
+  right: 280px;
   top: 55px;
   
 }
@@ -66,7 +67,7 @@
   align-items: center; /* Vertically center the content */
   justify-content: center; /* Horizontally center the content (optional) */
   position: absolute;
-  right: 36px;
+  right: 79px;
   top: 55px;
   border: 2px solid #ffffff; /* Replace #000 with the desired color for the stroke */
   background-color: transparent;
@@ -85,4 +86,135 @@
   text-decoration: none;
   font-size: 120%;
   font-weight: bold;
+}
+
+
+.home-background{
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-image: url('../public/images/Home-page-pic-no-slogan.png'); /* Replace with the actual image path */
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.home-text{
+  position: absolute;
+  right: 5%;
+  top: 25%;
+  
+  
+}
+
+
+.title-div{
+  background-color: #ffffff;
+  width: 390px;
+  height: 120px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  color: #0080DD;
+  font-size: 140%;
+
+}
+
+
+.why-us-div{
+  color: #ffffff;
+  float: left;
+  font-size: 250%;
+  text-align: left;
+  
+}
+
+.why-us-title{
+  text-decoration: underline;
+}
+
+.why-us-list{
+  text-decoration: none;
+  position: relative;
+  right: 40px;
+}
+
+
+.payment-details-form{
+  position: absolute;
+}
+
+.payment-page-image{
+  position: absolute;
+  right: -20px;
+  z-index: -1;
+  
+}
+
+.form-div{
+  position: absolute;
+  text-align: left;
+  margin-left: 3vw;
+  margin-top: 5vw;
+ 
+}
+
+.form-section{
+  margin-bottom: 50px;
+  display: inline-block;
+  width: 45%;
+  margin-right: -130px;
+  font-size: 230%;
+}
+
+.form-section:last-child{
+  margin-right: 0;
+}
+
+.form-section input::placeholder{
+  color: #d8d8d8;
+  font-size: 200;
+}
+
+@media screen and (max-width: 1400px){
+  .form-section{
+    display: block;
+    width: 100%;
+
+  }
+}
+
+.form-section input {
+  font-size: 22px; /* Adjust the font size as desired */
+}
+
+.payment-div{
+  position: relative;
+}
+
+.mpesa-image{
+  width: 7%;
+  margin-left: 10px;
+  
+}
+
+.pay-with-mpesa {
+  display: flex; /* Use flexbox */
+  align-items: center; /* Vertically center the content */
+  margin-bottom: 30px;
+  font-weight: bolder;
+  font-size: 30px;
+}
+
+
+.submit-pay-button{
+  color: #ffffff;
+  margin-top: 50px;
+  background-color: #004585 ;
+  font-size: 24px; /* Adjust the font size as desired */
+  padding: 22px 74px; /* Adjust the padding as desired */
+}
+
+.stk-push{
+  font-size: 20px;
 }
