@@ -15,7 +15,21 @@ function Navbar() {
       <NavLink className='navLink' to='/Contact'>
         Contact 
       </NavLink>
-      
+      <div className='sign-in-container'>
+      <div className='admin-sign-up-div'>
+    <NavLink className='admin-sign-in' to='/Signin'>
+        ADMIN SIGN IN 
+      </NavLink>
+      </div>
+
+      <div className='customer-sign-up-div'>
+      <NavLink className='customer-sign-in' to='/Customer'>
+        CUSTOMER SIGN IN 
+      </NavLink>
+      </div>
+      </div>
+
+
     </div>
   );
 }
