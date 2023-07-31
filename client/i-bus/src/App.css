@@ -1,3 +1,4 @@
+from images import book.jpeg
 .App {
   text-align: center;
 }
@@ -54,6 +55,7 @@
   top: 55px;
   
 }
+
 body {
   background-color: #fff;
 }
@@ -87,7 +89,6 @@ table, th, td {
 th {
   text-align: center;
 }
-
 .customer-sign-up-div{
   background-color: #000742;
   width: 198px;
@@ -117,6 +118,188 @@ th {
   font-size: 120%;
   font-weight: bold;
 }
-/* .card2{
-  border-radius: 30px;
-} */
+
+/* SeatSelector.css */
+
+.seat-selector-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.seat-selector {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Five columns with equal width */
+  grid-auto-rows: 1fr; /* Rows with equal height */
+  grid-gap: 20px 10px; /* Adjust the gap between rows and columns */
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.seat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px; /* Adjust the seat width as needed */
+  height: 60px; /* Adjust the seat height as needed */
+  border: 2px solid #ccc; /* Seat border color */
+  border-radius: 5px; /* Adjust the border radius as needed for rounded corners */
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  user-select: none; /* Prevent text selection inside the seat element */
+}
+
+/* Styling for available seats */
+.seat.available {
+  background-color: #fff; /* Seat background color */
+  color: #000; /* Seat text color */
+  cursor:pointer;
+}
+
+/* Styling for selected seats */
+.seat.selected {
+  background-color: #2afeb7; /* Selected seat background color */
+  color: #fff; /* Selected seat text color */
+  cursor: pointer;
+}
+
+/* Styling for booked seats */
+.seat.booked {
+  background-color: #000080; /* Booked seat background color */
+  color: #fff; /* Booked seat text color */
+  cursor: not-allowed;
+}
+
+/* Styling for the SeatKey component */
+.seat-key {
+  display: flex;
+  justify-content: center;
+  margin-top: 150px; /* Adjust the margin-top value to position the key below the seats */
+}
+
+.key-item {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.key-item > div {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+/* Styling for the key colors */
+.key-item .seat.booked {
+  background-color: #000080; /* Booked seat background color: red */
+}
+
+.key-item .seat.selected {
+  background-color: #2afeb7; /* Selected seat background color: blue */
+}
+
+.key-item .seat.available {
+  background-color: #fff; /* Seat background color: white */
+}
+
+/* BusSearch.css */
+.bus-booking-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60px; /* Adjust the margin-top value to move it downwards */
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; /* Add some space between the search form and the bus list */
+  justify-content: center;
+  padding: 30px;
+  background-size: cover;
+  /*background-image: url(/home/rolex/Development/code/iBus/client/i-bus/src/images/book.jpeg);*/
+   width: 100vw;
+  height: 10vh; 
+}
+
+.search-form form {
+  margin-top: 200px;
+  display: flex;
+  align-items: center;
+  margin-left: 100pc;
+  margin-right: 100pc;
+  text-align: center;
+}
+
+.search-form input {
+  margin-right: 10px;
+}
+
+/* BusList.css */
+
+.bus-list-container {
+  display: flex;
+  flex-direction: column; /* Display buses in a column */
+  margin-top: 200px; /* Adjusted margin-top value */
+  align-items: center;
+}
+
+.bus-item {
+  border: 5px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px; /* Add some spacing between buses */
+  width: 100%;
+  display: flex;
+}
+
+.bus-details {
+  /* height: 110px; */
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px; /* Add some space between details */
+}
+
+.bus-details p {
+  margin: 90px;
+  width: 10vw;
+  /* height: 1vh; */
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.bus-details span {
+  font-weight: bold;
+}
+
+.Search {
+  background-color:#0DD73A;
+  /* color: #fff; */
+  font-weight: bold;
+}
+
+ .book-page-image {
+  position: absolute;
+  z-index: -1;
+  display: block;
+  width: 100vw;
+  height: 30vh;
+  margin-right: -60px;
+  margin-top: 50px;
+  margin-left: -60px;
+  
+  }
+
+.Book {
+  color:rgb(245, 241, 241);
+  text-decoration: none;
+  background-color: #041392;
+  height: 20px;
+  width: 50px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10PX;
+}
+
+

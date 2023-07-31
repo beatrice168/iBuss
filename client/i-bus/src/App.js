@@ -5,23 +5,24 @@ import { Routes, Route } from "react-router-dom";
 import Booking from './components/Booking'
 import Signup from './components/signup';
 import Customer from './components/Customer';
-
-
+import Signin from './components/Signin'
+import Book from './components/Book';
 
 function App() {
   return (
     <>
     <div className="App">
       
-      <Navbar/>
+    <Navbar/>
       <Routes>
         <Route exact path="/" element={<Home />}/>
       </Routes>
       <Routes>
-        <Route exact path="/components/Home" element={<Home />}/>
+        <Route path="/Book" element={<Book />}/>
       </Routes>
+      <Routes><Route path="/booking/:busId" element={<Booking />} /></Routes>
       <Routes>
-        <Route path="/Booking" element={<Booking />}/>
+        <Route path='signup' element={<Signup/>}/>
       </Routes>
       <Routes>
         <Route path='signup' element={<Signup/>}/>
