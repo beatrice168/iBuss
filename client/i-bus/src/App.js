@@ -3,10 +3,10 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import { Routes, Route } from "react-router-dom";
 import Booking from './components/Booking'
+import Signup from './components/signup';
+import Customer from './components/Customer';
 import Signin from './components/Signin'
-import Signup from './components/signup'
 import Book from './components/Book';
-
 
 function App() {
   return (
@@ -25,7 +25,10 @@ function App() {
         <Route path='signup' element={<Signup/>}/>
       </Routes>
       <Routes>
-        <Route path="/Signin" element={<Signin />}/>
+        <Route path='signup' element={<Signup/>}/>
+      </Routes>
+      <Routes>
+        <Route path='Customer' element={<Customer/>}/>
       </Routes>
     </div>
     </>
