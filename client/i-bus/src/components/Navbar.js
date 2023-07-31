@@ -6,8 +6,8 @@ function Navbar() {
       <NavLink className='navLink' exact to='/'>
         Home 
       </NavLink>
-      <NavLink className='navLink' to='/Booking'>
-        Booking 
+      <NavLink className='navLink' to='/Book'>
+        Book
       </NavLink>
       <NavLink className='navLink' to='/Payment'>
         Payment 
@@ -21,14 +21,12 @@ function Navbar() {
         ADMIN SIGN IN 
       </NavLink>
       </div>
-
       <div className='customer-sign-up-div'>
-      <NavLink className='customer-sign-in' to='/Signin'>
+      <NavLink className='customer-sign-in' to='/Customer'>
         CUSTOMER SIGN IN 
       </NavLink>
-    </div>
-    </div>
-      
+      </div>
+      </div>
     </div>
   );
 }
