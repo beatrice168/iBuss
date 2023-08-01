@@ -1,0 +1,49 @@
+.home-background{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-image: url('../../public/images/Home-page-pic-no-slogan.png'); /* Replace with the actual image path */
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  .home-text{
+    position: absolute;
+    right: 5%;
+    top: 25%;
+    
+    
+  }
+  
+  
+  .title-div{
+    background-color: #ffffff;
+    width: 390px;
+    height: 120px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: #0080DD;
+    font-size: 140%;
+  
+  }
+  
+  
+  .why-us-div{
+    color: #ffffff;
+    float: left;
+    font-size: 250%;
+    text-align: left;
+    
+  }
+  
+  .why-us-title{
+    text-decoration: underline;
+  }
+  
+  .why-us-list{
+    text-decoration: none;
+    position: relative;
+    right: 40px;
+  }
