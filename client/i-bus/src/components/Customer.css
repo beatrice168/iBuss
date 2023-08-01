@@ -37,7 +37,7 @@
     margin-bottom: 10px;
   }
   
-  form {
+  .customer-login-form {
     display: flex;
     flex-direction: column;
   }
