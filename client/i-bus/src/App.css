@@ -279,6 +279,8 @@ th {
   background-color:#0DD73A;
   /* color: #fff; */
   font-weight: bold;
+  padding: 20px 40px;
+  margin-bottom: 23px;
 }
 
  .book-page-image {
@@ -286,9 +288,9 @@ th {
   z-index: -1;
   display: block;
   width: 100vw;
-  height: 30vh;
+  height: 45vh;
   margin-right: -60px;
-  margin-top: 50px;
+  margin-top: -60px;
   margin-left: -60px;
   
   }
@@ -303,6 +305,4 @@ th {
   text-align: center;
   padding: 10PX;
 }
-
-
 

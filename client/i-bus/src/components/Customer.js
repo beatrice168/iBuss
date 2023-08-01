@@ -59,7 +59,7 @@ const Customer = () => {
         <div className="login-form">
           <h2>I already have an account</h2>
           <h3>Sign in with your email account and password </h3>
-          <form onSubmit={handleLoginSubmit}>
+          <form className='customer-login-form' onSubmit={handleLoginSubmit}>
             <label>Email</label>
             <input
               type="email"
@@ -78,7 +78,7 @@ const Customer = () => {
         <div className="signup-form">
           <h2>I don't have an account</h2>
           <h3> Sign up with your email account and password</h3>
-          <form onSubmit={handleSignupSubmit}>
+          <form className='customer-login-form' onSubmit={handleSignupSubmit}>
             <label>Email</label>
             <input
               type="email"
