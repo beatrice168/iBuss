@@ -54,8 +54,39 @@
   top: 55px;
   
 }
+body {
+  background-color: #fff;
+}
 
+.container {
+  margin-top: 20px;
+}
 
+h1 {
+  text-align: center;
+}
+
+.card {
+  margin-bottom: 20px;
+}
+
+.card-body {
+  padding: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+th {
+  text-align: center;
+}
 
 .customer-sign-up-div{
   background-color: #000742;
@@ -84,5 +115,11 @@
   color: white;
   text-decoration: none;
   font-size: 120%;
+  font-weight: bold;
+}
+/* .card2{
+  border-radius: 30px;
+} */
+.nums{
   font-weight: bold;
 }

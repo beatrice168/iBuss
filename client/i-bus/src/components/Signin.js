@@ -1,62 +1,137 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 function LoginPage() {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [company, setCompany] = useState('');
   const [password, setPassword] = useState('');
-
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData((prevData) => ({ ...prevData, [name]: value }));
-  // };
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-    axios.post('http://127.0.0.1:5555/Signin', { username, password })
-      .then((response) => {
-        // Save the JWT token to localStorage or session storage for subsequent requests
-        localStorage.setItem('access_token', response.data.access_token);
-        // Redirect the user to the protected route (optional)
-        navigate('/components/Home');
-      })
-      .catch((error) => {
-        console.error('Login failed:', error);
-      });
-    // Your login logic here
-    console.log('Logged in successfully!'); // Replace with your actual login logic
-  };
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [newCompany, setNewCompany] = useState('');
+  const [newEmail, setNewEmail] = useState('');
 
   const navigate = useNavigate();
 
-  const handleSignUp = () => {
-    // Navigate to the SignupPage
-    navigate('/signup');
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if (password.length < 7) {
+      alert("Password should be at least 7 characters long.");
+      return;
+    } else if (!email.includes('@')) {
+      alert("Invalid email address.");
+      return;
+    } else {
+      navigate('/admin');
+    }
+  };
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    if (newPassword !== confirmPassword) {
+      alert("Passwords do not match. Please try again.");
+      return;
+    } else if (newPassword.length < 7) {
+      alert("Password should be at least 7 characters long.");
+      return;
+    } else if (!newEmail.includes('@')) {
+      alert("Invalid email address.");
+      return;
+    } else {
+      navigate('/admin');
+    }
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        {/* <label htmlFor="username">Username:</label> */}
-        <input
-          type="text"
-          placeholder='Username'
-          id="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        {/* <label htmlFor="password">Password:</label> */}
-        <input
-          type="password"
-          placeholder='Password'
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Login</button>
-      </form>
-      <p>Don't have an account? <button onClick={handleSignUp}>Sign up</button></p>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100vh' }}>
+      {/* Sign-In Form */}
+      <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+        <h2 style={{ marginTop:'95px', fontFamily: 'sans-serif', fontWeight: 'bold',color:"#0F52BA" }}>ADMIN LOGIN</h2>
+        <h3 style={{ fontFamily: 'sans-serif' ,fontWeight: 'bold'}}>Sign in with your email and password</h3>
+        <form onSubmit={handleLogin}>
+          <input
+            type="email"
+            placeholder='Email'
+            style={{ fontFamily: 'sans-serif', width: '300px' }}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <br />
+          <input
+            type="text"
+            placeholder='Company'
+            style={{ fontFamily: 'sans-serif', width: '300px' }}
+            value={company}
+            onChange={(e) => setCompany(e.target.value)}
+          />
+          <br />
+          <input
+            type="password"
+            placeholder='Password'
+            value={password}
+            style={{ fontFamily: 'sans-serif', width: '300px' }}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <br />
+          <button type="submit" style={{ fontFamily: 'sans-serif', backgroundColor: '#0F52BA', color: 'white' ,width:"5vw"}}>Sign in</button>
+        </form>
+      </div>
+
+      {/* Sign-Up Form */}
+      <div style={{ textAlign: 'center' }}>
+        <h2>Don't have an account?</h2>
+        <h3>Sign Up</h3>
+        <form onSubmit={handleSignUp}>
+          <input
+            type="text"
+            placeholder='Email'
+            style={{ fontFamily: 'sans-serif', width: '300px' }}
+            value={newEmail}
+            onChange={(e) => setNewEmail(e.target.value)}
+          />
+          <br />
+          <input
+            type="text"
+            placeholder='Company'
+            value={newCompany}
+            style={{ fontFamily: 'sans-serif', width: '300px' }}
+            onChange={(e) => setNewCompany(e.target.value)}
+          />
+          <br />
+          <input
+            type="password"
+            placeholder='Password'
+            value={newPassword}
+            style={{ fontFamily: 'sans-serif', width: '300px' }}
+            onChange={(e) => setNewPassword(e.target.value)}
+          />
+          <br />
+          <input
+            type="password"
+            placeholder='Confirm Password'
+            value={confirmPassword}
+            style={{ fontFamily: 'sans-serif', width: '300px' }}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+          <br />
+          <button type="submit" style={{ fontFamily: 'sans-serif', backgroundColor: '#0F52BA', color: 'white' ,width:"5vw"}}>Sign up</button>
+        </form>
+      </div>
+
+      {/* Styling for single-line inputs */}
+      <style>
+        {`
+          input {
+            border: none;
+            background-color: transparent;
+            border-bottom: 1px solid #ccc;
+            padding: 0.5rem;
+            margin: 0.5rem;
+            outline: none;
+            width: 200px;
+            text-align:center
+          }
+        `}
+      </style>
     </div>
   );
 }

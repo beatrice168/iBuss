@@ -3,25 +3,18 @@ from flask import Flask, jsonify, request, make_response, render_template
 from flask_migrate import Migrate
 from flask_restful import Api, Resource
 from models import db, Bus, User, Booking
-from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
-
-
-# from dotenv import load_dotenv
-# from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity
-# import sendgrid
-# from sendgrid.helpers.mail import Mail, Email, To, Content
+import datetime
 from flask_cors import CORS
+from sqlalchemy.exc import IntegrityError
+import jwt
 
 app = Flask(__name__)
 CORS(app)
 migrate = Migrate(app, db)
-
+secret=app.config["SECRET_KEY"] =b"b\xfe5'\x02\xc5\x9c\xa7\x8d\x96\xcf\xf0)\x05h\t"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///buses.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
-app.config["JWT_SECRET_KEY"] = "em6k7SXz44ei3wbiQDMcMs1sKaq_dxeg_DghP_ZjAkk"
-jwt = JWTManager(app)
-
 db.init_app(app)
 api= Api(app)
 
@@ -37,49 +30,82 @@ class Index(Resource):
         )
         return response
 api.add_resource(Index, '/')
+# users = {
+#     "user1": ("password1", 1),
+#     "user2": ("password2", 2),
+# }     
+class SignUp(Resource):
+    def post(self):
+        data = request.get_json()
 
-users = {
-    "user1": ("password1", 1),
-    "user2": ("password2", 2),
-}
+        password = data.get("password")
+        email = data.get("email")
+        company = data.get("company")
+        role = data.get("role")
+
+        user = User(
+            email=email,
+            company=company,
+            role=role
+        )
+        # the setter will encrypt this
+        user.password_hash = password
+        
+        print("first")
+
+        try:
+            print("here")
+            db.session.add(user)
+            db.session.commit()
+
+
+            print(user.to_dict())
+            return make_response(jsonify(user.to_dict()), 201)
+        except IntegrityError:
+            print("no, here!")
+            return {"error": "422 Unprocessable request"}, 422
+api.add_resource(SignUp, "/signup")
 
 class Signin(Resource):
-    def post():
+    def post(self):
         data = request.get_json()
-        username = data.get('username')
-        password = data.get('password')
+        email = data.get("email")
+        password = data.get("password")
+        user = User.query.filter(User.email == email).first()
+        if user:
+            # return "user exist"
+            if user.authenticate(password):
+                payload = {
+                    "user_id": user.id,
+                    "email": user.email,
+                    "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=30)  # Token expiration time
+                }
+                token = jwt.encode(payload,secret, algorithm="HS256")
+                print({"token":token})
+                return {"token": token}
+        return {"error": "Invalid details"}, 401
 
-        if username in users and users[username][0] == password:
-            user_id = users[username][1]
-            # Create and return the JWT access token
-            access_token = create_access_token(identity=user_id)
-            return jsonify(access_token=access_token), 200
-        else:
-            return jsonify({"error": "Invalid credentials"}), 401
+api.add_resource(Signin, "/signin")
+# class Protected(Resource):
+#     @jwt_required()
+#     def get(self):
+#             # Retrieve the current user's ID from the token
+#         current_user_id = get_jwt_identity()
+
+#         # Implement the logic for the protected route here
+#         # For example, you can access a specific user's data using the user ID
+#         if current_user_id in [1, 2]:
+#             # Dummy user data for demonstration
+#             user_data = {
+#                 "id": current_user_id,
+#                 "username": f"user{current_user_id}",
+#                 "email": f"user{current_user_id}@example.com",
+#             }
+#             return jsonify(user_data), 200
+#         else:
+#             return jsonify({"error": "Unauthorized"}), 403
         
-api.add_resource(Signin, '/Signin')
-
-
-class Protected(Resource):
-    @jwt_required()
-    def get(self):
-            # Retrieve the current user's ID from the token
-        current_user_id = get_jwt_identity()
-
-        # Implement the logic for the protected route here
-        # For example, you can access a specific user's data using the user ID
-        if current_user_id in [1, 2]:
-            # Dummy user data for demonstration
-            user_data = {
-                "id": current_user_id,
-                "username": f"user{current_user_id}",
-                "email": f"user{current_user_id}@example.com",
-            }
-            return jsonify(user_data), 200
-        else:
-            return jsonify({"error": "Unauthorized"}), 403
-        
-api.add_resource(Protected, '/Protected')
+# api.add_resource(Protected, '/Protected')
 
 
 

@@ -27,11 +27,14 @@ with app.app_context():
         buses.append(b)
     db.session.add_all(buses)
 
-    roles = ['admin', 'customer', 'driver']
+    roles = ['admin', 'customer']
+    company = ['mash', 'ena']
+
     users = []
     for n in range(30):
-        u = User(name=fake.name(),
-                 password=fake.password(),
+        u = User(email=fake.email(),
+                 _password_hash=fake.password(),
+                 company=rc(company),
                  role=rc(roles))
         users.append(u)
 
