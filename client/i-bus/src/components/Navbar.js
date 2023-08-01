@@ -17,7 +17,7 @@ function Navbar() {
       </NavLink>
       <div className='sign-in-container'>
       <div className='admin-sign-up-div'>
-    <NavLink className='admin-sign-in' to='/Signin'>
+    <NavLink className='admin-sign-in' to='/signin'>
         ADMIN SIGN IN 
       </NavLink>
       </div>

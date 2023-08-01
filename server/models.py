@@ -3,8 +3,29 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import PickleType
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.orm import validates
+from flask_marshmallow import Marshmallow
+from werkzeug.security import generate_password_hash, check_password_hash
+from sqlalchemy import MetaData
+from flask import Flask
+from config import db, bcrypt
+from sqlalchemy.ext.hybrid import hybrid_property
 
-db = SQLAlchemy()
+
+# from app import app
+convention = {
+    "ix": 'ix_%(column_0_label)s',
+    "uq": "uq_%(table_name)s_%(column_0_name)s",
+    "ck": "ck_%(table_name)s_%(constraint_name)s",
+    "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
+    "pk": "pk_%(table_name)s"
+}
+
+metadata = MetaData(naming_convention=convention)
+db = SQLAlchemy( metadata=metadata)
+
+# db = SQLAlchemy()
+ma = Marshmallow()
+
 
 class Bus(db.Model,SerializerMixin):
     __tablename__ = 'buses'
@@ -37,17 +58,28 @@ class User(db.Model, SerializerMixin):
     serialize_rules = ('-bookings.users',)
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, unique=True)
-    password = db.Column(db.PickleType)
+    email = db.Column(db.String)
+    _password_hash = db.Column(db.String)
+    company=db.Column(db.String)
     role = db.Column(db.String)
     bookings = db.relationship('Booking', backref='user')
     def to_dict(self):
         return {
             "id":self.id,
-            "name":self.name,
-            "password":self.password,
+            "email":self.email,
+            "_password_hash":self._password_hash,
             "role":self.role,
         }
+    @hybrid_property
+    def password_hash(self):
+        raise AttributeError("Password hashes may not be viewed.")
+    @password_hash.setter
+    def password_hash(self, password):
+        password_hash = bcrypt.generate_password_hash(password.encode("utf-8"))
+        self._password_hash = password_hash.decode("utf-8")
+    def authenticate(self, password):
+        return bcrypt.check_password_hash(self._password_hash, password.encode("utf-8"))
+   
     
 class Booking(db.Model,SerializerMixin):
     __tablename__ = 'bookings'
@@ -57,5 +89,15 @@ class Booking(db.Model,SerializerMixin):
     seatnumber = db.Column(db.Integer)
     bus_id = db.Column(db.Integer, db.ForeignKey('buses.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    payments=db.relationship('Payments',backref='booking',uselist=False)
 
+class Payments(db.Model,SerializerMixin):
+    __tablename__ = 'payments'
+    
+    id=db.Column(db.Integer,primary_key=True)
+    total_amount=db.Column(db.Integer)
+    id_number=db.Column(db.Integer)
+    phone_number=db.Column(db.Integer)
+    user_id=db.Column(db.Integer,db.ForeignKey('users.id'))
+    booking_id=db.Column(db.Integer,db.ForeignKey('bookings.id'))
 

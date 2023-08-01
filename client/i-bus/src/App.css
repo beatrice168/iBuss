@@ -56,7 +56,6 @@ from images import book.jpeg
   top: 55px;
   
 }
-
 body {
   background-color: #fff;
 }
@@ -82,9 +81,41 @@ table {
   border-collapse: collapse;
 }
 
+body {
+  background-color: #fff;
+}
+
+.container {
+  margin-top: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.card {
+  margin-bottom: 20px;
+}
+
+.card-body {
+  padding: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
 table, th, td {
   border: 1px solid black;
   padding: 5px;
+}
+
+table, th, td {
+  border: 1px solid black;
+  padding: 5px;
+}
+th {
+  text-align: center;
 }
 
 th {
@@ -309,5 +340,156 @@ th {
   text-align: center;
   padding: 10PX;
 }
+.nums{
+  font-weight: bold;
+}
 
+.contact-title {
+  text-align: center;
+}
+.email-adress {
+  width: 200px;
+  height: auto;
+  float: left;
+  left: 10px;
+  bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin-top: 60px; /* Adjust the distance from the top edge of the container */
+  margin-bottom: 100px;
+  padding-left: 20px;
+  transform: translate3d(0, 0, 0.2px);
+}
+/* Custom CSS for social icons */
+.social-icon {
+  font-size: 34px; /* Adjust the icon size */
+  color: #3B5998; /* Facebook icon color */
+  margin: 5px; /* Add some space between icons */
+}
+.social-icon:hover {
+  /* Add hover effects if desired */
+  color: #1877F2; /* Change color on hover for Facebook icon */
+}
+.instagram{
+  font-size: 34px; /* Adjust the icon size */
+  color: #983B74;
+  margin: 5px;
+}
+.instagram:hover {
+  /* Add hover effects if desired */
+  color: rgb(237, 13, 245); /* Change color on hover for Facebook icon */
+}
+.twitter{
+  font-size: 34px; /* Adjust the icon size */
+  color: #161F9C;
+  margin: 5px;
+}
+.twitter:hover {
+  /* Add hover effects if desired */
+  color: rgb(27, 23, 27); /* Change color on hover for Facebook icon */
+}
+.whatsapp-icon{
+  font-size: 34px; /* Adjust the icon size */
+  color: #1A9C16;
+  margin: 5px;
+  justify-content: center;
+}
+.whatsapp-icon:hover {
+  /* Add hover effects if desired */
+  color: rgb(86, 245, 13); /* Change color on hover for Facebook icon */
+}
+    /* Assuming the class name of the image is '.location' */
+ .location {
+  width: 200px;
+  height: 200px;
+  float: right;
+  top:-50px;
+  right:0;
+  bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin: 80px  10px 0 0; /* Adjust the top margin for vertical alignment */
+  position: absolute;
+  margin-top :260px;
+  margin-right:80px;
+  background-color:#f9c2ff ;
+ }
+.phone {
+  width: 200px;
+  height: 200px;
+  background-color:#f9c2ff ;
+  left: unset;
+  bottom: -40px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin: 70px  10px 0 0; /* Adjust the top margin for vertical alignment */
+  margin-left: 500px;
+  margin-right: 600px;
+  margin-top: -10px;
+  justify-content: center; /* Center the items vertically */
+  transform: translate3d(0, 0, 0.4px);
+}
+  .contact {
+  font-size: larger;
+  color: blue;
+  text-decoration: underline;
+  font-weight: bold;
+  border-bottom: 2px solid blue;
+  }
+  .social-icons-container {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 20px; /* Adjust the distance from the bottom as needed */
+    left: -130px;
+    right: 0;
+    z-index: 999; /* Set a higher z-index to ensure the icons appear above other elements */
+    background-color: white; /* Optional background color for the container */
+    padding: 10px; /* Optional padding for the container */
+  }
+  .P1 {
+    font-size: 20px; /* Adjust the font size as needed */
+    font-weight: bold;
+    text-align: left;
+    width: 50px; /* Adjust the image size as needed */
+    height: 50px;
+    margin: 10px;
+  }
+  .P1, .P2, .P3 {
+    font-size: 16px; /* Adjust the font size as needed */
+    font-weight: bold;
+    margin: 10px;
+  }
+  .P2 {
+    margin-right: 300px;
+    clear: both; /* Clear the floating elements (images) to make the paragraph appear below them */
+    right:340px;
+    bottom:-25px;
+    /* left:100px; */
+    /* top:500px; */
+    margin-bottom: 159px;
+    position:absolute;
 
+  }
+  .P3{
+    bottom:10px;
+    right:50px;
+    text-align: right;
+    margin-bottom: 140px;
+    clear: both;
+    position: absolute;
+  }
+  .contact-title{
+      margin-top: 10px;
+      font-size: 24px;
+      color: rgb(10, 10, 78);
+      font-weight: bold;
+      text-decoration: underline;
+      border-bottom: 2px solid rgb(10, 10, 78);
+      padding-bottom: 5px; /* Add some padding at the bottom of the underline */
+      text-align: center; /* Center the text */
+      font-family: "Arial", sans-serif; /* Optionally, you can change the font-family */
+    }
