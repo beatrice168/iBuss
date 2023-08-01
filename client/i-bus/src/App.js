@@ -12,6 +12,7 @@ import Payment from "./components/Payment";
 
 import Book from './components/Book';
 import Admin from './components/Admin';
+import Contact from './components/Contact'
 
 
 function App() {
@@ -42,6 +43,10 @@ function App() {
       <Routes>
         <Route path="/admin" element={<Admin />}/>
       </Routes>
+      <Routes>
+        <Route  path="Contact" element={<Contact/>}/>
+        
+        </Routes>
     </div>
     </>
   );
