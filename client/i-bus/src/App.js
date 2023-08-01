@@ -11,6 +11,7 @@ import Payment from "./components/Payment";
 
 
 import Book from './components/Book';
+import Admin from './components/Admin';
 
 
 function App() {
@@ -33,10 +34,13 @@ function App() {
 
       </Routes>
       <Routes>
-        <Route path='signup' element={<Signup/>}/>
+        <Route path='signin' element={<Signin/>}/>
       </Routes>
       <Routes>
         <Route path='Customer' element={<Customer/>}/>
+      </Routes>
+      <Routes>
+        <Route path="/admin" element={<Admin />}/>
       </Routes>
     </div>
     </>
