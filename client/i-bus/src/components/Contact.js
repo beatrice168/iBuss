@@ -1,5 +1,6 @@
 import React from "react"
 import { FaInstagram, FaFacebook, FaTwitter,FaWhatsapp } from 'react-icons/fa';
+
  function Contact(){
          return(
          <div>
