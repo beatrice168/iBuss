@@ -1,8 +1,29 @@
-import React from 'react'
+// BusList.js
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-function BusList() {
+const BusList = ({ buses }) => {
   return (
-    <div>BusList</div>
-  )
-}
-export default BusList
+    <div className="bus-list-container">
+      {buses.map((bus) => (
+        <div key={bus.id} className="bus-item">
+          <h3>Bus {bus.id}</h3>
+          <div className="bus-details">
+            <p>
+              Departure: <span>{bus.departure}</span>
+            </p>
+            <p>
+              Arrival: <span>{bus.arrival}</span>
+            </p>
+            <p>
+              Cost: <span>{bus.cost}</span>
+            </p>
+          </div>
+          <Link className='Book'to={`/booking/${bus.id}`}>BOOK</Link>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default BusList;

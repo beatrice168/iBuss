@@ -1,0 +1,126 @@
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header */
+h1 {
+  color: blue;
+  text-align: center;
+}
+
+.kastoma{
+  margin-top: 130px;
+}
+/* Login and Signup Forms */
+.login-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top:10px;
+  margin-left: 40px;
+  margin-right: 40px;
+  border-radius: 40%;
+}
+
+.login-form,
+.signup-form {
+  width: 45%;
+  padding:10%;
+  margin-top:-10%;
+}
+
+.login-form h2,
+.signup-form h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.customer-login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+form input {
+  padding: 10px;
+  margin-bottom: 20px;
+  
+}
+
+form button {
+  padding: 10px;
+  background-color: blue;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #007bff;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+  }
+
+  .login-form,
+  .signup-form {
+    width: 100%;
+    padding:10%;
+    margin-top:-10%;
+  }
+  
+  .login-form h2,
+  .signup-form h2 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .customer-login-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  form label {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  form input {
+    padding: 10px;
+    margin-bottom: 20px;
+    
+  }
+  
+  form button {
+    padding: 10px;
+    background-color: blue;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  form button:hover {
+    background-color: #007bff;
+  }
+  
+  /* Responsive Styles */
+  @media screen and (max-width: 768px) {
+    .login-container {
+      flex-direction: column;
+    }
+  
+    .login-form,
+    .signup-form {
+      width: 100%;
+    }
+  }
+}
