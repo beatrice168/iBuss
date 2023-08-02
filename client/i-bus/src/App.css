@@ -496,3 +496,10 @@ th {
       text-align: center; /* Center the text */
       font-family: "Arial", sans-serif; /* Optionally, you can change the font-family */
     }
+
+    .footer-container {
+      background-color: blue;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
