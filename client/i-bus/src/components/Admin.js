@@ -48,6 +48,13 @@ function Admin() {
     backgroundColor:"#57A0D2"
   }
 
+  
+
+ 
+
+   
+
+
   return (
     <div className="mini" style={miniStyle}>
     <div className="container" style={containerStyle}>
