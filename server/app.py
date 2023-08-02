@@ -359,10 +359,68 @@ class UsersByID(Resource):
         return response
 api.add_resource(UsersByID, '/users/<int:id>')
 
+class Bookings(Resource):
+    def get(self):
+        booking_dict_list = [booking.to_dict() for booking in Booking.query.all()]
+        response = make_response(
+            jsonify(booking_dict_list),
+                    200,
+        )
+        return response
+    
+    def post(self):
+        form=request.get_json()
+        new_booking = Booking(
+            seatnumber=form["seatnumber"],
+            bus_id=form["bus_id"],
+            user_id=form["user_id"],
+        )
+        db.session.add(new_booking)
+        db.session.commit()
+
+        return make_response(
+            jsonify(new_booking.to_dict()),
+            201,
+        )
+    
+api.add_resource(Bookings, '/bookings')
+
+class BookingsByID(Resource):
+    def get (self, id):
+        response_dict = Booking.query.filter_by(id=id).first().to_dict()
+        response = make_response(
+            jsonify(response_dict),
+            200,
+        )
+        return response
+    
+    def patch (self,id):
+        booking= Booking.query.filter_by(id=id).first()
+        for attr in request.form:
+            setattr(booking, attr, request.form[attr])
+
+        db.session.add(booking)
+        db.session.commit()
+
+        response_dict = booking.to_dict()
+        response = make_response(
+            jsonify(response_dict),
+            200
+        )
+        return response 
+    def delete(self, id):
+        booking = Booking.query.filter_by(id=id).first()
+        db.session.delete(booking)
+        db.session.commit()
+        response_dict = "Bus deleted Successfull"
+        response = make_response(
+            jsonify(response_dict),
+            200,
+        )
+        return response
+
+api.add_resource(BookingsByID,"/bookings/<int:id>")
 
     
-
-
-
 if __name__ == '__main__':
     app.run(port=5555,debug=True)

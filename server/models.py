@@ -92,6 +92,14 @@ class Booking(db.Model,SerializerMixin):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     payments=db.relationship('Payments',backref='booking',uselist=False)
 
+    def to_dict(self):
+        return {
+            "id":self.id,
+            "seatnumber":self.seatnumber,
+            "bus_id":self.bus_id,
+            "user_id":self.user_id,
+        }
+
 class Payments(db.Model,SerializerMixin):
     __tablename__ = 'payments'
     
