@@ -51,6 +51,7 @@ class Bus(db.Model,SerializerMixin):
             "availability":self.availability,
             "departure":self.departure,
             "cost":self.cost,
+            # "image":self.image,
         }
 
 class User(db.Model, SerializerMixin):
@@ -101,3 +102,8 @@ class Payments(db.Model,SerializerMixin):
     user_id=db.Column(db.Integer,db.ForeignKey('users.id'))
     booking_id=db.Column(db.Integer,db.ForeignKey('bookings.id'))
 
+class Uploads(db.Model,SerializerMixin):
+    __tablename__ = 'upload'
+    
+    id=db.Column(db.Integer,primary_key=True)
+    image = db.Column(db.Text)

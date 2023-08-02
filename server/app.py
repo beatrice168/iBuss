@@ -2,11 +2,14 @@ import os
 from flask import Flask, jsonify, request, make_response, render_template,request
 from flask_migrate import Migrate
 from flask_restful import Api, Resource, reqparse
-from models import db, Bus, User, Booking
+from models import db, Bus, User, Booking, Uploads
 import datetime
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from sqlalchemy.exc import IntegrityError
 import jwt
+from PIL import Image
+import cloudinary
+import cloudinary.uploader
 from flask_mail import Mail, Message
 from requests.auth import HTTPBasicAuth
 import base64
@@ -24,8 +27,18 @@ secret=app.config["SECRET_KEY"] =b"b\xfe5'\x02\xc5\x9c\xa7\x8d\x96\xcf\xf0)\x05h
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///buses.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+
 db.init_app(app)
 api= Api(app)
+
+cloudinary.config(
+    cloud_name=('buscommute'),
+    api_key=('776315843379566'),
+    api_secret=('JgpHnxKpPzhQohA-VqDoDR8v2sg')
+)
+
+
+
 
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
@@ -207,6 +220,19 @@ def getAccessToken():
 
 
 
+# @app.route("/upload", methods=['POST', 'OPTIONS'])
+class Upload(Resource):
+    @cross_origin()
+    def post(self):
+        file_to_upload = request.files['file']
+        app.logger.info('%s file_to_upload', file_to_upload)
+        
+        if file_to_upload:
+            upload_result = cloudinary.uploader.upload(file_to_upload)
+            app.logger.info(upload_result)
+            return jsonify(upload_result)
+
+api.add_resource(Upload, "/upload")
 
 
 class Buses(Resource):
