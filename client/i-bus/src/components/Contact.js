@@ -1,6 +1,9 @@
-import React from "react"
+// import React from "react"
+import Send from './send';
+import React from 'react';
 import { FaInstagram, FaFacebook, FaTwitter,FaWhatsapp } from 'react-icons/fa';
  function Contact(){
+
          return(
          <div>
            <div className="contact-container">
@@ -17,6 +20,7 @@ import { FaInstagram, FaFacebook, FaTwitter,FaWhatsapp } from 'react-icons/fa';
                <img className='location' src='/images/Location.jpeg' alt='Location' />
                <p className="P3">Location:Ngong,Nairobi,Kenya</p>
                </div>
+               <Send/>
                <div className="social-icons-container">
                   <a href="https://www.instagram.com/your-instagram-page " target="_blank" rel="noopener noreferrer">
                        <FaInstagram  className="instagram"/>
@@ -32,6 +36,7 @@ import { FaInstagram, FaFacebook, FaTwitter,FaWhatsapp } from 'react-icons/fa';
                    </a>
                    </div>
                    </div>
+
             </div>
        )
  }

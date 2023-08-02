@@ -1,12 +1,21 @@
 import os
-from flask import Flask, jsonify, request, make_response, render_template
+from flask import Flask, jsonify, request, make_response, render_template,request
 from flask_migrate import Migrate
-from flask_restful import Api, Resource
+from flask_restful import Api, Resource, reqparse
 from models import db, Bus, User, Booking
 import datetime
 from flask_cors import CORS
 from sqlalchemy.exc import IntegrityError
 import jwt
+from flask_mail import Mail, Message
+from requests.auth import HTTPBasicAuth
+import base64
+import requests
+from datetime import datetime
+import smtplib
+
+
+
 
 app = Flask(__name__)
 CORS(app)
@@ -17,6 +26,42 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 db.init_app(app)
 api= Api(app)
+
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'helgapaul389@gmail.com'
+app.config['MAIL_PASSWORD'] = 'eocectdkjtieaasu'
+app.config['MAIL_USE_SSL'] = False
+
+mail = Mail(app)
+
+
+
+class EmailResource(Resource):
+    def post(self):
+        parser = reqparse.RequestParser()
+        parser.add_argument('recipient', type=str, required=True)
+        parser.add_argument('subject', type=str, required=True)
+        parser.add_argument('message', type=str, required=True)
+        args = parser.parse_args()
+
+        recipient = args['recipient']
+        subject = args['subject']
+        message = args['message']
+
+        try:
+            msg = Message(subject=subject, sender='noreply@demo.com', recipients=[recipient])
+            msg.body = message
+
+            mail.send(msg)
+            return {'message': 'Email sent successfully'}, 200
+        except smtplib.SMTPException as e:
+            return {'error': 'Failed to send email: {}'.format(str(e))}, 500
+        except Exception as e:
+            return {'error': 'An unexpected error occurred: {}'.format(str(e))}, 500
+
+api.add_resource(EmailResource, '/email')
 
 class Index(Resource):
     def get(self):
@@ -48,7 +93,6 @@ class SignUp(Resource):
             company=company,
             role=role
         )
-        # the setter will encrypt this
         user.password_hash = password
         
         print("first")
@@ -86,6 +130,60 @@ class Signin(Resource):
         return {"error": "Invalid details"}, 401
 
 api.add_resource(Signin, "/signin")
+my_endpoint = 'https://ab92-102-213-93-55.ngrok-free.app'
+# @app.route('/')
+# def index():
+#     getAccessToken()
+#     return 'hello its bitu'
+
+@app.route('/pay')
+def MpesaExpress():
+    amount = request.args.get('amount')
+    phoneNumber = request.args.get('phoneNumber')
+    print(phoneNumber)
+    endpoint = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest'
+    access_token = getAccessToken()
+    headers = { "Authorization": "Bearer %s" % access_token }
+    Timestamp = datetime.now()
+    times = Timestamp.strftime("%Y%m%d%H%M%S")
+    password_str = "174379" + "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919" + times
+    password_bytes = password_str.encode('utf-8')
+    password = base64.b64encode(password_bytes).decode('utf-8')
+    # password = hashlib.sha1(password_bytes).hexdigest()
+
+    data = {
+        "BusinessShortCode": "174379",
+        "Password": password,
+        "Timestamp": times,
+        "TransactionType": "CustomerPayBillOnline",
+        "PartyA": phoneNumber,
+        "PartyB": "174379",
+        "PhoneNumber":phoneNumber,
+        "CallBackURL": my_endpoint + '/lnmo-callback',
+        "AccountReference": "TestPay",
+        "TransactionDesc": "HelloTest",
+        "Amount": amount
+    }
+    res = requests.post(endpoint, json=data, headers=headers)
+    print(res)
+    return res.json()
+
+@app.route('/lnmo-callback', methods=['POST'])
+def incoming():
+    data = request.get_json()
+    print(data)
+    return 'ok'
+
+def getAccessToken():
+    consumer_key = "k32F8H8rh9CHOxGhuQCqqKALJRF1aAz0"
+    consumer_secret = "FwyAyldHKLpzdKnH"
+    endpoint = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
+    r = requests.get(endpoint, auth=HTTPBasicAuth(consumer_key, consumer_secret))
+    data = r.json()
+    return data['access_token']
+
+
+
 # class Protected(Resource):
 #     @jwt_required()
 #     def get(self):
@@ -241,4 +339,4 @@ api.add_resource(UsersByID, '/users/<int:id>')
 
 
 if __name__ == '__main__':
-    app.run(port=5555)
+    app.run(port=5555,debug=True)
