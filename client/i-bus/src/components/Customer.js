@@ -23,7 +23,7 @@ const Customer = () => {
     alert("Invalid email address.");
     return;
   } else {
-    navigate('/Booking');
+    navigate('/Book');
   };
 
     console.log('Login Email:', loginEmail);
@@ -43,7 +43,7 @@ const Customer = () => {
       alert("Invalid email address.");
       return;
     } else {
-      navigate('/Booking');
+      navigate('/Book');
     };
 
     console.log('Signup Email:', signupEmail);

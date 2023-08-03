@@ -1,0 +1,890 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "I-Bus API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5555"
+    }
+  ],
+  "paths": {
+    "/email": {
+      "post": {
+        "summary": "Send an email",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "recipient": {
+                    "type": "string",
+                    "description": "Email recipient"
+                  },
+                  "subject": {
+                    "type": "string",
+                    "description": "Email subject"
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "Email message"
+                  }
+                },
+                "required": ["recipient", "subject", "message"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Email sent successfully",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Email sent successfully"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Failed To send email or an unexpected error occurred",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Failed To send email or an unexpected error occurred"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "summary": "Get welcome message",
+        "responses": {
+          "200": {
+            "description": "Welcome message",
+            "content": {
+              "application/json": {
+                "example": {
+                  "index": "Welcome To I-Bus API"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/signup": {
+      "post": {
+        "summary": "Sign up",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "description": "User's email"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "User's password"
+                  },
+                  "company": {
+                    "type": "string",
+                    "description": "User's company"
+                  },
+                  "role": {
+                    "type": "string",
+                    "description": "User's role"
+                  }
+                },
+                "required": ["email", "password", "company", "role"]
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "User signed up successfully",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "email": "user@example.com",
+                    "company": "Example Inc.",
+                    "role": "admin"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Unprocessable request",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "error": "Unprocessable request"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/signin": {
+      "post": {
+        "summary": "Sign in",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "description": "User's email"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "User's password"
+                  }
+                },
+                "required": ["email", "password"]
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Sign in successful",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "token": "jwt_token_here"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Invalid details",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "error": "Invalid details"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pay": {
+      "get": {
+        "summary": "Make a payment",
+        "parameters": [
+          {
+            "name": "amount",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Payment amount"
+          },
+          {
+            "name": "phoneNumber",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Phone number for payment"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Payment response",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "success",
+                  "message": "Payment successful"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lnmo-callback": {
+      "post": {
+        "summary": "Callback for payment",
+        "responses": {
+          "200": {
+            "description": "Callback response",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Callback received"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/upload": {
+      "post": {
+        "summary": "Upload a file",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "File To upload"
+                  }
+                },
+                "required": ["file"]
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "File uploaded successfully",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "url": "https://example.com/uploads/file.jpg"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/buses": {
+      "get": {
+        "summary": "Get list of buses",
+        "responses": {
+          "200": {
+            "description": "List of buses",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "id": 1,
+                    "name": "Bus A",
+                    "seats": 50,
+                    "From": "Route X",
+                    "To":"Routey",
+                    "availability": true,
+                    "departure": "2023-08-01T12:00:00",
+                    "cost": 20.0
+                  },
+                  {
+                    "id": 2,
+                    "name": "Bus B",
+                    "seats": 40,
+                    "From": "Route X",
+                    "To":"Routey",
+                    "availability": true,
+                    "departure": "2023-08-01T14:00:00",
+                    "cost": 25.0
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new bus",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Bus name"
+                  },
+                  "seats": {
+                    "type": "integer",
+                    "description": "Number of seats"
+                  },
+                  "From": {
+                    "type": "string",
+                    "description": "Bus route"
+                  },
+                  "To": {
+                    "type": "string",
+                    "description": "Bus route"
+                  },
+                  "availability": {
+                    "type": "boolean",
+                    "description": "Bus availability"
+                  },
+                  "departure": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Departure date and time"
+                  },
+                  "cost": {
+                    "type": "number",
+                    "format": "float",
+                    "description": "Ticket cost"
+                  }
+                },
+                "required": ["name", "seats", "From","To", "availability", "departure", "cost"]
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Bus created successfully",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "id": 3,
+                    "name": "Bus C",
+                    "seats": 30,
+                    "From": "Route Z",
+                    "To": "Route Z",
+                    "availability": true,
+                    "departure": "2023-08-02T10:00:00",
+                    "cost": 18.0
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/buses/{id}": {
+      "get": {
+        "summary": "Get details of a bus",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "required": true,
+            "description": "Bus ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Bus details",
+            "content": {
+              "application/json": {
+                "example": {
+                  "id": 1,
+                  "name": "Bus A",
+                  "seats": 50,
+                  "From": "Route X",
+                  "To": "Route y",
+                  "availability": true,
+                  "departure": "2023-08-01T12:00:00",
+                  "cost": 20.0
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update details of a bus",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "required": true,
+            "description": "Bus ID"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Bus name"
+                  },
+                  "seats": {
+                    "type": "integer",
+                    "description": "Number of seats"
+                  },
+                  "From": {
+                    "type": "string",
+                    "description": "Bus route"
+                  },
+                  "To": {
+                    "type": "string",
+                    "description": "Bus route"
+                  },
+                  "availability": {
+                    "type": "boolean",
+                    "description": "Bus availability"
+                  },
+                  "departure": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Departure date and time"
+                  },
+                  "cost": {
+                    "type": "number",
+                    "format": "float",
+                    "description": "Ticket cost"
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Bus details updated successfully",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "id": 1,
+                    "name": "Bus A Updated",
+                    "seats": 55,
+                    "From": "Route X Updated",
+                    "To": "Route Y Updated",
+                    "availability": false,
+                    "departure": "2023-08-01T12:30:00",
+                    "cost": 22.0
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a bus",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "required": true,
+            "description": "Bus ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Bus deleted successfully",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Bus deleted Successfull"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "summary": "Get list of users",
+        "responses": {
+          "200": {
+            "description": "List of users",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "id": 1,
+                    "name": "John Doe",
+                    "role": "user"
+                  },
+                  {
+                    "id": 2,
+                    "name": "Jane Smith",
+                    "role": "admin"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "User's name"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "User's password"
+                  },
+                  "role": {
+                    "type": "string",
+                    "description": "User's role"
+                  }
+                },
+                "required": ["name", "password", "role"]
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "User created successfully",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "id": 3,
+                    "name": "Mark Johnson",
+                    "role": "user"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "summary": "Get details of a user",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "required": true,
+            "description": "User ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User details",
+            "content": {
+              "application/json": {
+                "example": {
+                  "id": 1,
+                  "name": "John Doe",
+                  "role": "user"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update details of a user",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "required": true,
+            "description": "User ID"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "User's name"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "User's password"
+                  },
+                  "role": {
+                    "type": "string",
+                    "description": "User's role"
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "User details updated successfully",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "id": 1,
+                    "name": "John Doe Updated",
+                    "role": "admin"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a user",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "required": true,
+            "description": "User ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User deleted successfully",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "User deleted successfull"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bookings": {
+      "get": {
+        "summary": "Get list of bookings",
+        "responses": {
+          "200": {
+            "description": "List of bookings",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "id": 1,
+                    "seatnumber": "A1",
+                    "bus_id": 1,
+                    "user_id": 1
+                  },
+                  {
+                    "id": 2,
+                    "seatnumber": "B3",
+                    "bus_id": 2,
+                    "user_id": 2
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new booking",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "seatnumber": {
+                    "type": "string",
+                    "description": "Seat number"
+                  },
+                  "bus_id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "Bus ID"
+                  },
+                  "user_id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "User ID"
+                  }
+                },
+                "required": ["seatnumber", "bus_id", "user_id"]
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Booking created successfully",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "id": 3,
+                    "seatnumber": "C5",
+                    "bus_id": 3,
+                    "user_id": 3
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bookings/{id}": {
+      "get": {
+        "summary": "Get details of a booking",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "required": true,
+            "description": "Booking ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Booking details",
+            "content": {
+              "application/json": {
+                "example": {
+                  "id": 1,
+                  "seatnumber": "A1",
+                  "bus_id": 1,
+                  "user_id": 1
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update details of a booking",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "required": true,
+            "description": "Booking ID"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "seatnumber": {
+                    "type": "string",
+                    "description": "Seat number"
+                  },
+                  "bus_id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "Bus ID"
+                  },
+                  "user_id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "User ID"
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Booking details updated successfully",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "id": 1,
+                    "seatnumber": "B2",
+                    "bus_id": 2,
+                    "user_id": 2
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a booking",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "required": true,
+            "description": "Booking ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Booking deleted successfully",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Booking deleted Successfull"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ]
+}

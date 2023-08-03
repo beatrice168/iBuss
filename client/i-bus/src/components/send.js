@@ -42,15 +42,15 @@ function Send() {
       <form onSubmit={handleSubmit}>
         <div>
           <label>Recipient:</label>
-          <input type="email" value={recipient} onChange={(e) => setRecipient(e.target.value)} required />
+          <input type="email" value={recipient} className='inpu' onChange={(e) => setRecipient(e.target.value)} required />
         </div>
         <div>
           <label>Subject:</label>
-          <input type="text" value={subject} onChange={(e) => setSubject(e.target.value)} required />
+          <input type="text" value={subject} className='inpu' onChange={(e) => setSubject(e.target.value)} required />
         </div>
         <div>
           <label>Message:</label>
-          <textarea value={message} onChange={(e) => setMessage(e.target.value)} required />
+          <textarea value={message} className='inpu' onChange={(e) => setMessage(e.target.value)} required />
         </div>
         <button type="submit">Send Email</button>
       </form>
