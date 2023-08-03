@@ -503,3 +503,7 @@ th {
       padding: 10px;
       text-align: center;
     }
+.inpu{
+  display:flex;
+  flex-direction: column;
+}

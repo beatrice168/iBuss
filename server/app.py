@@ -16,12 +16,35 @@ import base64
 import requests
 from datetime import datetime
 import smtplib
+from flask_swagger_ui import get_swaggerui_blueprint
+
 
 
 
 
 app = Flask(__name__)
 CORS(app)
+
+
+SWAGGER_URL = '/api/docs'  # URL for exposing Swagger UI (without trailing '/')
+API_URL = '/static/swagger.json'  # Our API url (can of course be a local resource)
+swaggerui_blueprint = get_swaggerui_blueprint(
+    SWAGGER_URL,  # Swagger UI static files will be mapped to '{SWAGGER_URL}/dist/'
+    API_URL,
+    config={  # Swagger UI config overrides
+        'app_name': "Test application"
+    },
+    # oauth_config={  # OAuth config. See https://github.com/swagger-api/swagger-ui#oauth2-configuration .
+    #    'clientId': "your-client-id",
+    #    'clientSecret': "your-client-secret-if-required",
+    #    'realm': "your-realms",
+    #    'appName': "your-app-name",
+    #    'scopeSeparator': " ",
+    #    'additionalQueryStringParams': {'test': "hello"}
+    # }
+)
+
+app.register_blueprint(swaggerui_blueprint)
 migrate = Migrate(app, db)
 secret=app.config["SECRET_KEY"] =b"b\xfe5'\x02\xc5\x9c\xa7\x8d\x96\xcf\xf0)\x05h\t"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///buses.db'
@@ -135,7 +158,7 @@ class Signin(Resource):
                 payload = {
                     "user_id": user.id,
                     "email": user.email,
-                    "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=30)  # Token expiration time
+                    # "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=30)  # Token expiration time
                 }
                 token = jwt.encode(payload,secret, algorithm="HS256")
                 print({"token":token})
@@ -143,7 +166,7 @@ class Signin(Resource):
         return {"error": "Invalid details"}, 401
 
 api.add_resource(Signin, "/signin")
-my_endpoint = 'https://ab92-102-213-93-55.ngrok-free.app'
+# my_endpoint = 'https://ab92-102-213-93-55.ngrok-free.app'
 # @app.route('/')
 # def index():
 #     getAccessToken()
@@ -172,7 +195,8 @@ def MpesaExpress():
         "PartyA": phoneNumber,
         "PartyB": "174379",
         "PhoneNumber":phoneNumber,
-        "CallBackURL": my_endpoint + '/lnmo-callback',
+        "CallBackURL":"https://ed6e-102-213-93-55.ngrok-free.app/api/stk/push/callback/url",
+        # my_endpoint + '/lnmo-callback',
         "AccountReference": "TestPay",
         "TransactionDesc": "HelloTest",
         "Amount": amount
@@ -249,7 +273,8 @@ class Buses(Resource):
         new_bus = Bus(
             name=form["name"],
             seats=form["seats"],
-            route=form["route"],
+            From=form["From"],
+            To=form["To"],
             availability=form["availability"],
             departure=form["departure"],
             cost=form["cost"],

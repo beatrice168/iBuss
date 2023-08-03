@@ -2,7 +2,7 @@ import random
 from random import randint, choice as rc
 from faker import Faker
 from app import app
-from models import db, User, Booking, Bus
+from models import db, User, Booking, Bus,Payments
 
 fake = Faker()
 
@@ -39,6 +39,19 @@ with app.app_context():
         users.append(u)
 
     db.session.add_all(users)
+    id_number = [12333544, 2324234242,13522525,1354552,5552652452,535375566]
+    phone_number = [254706314418, 254721642249,254717200264]
+
+    payments = []
+    for n in range(30):
+        p = Payments(total_amount=random.randint(1500,2000),
+                  id_number=rc(id_number),
+                  phone_number=rc(phone_number),
+                  user_id=random.randint(1,30),
+                  booking_id=random.randint(1,30))
+        payments.append(p)
+
+    db.session.add_all(payments)
 
     bookings = []
     for n in range(30):
