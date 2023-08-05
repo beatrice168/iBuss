@@ -36,6 +36,9 @@ from images import book.jpeg
   /* text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5); */
 }
 
+.navLink:hover{
+  color: #baefff !important; 
+}
 
 
 .sign-in-container{
@@ -255,6 +258,10 @@ th {
   /*background-image: url(/home/rolex/Development/code/iBus/client/i-bus/src/images/book.jpeg);*/
    width: 100vw;
   height: 10vh; 
+}
+
+.search-form::placeholder{
+  font-size: 200;
 }
 
 .search-form form {
@@ -488,4 +495,11 @@ th {
       padding-bottom: 5px; /* Add some padding at the bottom of the underline */
       text-align: center; /* Center the text */
       font-family: "Arial", sans-serif; /* Optionally, you can change the font-family */
+    }
+
+    .footer-container {
+      background-color: blue;
+      color: white;
+      padding: 10px;
+      text-align: center;
     }

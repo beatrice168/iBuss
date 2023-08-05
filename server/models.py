@@ -51,6 +51,7 @@ class Bus(db.Model,SerializerMixin):
             "availability":self.availability,
             "departure":self.departure,
             "cost":self.cost,
+            # "image":self.image,
         }
 
 class User(db.Model, SerializerMixin):
@@ -91,6 +92,14 @@ class Booking(db.Model,SerializerMixin):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     payments=db.relationship('Payments',backref='booking',uselist=False)
 
+    def to_dict(self):
+        return {
+            "id":self.id,
+            "seatnumber":self.seatnumber,
+            "bus_id":self.bus_id,
+            "user_id":self.user_id,
+        }
+
 class Payments(db.Model,SerializerMixin):
     __tablename__ = 'payments'
     
@@ -101,3 +110,8 @@ class Payments(db.Model,SerializerMixin):
     user_id=db.Column(db.Integer,db.ForeignKey('users.id'))
     booking_id=db.Column(db.Integer,db.ForeignKey('bookings.id'))
 
+class Uploads(db.Model,SerializerMixin):
+    __tablename__ = 'upload'
+    
+    id=db.Column(db.Integer,primary_key=True)
+    image = db.Column(db.Text)
