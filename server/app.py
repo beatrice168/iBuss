@@ -245,7 +245,7 @@ def getAccessToken():
 
 
 # @app.route("/upload", methods=['POST', 'OPTIONS'])
-class Upload(Resource):
+class Uploads(Resource):
     @cross_origin()
     def post(self):
         file_to_upload = request.files['file']
@@ -256,7 +256,7 @@ class Upload(Resource):
             app.logger.info(upload_result)
             return jsonify(upload_result)
 
-api.add_resource(Upload, "/upload")
+api.add_resource(Uploads, "/upload")
 
 
 class Buses(Resource):

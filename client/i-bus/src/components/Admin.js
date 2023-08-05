@@ -5,6 +5,7 @@ import AddBusForm from "./AddBusForm";
 import UpdateDeleteBusForm from "./UpdateDeleteBusForm";
 import AddBookingForm from "./AddBookingForm";
 import UpdateDeleteBookingForm from "./UpdateDeleteBookingForm";
+import UploadFile from "./UploadFile";
 
 function Admin() {
   const [buses, setBuses] = useState([]);
@@ -164,6 +165,7 @@ function Admin() {
         <div className="row">
           <div className="col-md-12">
             <h1>Admin Dashboard</h1>
+            <UploadFile />
           </div>
         </div>
         <div className="row">
