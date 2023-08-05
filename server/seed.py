@@ -13,8 +13,8 @@ with app.app_context():
 
     
     availability = ['True', 'False']
-    From = ['nrb', 'nrb', 'eld', 'entebbe', 'kigali']
-    To=['msa','ksm','msa',"dar",'kampala']
+    From = ["Bumala", "Kericho", "Homabay", "Bungoma", "Nairobi", "Sirare", "Bondo", "Malaba", "Bomet", "Awendo", "Kapsabet", "Kisumu", "Kaimosi", "Mbita", "Eldoret", "Ndori", "Kitale", "Kisii", "Kampala", "Mumias", "Webuye", "Usenge", "Ugunja", "Kakamega", "Madrid", "Kimill", "Siaya", "Moisbridge", "Nakuru", "Keroka", "Migori", "Mbale", "Narok", "Kendubay", "Maseno", "Oyugis", "Rongo", "Busia"]
+    To=["Bumala", "Kericho", "Homabay", "Bungoma", "Nairobi", "Sirare", "Bondo", "Malaba", "Bomet", "Awendo", "Kapsabet", "Kisumu", "Kaimosi", "Mbita", "Eldoret", "Ndori", "Kitale", "Kisii", "Kampala", "Mumias", "Webuye", "Usenge", "Ugunja", "Kakamega", "Madrid", "Kimill", "Siaya", "Moisbridge", "Nakuru", "Keroka", "Migori", "Mbale", "Narok", "Kendubay", "Maseno", "Oyugis", "Rongo", "Busia"]
     buses = []
     for n in range(30):
         b = Bus(name=fake.name(),

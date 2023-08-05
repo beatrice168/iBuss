@@ -16,7 +16,7 @@ position: relative;
   .home-text{
     position: absolute;
     right: 5%;
-    top: 5%;
+    top: 4%;
     
     
   }
@@ -124,3 +124,4 @@ position: relative;
     padding: 5% 10%;
   }
   
+  /* test */
