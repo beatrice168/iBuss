@@ -9,17 +9,24 @@ const BusList = ({ buses }) => {
         <div key={bus.id} className="bus-item">
           <h3>Bus {bus.id}</h3>
           <div className="bus-details">
-            <p>
+            {/* <p>
+              Departure: <span>{bus.departure}</span>
+            </p> */}
+            <p style={{ width: '350px', textAlign: "center" }}>
+              <div className='to-from-div'><span>{bus.From}</span> <img className='link-image' src='/images/link-icon-long.png' alt='link-image' /> <span>{bus.To}</span></div>
+              <br />
               Departure: <span>{bus.departure}</span>
             </p>
-            <p>
-              Arrival: <span>{bus.arrival}</span>
-            </p>
-            <p>
+            {/* <p>
               Cost: <span>{bus.cost}</span>
-            </p>
+            </p> */}
+          </div >
+          <div style={{textAlign: 'centre'}}>
+          Cost: <span >{bus.cost}</span>
+          <br />
+          <br />
+          <Link className='Book'to={`/booking/${bus.id}`}> <button className='book-button'>BOOK</button></Link>
           </div>
-          <Link className='Book'to={`/booking/${bus.id}`}>BOOK</Link>
         </div>
       ))}
     </div>

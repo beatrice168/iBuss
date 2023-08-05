@@ -113,7 +113,12 @@ class Payments(db.Model,SerializerMixin):
     booking_id=db.Column(db.Integer,db.ForeignKey('bookings.id'))
 
 class Uploads(db.Model,SerializerMixin):
-    __tablename__ = 'upload'
+    __tablename__ = 'uploads'
     
     id=db.Column(db.Integer,primary_key=True)
     image = db.Column(db.Text)
+    visits = db.Column(db.Integer) 
+    bus_id = db.Column(db.Integer, db.ForeignKey('buses.id'))
+
+    # visits = db.Column(db.Integer) 
+    # bus_id = db.Column(db.Integer, db.ForeignKey('buses.id'))

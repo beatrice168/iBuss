@@ -2,7 +2,7 @@ import random
 from random import randint, choice as rc
 from faker import Faker
 from app import app
-from models import db, User, Booking, Bus,Payments
+from models import db, User, Booking, Bus, Payments, Uploads, Uploads
 
 fake = Faker()
 
@@ -13,8 +13,8 @@ with app.app_context():
 
     
     availability = ['True', 'False']
-    From = ['nrb', 'nrb', 'eld', 'entebbe', 'kigali']
-    To=['msa','ksm','msa',"dar",'kampala']
+    From = ["Bumala", "Kericho", "Homabay", "Bungoma", "Nairobi", "Sirare", "Bondo", "Malaba", "Bomet", "Awendo", "Kapsabet", "Kisumu", "Kaimosi", "Mbita", "Eldoret", "Ndori", "Kitale", "Kisii", "Kampala", "Mumias", "Webuye", "Usenge", "Ugunja", "Kakamega", "Madrid", "Kimill", "Siaya", "Moisbridge", "Nakuru", "Keroka", "Migori", "Mbale", "Narok", "Kendubay", "Maseno", "Oyugis", "Rongo", "Busia"]
+    To=["Bumala", "Kericho", "Homabay", "Bungoma", "Nairobi", "Sirare", "Bondo", "Malaba", "Bomet", "Awendo", "Kapsabet", "Kisumu", "Kaimosi", "Mbita", "Eldoret", "Ndori", "Kitale", "Kisii", "Kampala", "Mumias", "Webuye", "Usenge", "Ugunja", "Kakamega", "Madrid", "Kimill", "Siaya", "Moisbridge", "Nakuru", "Keroka", "Migori", "Mbale", "Narok", "Kendubay", "Maseno", "Oyugis", "Rongo", "Busia"]
     buses = []
     for n in range(30):
         b = Bus(name=fake.name(),
@@ -62,8 +62,28 @@ with app.app_context():
                     bus_id=random.randint(1,30),
                     user_id=random.randint(1,30))
         bookings.append(bk)
-
     db.session.add_all(bookings)
+
+    upload = []
+    for n in range(30):
+        u = Uploads(image=random.randint(1, 10), 
+                    visits=random.randint(1,30),
+                    bus_id=random.randint(1, 30),)
+        upload.append(u)
+    db.session.add_all(upload)
     db.session.commit()
+
+
+
+    upload = []
+    for n in range(30):
+        u = Uploads(image=random.randint(1, 10), 
+                    visits=random.randint(1,30),
+                    bus_id=random.randint(1, 30),)
+        upload.append(u)
+    db.session.add_all(upload)
+    db.session.commit()
+
+
 
 
