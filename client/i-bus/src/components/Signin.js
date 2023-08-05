@@ -20,9 +20,33 @@ function LoginPage() {
     } else if (!email.includes('@')) {
       alert("Invalid email address.");
       return;
-    } else {
-      navigate('/admin');
-    }
+    } 
+    // else {
+    //   navigate('/admin');
+    // }
+    fetch('http://127.0.0.1:5555/signin', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+        // company: company, // Include the company data in the signup request
+      }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          // alert("Signin successful!");
+          navigate('/admin');
+        } else {
+          alert("invalid details.");
+        }
+      })
+      .catch((error) => {
+        console.error('Error signing up:', error);
+        alert("Error signing up. Please try again later.");
+      });
   };
 
   const handleSignUp = (e) => {
@@ -36,9 +60,33 @@ function LoginPage() {
     } else if (!newEmail.includes('@')) {
       alert("Invalid email address.");
       return;
-    } else {
-      navigate('/admin');
-    }
+    } 
+    // else {
+    //   navigate('/admin');
+    // }
+    fetch('http://127.0.0.1:5555/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: newEmail,
+        password: newPassword,
+        company: company, // Include the company data in the signup request
+      }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("Signup successful! A welcome email has been sent to your email address.");
+          navigate('/admin');
+        } else {
+          alert("Error signing up. Please try again later.");
+        }
+      })
+      .catch((error) => {
+        console.error('Error signing up:', error);
+        alert("Error signing up. Please try again later.");
+      });
   };
 
   return (

@@ -22,9 +22,33 @@ const Customer = () => {
   } else if (!loginEmail.includes('@')) {
     alert("Invalid email address.");
     return;
-  } else {
-    navigate('/Book');
-  };
+  } 
+  // else {
+  //   navigate('/Book');
+  // };
+  fetch('http://127.0.0.1:5555/signin', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: loginEmail,
+        password: loginPassword,
+        // company: company, // Include the company data in the signup request
+      }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          // alert("Signin successful!");
+          navigate('/Book');
+        } else {
+          alert("invalid details.");
+        }
+      })
+      .catch((error) => {
+        console.error('Error signing up:', error);
+        alert("Error signing up. Please try again later.");
+      });
 
     console.log('Login Email:', loginEmail);
     console.log('Login Password:', loginPassword);
@@ -42,13 +66,37 @@ const Customer = () => {
     } else if (!signupEmail.includes('@')) {
       alert("Invalid email address.");
       return;
-    } else {
-      navigate('/Book');
-    };
+    } 
+    // else {
+    //   navigate('/Book');
+    // };
+    fetch('http://127.0.0.1:5555/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: signupEmail,
+        password: signupPassword,
+        // company: company, // Include the company data in the signup request
+      }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("Signup successful! A welcome email has been sent to your email address.");
+          navigate('/Book');
+        } else {
+          alert("Error signing up. Please try again later.");
+        }
+      })
+      .catch((error) => {
+        console.error('Error signing up:', error);
+        alert("Error signing up. Please try again later.");
+      });
 
-    console.log('Signup Email:', signupEmail);
-    console.log('Signup Password:', signupPassword);
-    console.log('Confirm Password:', confirmPassword);
+    // console.log('Signup Email:', signupEmail);
+    // console.log('Signup Password:', signupPassword);
+    // console.log('Confirm Password:', confirmPassword);
   };
 
   return (

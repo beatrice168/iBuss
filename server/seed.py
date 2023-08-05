@@ -40,13 +40,16 @@ with app.app_context():
 
     db.session.add_all(users)
     id_number = [12333544, 2324234242,13522525,1354552,5552652452,535375566]
-    phone_number = [254706314418, 254721642249,254717200264]
+    phoneNumber = [254706314418, 254721642249,254717200264]
+    national=['kenya','tanzania','Uganda']
 
     payments = []
     for n in range(30):
         p = Payments(total_amount=random.randint(1500,2000),
                   id_number=rc(id_number),
-                  phone_number=rc(phone_number),
+                  phoneNumber=rc(phoneNumber),
+                  nationality=rc(national),
+                  full_name=fake.name(),
                   user_id=random.randint(1,30),
                   booking_id=random.randint(1,30))
         payments.append(p)

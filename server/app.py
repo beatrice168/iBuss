@@ -2,7 +2,7 @@ import os
 from flask import Flask, jsonify, request, make_response, render_template,request
 from flask_migrate import Migrate
 from flask_restful import Api, Resource, reqparse
-from models import db, Bus, User, Booking, Uploads
+from models import db, Bus, User, Booking, Uploads,Payments
 import datetime
 from flask_cors import CORS, cross_origin
 from sqlalchemy.exc import IntegrityError
@@ -72,6 +72,14 @@ app.config['MAIL_USE_SSL'] = False
 
 mail = Mail(app)
 
+def send_welcome_email(recipient_email):
+    try:
+        msg = Message(subject='Welcome to our Bus Booking Website', sender='noreply@demo.com', recipients=[recipient_email])
+        msg.body = 'Dear user, welcome to our bus booking website! We are excited to have you on board.'
+
+        mail.send(msg)
+    except Exception as e:
+        print('Error sending welcome email:', str(e))
 
 
 class EmailResource(Resource):
@@ -140,6 +148,7 @@ class SignUp(Resource):
 
 
             print(user.to_dict())
+            send_welcome_email(user.email)
             return make_response(jsonify(user.to_dict()), 201)
         except IntegrityError:
             print("no, here!")
@@ -172,20 +181,24 @@ api.add_resource(Signin, "/signin")
 #     getAccessToken()
 #     return 'hello its bitu'
 
-@app.route('/pay')
+@app.route('/pay',methods=['POST'])
 def MpesaExpress():
-    amount = request.args.get('amount')
-    phoneNumber = request.args.get('phoneNumber')
-    print(phoneNumber)
-    endpoint = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest'
-    access_token = getAccessToken()
-    headers = { "Authorization": "Bearer %s" % access_token }
-    Timestamp = datetime.now()
-    times = Timestamp.strftime("%Y%m%d%H%M%S")
-    password_str = "174379" + "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919" + times
-    password_bytes = password_str.encode('utf-8')
-    password = base64.b64encode(password_bytes).decode('utf-8')
-    # password = hashlib.sha1(password_bytes).hexdigest()
+    if request.method == 'POST':
+        data = request.get_json()
+        amount = data.get('amount')
+        phoneNumber = data.get('phoneNumber')
+        print(phoneNumber)
+
+        # Safaricom M-Pesa API request
+        endpoint = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest'
+        access_token = getAccessToken()  # Assuming you have this function implemented to get the access token
+        headers = {"Authorization": "Bearer %s" % access_token}
+        Timestamp = datetime.now()
+        times = Timestamp.strftime("%Y%m%d%H%M%S")
+        password_str = "174379" + "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919" + times
+        password_bytes = password_str.encode('utf-8')
+        password = base64.b64encode(password_bytes).decode('utf-8')
+        # password = hashlib.sha1(password_bytes).hexdigest()
 
     data = {
         "BusinessShortCode": "174379",
@@ -203,8 +216,17 @@ def MpesaExpress():
     }
     res = requests.post(endpoint, json=data, headers=headers)
     print(res)
-    return res.json()
+    response_json = res.json()
 
+        # Store the payment details in the database
+    full_name = data.get('full_Name')
+    id_number = data.get('id_Number')
+    nationality = data.get('nationality')
+    payment = Payments(full_name=full_name, phoneNumber=phoneNumber, id_number=id_number, nationality=nationality)
+    db.session.add(payment)
+    db.session.commit()
+
+    return jsonify(response_json), res.status_code
 @app.route('/lnmo-callback', methods=['POST'])
 def incoming():
     data = request.get_json()
