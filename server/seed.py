@@ -2,7 +2,7 @@ import random
 from random import randint, choice as rc
 from faker import Faker
 from app import app
-from models import db, User, Booking, Bus,Payments
+from models import db, User, Booking, Bus,Payments, Uploads
 
 fake = Faker()
 
@@ -62,5 +62,18 @@ with app.app_context():
 
     db.session.add_all(bookings)
     db.session.commit()
+
+
+
+    upload = []
+    for n in range(30):
+        u = Uploads(image=random.randint(1, 10), 
+                    visits=random.randint(1,30),
+                    bus_id=random.randint(1, 30),)
+        upload.append(u)
+    db.session.add_all(upload)
+    db.session.commit()
+
+
 
 
