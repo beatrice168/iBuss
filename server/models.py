@@ -117,3 +117,6 @@ class Uploads(db.Model,SerializerMixin):
     image = db.Column(db.Text)
     visits = db.Column(db.Integer) 
     bus_id = db.Column(db.Integer, db.ForeignKey('buses.id'))
+
+    visits = db.Column(db.Integer) 
+    bus_id = db.Column(db.Integer, db.ForeignKey('buses.id'))
