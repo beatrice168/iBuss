@@ -1,23 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BusList from './BusList';
 
 const Book = () => {
-  // Assuming you have an array of bus objects with the necessary data
-  const [buses, setBuses] = useState([
-    {
-      id: 1,
-      departure: 'City A',
-      arrival: 'City B',
-      cost: 50,
-    },
-    {
-      id: 2,
-      departure: 'City C',
-      arrival: 'City D',
-      cost: 40,
-    },
-    // Add more bus objects as needed
-  ]);
+  const [buses, setBuses] = useState([]);
+  const [uniqueFromValues, setUniqueFromValues] = useState([]); // To store unique 'From' values
+  const [uniqueToValues, setUniqueToValues] = useState([]); // To store unique 'To' values
+
+  useEffect(() => {
+    fetch('http://127.0.0.1:5555/buses')
+      .then((r) => r.json())
+      .then((busesArray) => {
+        setBuses(busesArray);
+
+        // Extract unique 'From' and 'To' values from the buses data
+        const fromValues = (busesArray.map((bus) => bus.From)).sort();
+        const toValues = (busesArray.map((buses) => buses.To)).sort()
+        setUniqueFromValues(fromValues);
+        setUniqueToValues(toValues);
+      })
+      .catch((error) => console.error('Error fetching buses:', error));
+  }, []);
 
   const [searchFrom, setSearchFrom] = useState('');
   const [searchTo, setSearchTo] = useState('');
@@ -41,25 +43,33 @@ const Book = () => {
     console.log('Booking Bus:', busId);
   };
 
-// const imae = {width:'95%'}
-
   return (
     <div className="bus-booking-page">
-    <img className='book-page-image' src='images/book.jpeg' alt='book-bus-image'/> 
+      <img className='book-page-image' src='images/book-image-clear.png' alt='book-bus-image'/> 
       <div className="search-form">
         <form onSubmit={handleSearch}>
-          <input
-            type="text"
+          <select
             value={searchFrom}
             onChange={(e) => setSearchFrom(e.target.value)}
-            placeholder="From"
-          />
-          <input
-            type="text"
+          >
+            <option value="">From</option>
+            {uniqueFromValues.map((fromValue) => (
+              <option key={fromValue} value={fromValue}>
+                {fromValue}
+              </option>
+            ))}
+          </select>
+          <select
             value={searchTo}
             onChange={(e) => setSearchTo(e.target.value)}
-            placeholder="To"
-          />
+          >
+            <option value="">To</option>
+            {uniqueToValues.map((toValue) => (
+              <option key={toValue} value={toValue}>
+                {toValue}
+              </option>
+            ))}
+          </select>
           <input
             type="date"
             value={searchDate}
@@ -69,8 +79,8 @@ const Book = () => {
           <button className='Search' type="submit">SEARCH</button>
         </form>
       </div>
-      <BusList buses={buses} handleBook={handleBook} /> {/* Pass handleBook function as prop */}
-      </div>
+      <BusList buses={buses} handleBook={handleBook} />
+    </div>
   );
 };
 
