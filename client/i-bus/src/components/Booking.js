@@ -5,7 +5,7 @@ import SeatKey from './SeatKey';
 const numRows = 5; // Number of rows of seats
 const numCols = 6; // Number of columns of seats
 
-const totalSeats = numRows * numCols; // Total number of seats
+
 
 const Booking = () => {
   const [selectedSeats, setSelectedSeats] = useState([]);

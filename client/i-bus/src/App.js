@@ -47,6 +47,10 @@ function App() {
         <Route  path="Contact" element={<Contact/>}/>
         
         </Routes>
+        <Routes>
+        <Route  path="Signup" element={<Signup/>}/>
+        
+        </Routes>
     </div>
     </>
   );
