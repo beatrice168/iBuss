@@ -106,7 +106,9 @@ class Payments(db.Model,SerializerMixin):
     id=db.Column(db.Integer,primary_key=True)
     total_amount=db.Column(db.Integer)
     id_number=db.Column(db.Integer)
-    phone_number=db.Column(db.Integer)
+    full_name=db.Column(db.String)
+    nationality=db.Column(db.String)
+    phoneNumber=db.Column(db.Integer)
     user_id=db.Column(db.Integer,db.ForeignKey('users.id'))
     booking_id=db.Column(db.Integer,db.ForeignKey('bookings.id'))
 
@@ -115,3 +117,12 @@ class Uploads(db.Model,SerializerMixin):
     
     id=db.Column(db.Integer,primary_key=True)
     image = db.Column(db.Text)
+    __tablename__ = 'uploads'
+    
+    id=db.Column(db.Integer,primary_key=True)
+    image = db.Column(db.Text)
+    visits = db.Column(db.Integer) 
+    bus_id = db.Column(db.Integer, db.ForeignKey('buses.id'))
+
+    # visits = db.Column(db.Integer) 
+    # bus_id = db.Column(db.Integer, db.ForeignKey('buses.id'))

@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "cloudinary": "^1.40.0",
     "react-router": "^6.14.2",
     "react-router-dom": "^6.14.2"
   }

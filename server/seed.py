@@ -2,7 +2,7 @@ import random
 from random import randint, choice as rc
 from faker import Faker
 from app import app
-from models import db, User, Booking, Bus
+from models import db, User, Booking, Bus, Payments, Uploads, Uploads
 
 fake = Faker()
 
@@ -13,8 +13,8 @@ with app.app_context():
 
     
     availability = ['True', 'False']
-    From = ['nrb', 'nrb', 'eld', 'entebbe', 'kigali']
-    To=['msa','ksm','msa',"dar",'kampala']
+    From = ["Bumala", "Kericho", "Homabay", "Bungoma", "Nairobi", "Sirare", "Bondo", "Malaba", "Bomet", "Awendo", "Kapsabet", "Kisumu", "Kaimosi", "Mbita", "Eldoret", "Ndori", "Kitale", "Kisii", "Kampala", "Mumias", "Webuye", "Usenge", "Ugunja", "Kakamega", "Madrid", "Kimill", "Siaya", "Moisbridge", "Nakuru", "Keroka", "Migori", "Mbale", "Narok", "Kendubay", "Maseno", "Oyugis", "Rongo", "Busia"]
+    To=["Bumala", "Kericho", "Homabay", "Bungoma", "Nairobi", "Sirare", "Bondo", "Malaba", "Bomet", "Awendo", "Kapsabet", "Kisumu", "Kaimosi", "Mbita", "Eldoret", "Ndori", "Kitale", "Kisii", "Kampala", "Mumias", "Webuye", "Usenge", "Ugunja", "Kakamega", "Madrid", "Kimill", "Siaya", "Moisbridge", "Nakuru", "Keroka", "Migori", "Mbale", "Narok", "Kendubay", "Maseno", "Oyugis", "Rongo", "Busia"]
     buses = []
     for n in range(30):
         b = Bus(name=fake.name(),
@@ -39,6 +39,22 @@ with app.app_context():
         users.append(u)
 
     db.session.add_all(users)
+    id_number = [12333544, 2324234242,13522525,1354552,5552652452,535375566]
+    phoneNumber = [254706314418, 254721642249,254717200264]
+    national=['kenya','tanzania','Uganda']
+
+    payments = []
+    for n in range(30):
+        p = Payments(total_amount=random.randint(1500,2000),
+                  id_number=rc(id_number),
+                  phoneNumber=rc(phoneNumber),
+                  nationality=rc(national),
+                  full_name=fake.name(),
+                  user_id=random.randint(1,30),
+                  booking_id=random.randint(1,30))
+        payments.append(p)
+
+    db.session.add_all(payments)
 
     bookings = []
     for n in range(30):
@@ -46,8 +62,28 @@ with app.app_context():
                     bus_id=random.randint(1,30),
                     user_id=random.randint(1,30))
         bookings.append(bk)
-
     db.session.add_all(bookings)
+
+    upload = []
+    for n in range(30):
+        u = Uploads(image=random.randint(1, 10), 
+                    visits=random.randint(1,30),
+                    bus_id=random.randint(1, 30),)
+        upload.append(u)
+    db.session.add_all(upload)
     db.session.commit()
+
+
+
+    upload = []
+    for n in range(30):
+        u = Uploads(image=random.randint(1, 10), 
+                    visits=random.randint(1,30),
+                    bus_id=random.randint(1, 30),)
+        upload.append(u)
+    db.session.add_all(upload)
+    db.session.commit()
+
+
 
 
