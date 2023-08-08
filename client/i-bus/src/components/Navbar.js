@@ -9,9 +9,9 @@ function Navbar() {
       <NavLink className='navLink' to='/Book'>
         Book
       </NavLink>
-      <NavLink className='navLink' to='/Payment'>
+      {/* <NavLink className='navLink' to='/Payment'>
         Payment 
-      </NavLink>
+      </NavLink> */}
       <NavLink className='navLink' to='/Contact'>
         Contact 
       </NavLink>

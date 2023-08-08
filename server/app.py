@@ -18,8 +18,6 @@ from datetime import datetime
 import smtplib
 
 
-
-
 app = Flask(__name__)
 CORS(app)
 migrate = Migrate(app, db)
@@ -144,7 +142,7 @@ class Signin(Resource):
                 payload = {
                     "user_id": user.id,
                     "email": user.email,
-                    "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=30)  # Token expiration time
+                    # "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=30)  # Token expiration time
                 }
                 token = jwt.encode(payload,secret, algorithm="HS256")
                 print({"token":token})

@@ -1,59 +1,68 @@
-payment.css
+/* payment.css */
 
 .payment-details-form{
     position: absolute;
   }
   
-  .payment-page-image{
+  .payment-page-imag{
     position: absolute;
-    right: -20px;
+    /* background-color: #74b503; */
+    right: -10px;
+    height: 800px;
     z-index: -1;
     
   }
   
-  .form-div{
+  .form-di{
     position: absolute;
     text-align: left;
-    margin-left: 3vw;
+    margin-left: 5vw;
     margin-top: 5vw;
-   
+    
   }
   
-  .form-section{
-    margin-bottom: 50px;
-    display: inline-block;
-    width: 45%;
-    margin-right: -130px;
-    font-size: 230%;
-  }
+  .form-sectio{
+    /* margin-bottom: 50px; */
+  display: inline-block;
+  padding: 10px;
+  width: 45%;
+  max-width: 100%;
+  height: auto;
+  margin-right: -130px;
+  font-size: 150%;
+  font-weight: bold;
+}
+
   
-  .form-section:last-child{
+  .form-sectio:last-child{
     margin-right: 0;
   }
   
-  .form-section input::placeholder{
+  .form-sectio input::placeholder{
     color: #d8d8d8;
     font-size: 200;
   }
   
   @media screen and (max-width: 1400px){
-    .form-section{
-      display: block;
+    .form-sectio{
+      display: inline-block;
       width: 100%;
   
     }
   }
   
-  .form-section input {
-    font-size: 22px; /* Adjust the font size as desired */
+  .form-sectio input {
+    font-size: 20px; 
+    /* display: flex; */
+    /* Adjust the font size as desired */
   }
   
-  .payment-div{
+  .payment-di{
     position: relative;
   }
   
-  .mpesa-image{
-    width: 7%;
+  .mpesa-imag{
+    width: 20%;
     margin-left: 10px;
     
   }
@@ -67,15 +76,15 @@ payment.css
   }
   
   
-  .submit-pay-button{
+  .submi-pay-button{
     color: #ffffff;
     margin-top: 50px;
-    background-color: #004585 ;
+    background-color: #0d77ef ;
     font-size: 24px; /* Adjust the font size as desired */
     padding: 22px 74px; /* Adjust the padding as desired */
   }
   
-  .stk-push{
+  .st-push{
     font-size: 20px;
   }
   
