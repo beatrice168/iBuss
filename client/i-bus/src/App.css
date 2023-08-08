@@ -2,31 +2,25 @@ from images import book.jpeg
 .App {
   text-align: center;
 }
-
 .home{
   background-image: url(blob:https://web.whatsapp.com/c5e72aca-c551-4b8d-a44a-53f8a1053fdb);
 }
-
 .home-image{
   display: block;
   width: 100%;
   z-index: -1;
   position: absolute;
 }
-
 .navigation-bar{
-  background-color: #016db4;
+  background-color: #016DB4;
   height: 90px;
   width: 100%;
   padding: 10px;
- 
- 
   top: 0;
   left: 0;
 }
-
 .navLink {
-  color: #ffffff;
+  color: #FFFFFF;
   margin-top: 23px;
   padding-right: 69px;
   font-size: 190%;
@@ -35,20 +29,16 @@ from images import book.jpeg
   text-decoration: none;
   /* text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5); */
 }
-
 .navLink:hover{
-  color: #baefff !important; 
+  color: #BAEFFF !important;
 }
-
-
 .sign-in-container{
   position: relative;
   bottom: 49px;
   margin-right: 5.8%;
 }
-
 .admin-sign-up-div{
-  background-color: #ffffff;
+  background-color: #FFFFFF;
   width: 190px;
   height: 56px;
   text-align: center;
@@ -58,53 +48,41 @@ from images import book.jpeg
   position: absolute;
   right: 280px;
   top: 55px;
-  
 }
 body {
   background-color: #fff;
 }
-
 .container {
   margin-top: 20px;
 }
-
 h1 {
   text-align: center;
 }
-
 .card {
   margin-bottom: 20px;
 }
-
 .card-body {
   padding: 10px;
 }
-
 table {
   width: 100%;
   border-collapse: collapse;
 }
-
 body {
   background-color: #fff;
 }
-
 .container {
   margin-top: 20px;
 }
-
 h1 {
   text-align: center;
 }
-
 .card {
   margin-bottom: 20px;
 }
-
 .card-body {
   padding: 10px;
 }
-
 table {
   width: 100%;
   border-collapse: collapse;
@@ -113,7 +91,6 @@ table, th, td {
   border: 1px solid black;
   padding: 5px;
 }
-
 table, th, td {
   border: 1px solid black;
   padding: 5px;
@@ -121,7 +98,6 @@ table, th, td {
 th {
   text-align: center;
 }
-
 th {
   text-align: center;
 }
@@ -136,31 +112,22 @@ th {
   position: absolute;
   right: 82px;
   top: 55px;
-  border: 2px solid #ffffff; /* Replace #000 with the desired color for the stroke */
+  border: 2px solid #FFFFFF; /* Replace #000 with the desired color for the stroke */
   background-color: transparent;
-  
 }
-
 .admin-sign-in{
   color: #0080DD;
   text-decoration: none;
   font-size: 120%;
   font-weight: bold;
 }
-
 .customer-sign-in{
   color: white;
   text-decoration: none;
   font-size: 120%;
   font-weight: bold;
 }
-
-.uplift{
-  /* margin-bottom: 10px; */
-  margin-top: 10px;
-}
 /* SeatSelector.css */
-
 .seat-selector-container {
   display: flex;
   flex-direction: column;
@@ -168,7 +135,6 @@ th {
   display:flex;
   flex-direction: column;
 }
-
 .seat-selector {
   display: grid;
   grid-template-columns: repeat(5, 1fr); /* Five columns with equal width */
@@ -177,7 +143,6 @@ th {
   justify-content: center;
   margin-top: 50px;
 }
-
 .seat {
   display: flex;
   justify-content: center;
@@ -191,61 +156,51 @@ th {
   font-size: 14px;
   user-select: none; /* Prevent text selection inside the seat element */
 }
-
 /* Styling for available seats */
 .seat.available {
   background-color: #fff; /* Seat background color */
   color: #000; /* Seat text color */
   cursor:pointer;
 }
-
 /* Styling for selected seats */
 .seat.selected {
-  background-color: #2afeb7; /* Selected seat background color */
+  background-color: #2AFEB7; /* Selected seat background color */
   color: #fff; /* Selected seat text color */
   cursor: pointer;
 }
-
 /* Styling for booked seats */
 .seat.booked {
   background-color: #000080; /* Booked seat background color */
   color: #fff; /* Booked seat text color */
   cursor: not-allowed;
 }
-
 /* Styling for the SeatKey component */
 .seat-key {
   display: flex;
   justify-content: center;
   margin-top: 150px; /* Adjust the margin-top value to position the key below the seats */
 }
-
 .key-item {
   display: flex;
   align-items: center;
   margin: 0 10px;
 }
-
 .key-item > div {
   width: 20px;
   height: 20px;
   border-radius: 50%;
   margin-right: 5px;
 }
-
 /* Styling for the key colors */
 .key-item .seat.booked {
   background-color: #000080; /* Booked seat background color: red */
 }
-
 .key-item .seat.selected {
-  background-color: #2afeb7; /* Selected seat background color: blue */
+  background-color: #2AFEB7; /* Selected seat background color: blue */
 }
-
 .key-item .seat.available {
   background-color: #fff; /* Seat background color: white */
 }
-
 /* BusSearch.css */
 .bus-booking-page {
   display: flex;
@@ -253,8 +208,6 @@ th {
   align-items: center;
   margin-top: 60px; /* Adjust the margin-top value to move it downwards */
 }
-
-
 .search-form {
   display: flex;
   align-items: center;
@@ -264,13 +217,11 @@ th {
   background-size: cover;
   /*background-image: url(/home/rolex/Development/code/iBus/client/i-bus/src/images/book.jpeg);*/
    width: 100vw;
-  height: 10vh; 
+  height: 10vh;
 }
-
 .search-form::placeholder{
   font-size: 200;
 }
-
 .search-form form {
   margin-top: 200px;
   display: flex;
@@ -279,28 +230,44 @@ th {
   margin-right: 100pc;
   text-align: center;
 }
-
 .search-form input {
   margin-right: 10px;
   padding: 13px 50px;
 }
-
 .search-form select{
   margin-right: 10px;
   padding: 15px 50px;
   margin-bottom: 20px;
   color: #616161;
+}
+.bus-and-text{
+  margin-right: 40px;
+}
 
+.bus-and-text{
+  margin-right: 40px;
 }
 
 /* BusList.css */
-
 .bus-list-container {
   display: flex;
   flex-direction: column; /* Display buses in a column */
   margin-top: 16%; /* Adjusted margin-top value */
   align-items: center;
+  height: 650px;
+  overflow-y: scroll;
+  margin-bottom: 200px;
+  box-shadow: 0px 12px 10px -5px #707070;
+  height: 650px;
+  overflow-y: scroll;
+  margin-bottom: 200px;
+  box-shadow: 0px 12px 10px -5px #707070;
+ 
+  
 }
+/* box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.75); */
+
+/* box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.75); */
 
 .bus-item {
   border: 5px solid #ccc;
@@ -309,6 +276,23 @@ th {
   width: 100%;
   display: flex;
 }
+.list-and-image{
+  display: flex;
+  align-items: center;
+  margin-top: 7.5%;
+  position: relative;
+  right: 150px;
+}
+
+.list-and-image{
+  display: flex;
+  align-items: center; 
+  margin-top: 7.5%;
+  position: relative;
+  right: 150px;
+  /* background-image: url('/public/images/seats-background-book.png'); */
+
+}
 
 .bus-details {
   /* height: 110px; */
@@ -316,7 +300,6 @@ th {
   justify-content: space-between;
   margin-top: 10px; /* Add some space between details */
 }
-
 .bus-details p {
   margin: 90px;
   width: 10vw;
@@ -324,19 +307,26 @@ th {
   margin-top: 5px;
   margin-bottom: 10px;
 }
-
 .bus-details span {
   font-weight: bold;
 }
-
 .link-image{
   width: 170px;
 }
+
+/* .seats-image-background{
+position: absolute;
+z-index: -3;
+width: 120%;
+height: 100%;
+right: -5px;
+top: 500px;
+opacity: 0.08
+} */
+
 .list-div{
   position: relative;
-  
 }
-
 .Search {
   background-color:#0DD73A;
   /* color: #fff; */
@@ -344,7 +334,6 @@ th {
   padding: 20px 40px;
   margin-bottom: 23px;
 }
-
  .book-page-image {
   position: absolute;
   z-index: -1;
@@ -355,17 +344,13 @@ th {
   margin-top: -60px;
   margin-left: -60px;
   z-index: -2;
-  
   }
-
 .Book {
   color:rgb(245, 241, 241);
   text-decoration: none;
   /* height: 20px;
   width: 50px; */
-
 }
-
 .book-button{
   background-color: #041392;
   color: white;
@@ -376,11 +361,9 @@ th {
   outline: none;
   border: 0px solid #ccc;
 }
-
 .nums{
   font-weight: bold;
 }
-
 .contact-title {
   text-align: center;
 }
@@ -509,7 +492,6 @@ th {
     /* top:500px; */
     margin-bottom: 159px;
     position:absolute;
-
   }
   .P3{
     bottom:10px;
@@ -530,7 +512,6 @@ th {
       text-align: center; /* Center the text */
       font-family: "Arial", sans-serif; /* Optionally, you can change the font-family */
     }
-
     .footer-container {
       background-color: blue;
       color: white;
@@ -541,11 +522,18 @@ th {
   display:flex;
   flex-direction: column;
 }
+.pay-button{
+  color: #ffffff;
+  margin-top: 50px;
+  background-color: #034dee ;
+  font-size: 24px; /* Adjust the font size as desired */
+  padding: 22px 74px
+}
 
-
-@media all and (max-width:500px){
-  body{
-    color:#0DD73A
-
-  }
+.pay-button{
+  color: #ffffff;
+  margin-top: 50px;
+  background-color: #034dee ;
+  font-size: 24px; /* Adjust the font size as desired */
+  padding: 22px 74px
 }
