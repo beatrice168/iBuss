@@ -13,19 +13,22 @@ with app.app_context():
 
     
     availability = ['True', 'False']
-    From = ["Bumala", "Kericho", "Homabay", "Bungoma", "Nairobi", "Sirare", "Bondo", "Malaba", "Bomet", "Awendo", "Kapsabet", "Kisumu", "Kaimosi", "Mbita", "Eldoret", "Ndori", "Kitale", "Kisii", "Kampala", "Mumias", "Webuye", "Usenge", "Ugunja", "Kakamega", "Madrid", "Kimill", "Siaya", "Moisbridge", "Nakuru", "Keroka", "Migori", "Mbale", "Narok", "Kendubay", "Maseno", "Oyugis", "Rongo", "Busia"]
-    To=["Bumala", "Kericho", "Homabay", "Bungoma", "Nairobi", "Sirare", "Bondo", "Malaba", "Bomet", "Awendo", "Kapsabet", "Kisumu", "Kaimosi", "Mbita", "Eldoret", "Ndori", "Kitale", "Kisii", "Kampala", "Mumias", "Webuye", "Usenge", "Ugunja", "Kakamega", "Madrid", "Kimill", "Siaya", "Moisbridge", "Nakuru", "Keroka", "Migori", "Mbale", "Narok", "Kendubay", "Maseno", "Oyugis", "Rongo", "Busia"]
+    From = ["Bumala", "Kericho", "Homabay", "Bungoma", "Nairobi", "Sirare", "Bondo", "Malaba", "Bomet", "Kisumu", "Eldoret", "Kakamega", "Kitale", "Kisii", "Mumias"]
+    To=["Bumala", "Kericho", "Homabay", "Bungoma", "Nairobi", "Sirare", "Bondo", "Malaba", "Bomet", "Kisumu", "Eldoret", "Kakamega", "Kitale", "Kisii", "Mumias"]
     buses = []
-    for n in range(30):
-        b = Bus(name=fake.name(),
-                seats=random.randint(1,40),
-                cost=random.randint(1000,2000),
-                From=rc(From),
-                To=rc(To),
-                departure=fake.time(),
-                availability=rc(availability))
-        buses.append(b)
+    for from_loc in From:
+        for to_loc in To:
+            if from_loc != to_loc:
+                b = Bus(name=fake.name(),
+                        seats=random.randint(1, 40),
+                        cost=random.randint(1000, 2000),
+                        From=from_loc,
+                        To=to_loc,
+                        departure=fake.time(),
+                        availability=rc(availability))
+                buses.append(b)
     db.session.add_all(buses)
+
 
     roles = ['admin', 'customer']
     company = ['mash', 'ena']

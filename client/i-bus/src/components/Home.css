@@ -64,6 +64,7 @@ position: relative;
     border-radius: 5px;
     cursor: pointer;
     margin-top: 40px;
+  
   }
 
   .navLink {
@@ -85,7 +86,7 @@ position: relative;
  .navLink-book{
   color: #ffffff;
   margin-top: 23px;
-  padding-right: 69px;
+  padding-right: 30px;
   font-size: 190%;
   float: left;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;

@@ -290,6 +290,10 @@ th {
 
 }
 
+.bus-and-text{
+  margin-right: 40px;
+}
+
 /* BusList.css */
 
 .bus-list-container {
@@ -297,7 +301,15 @@ th {
   flex-direction: column; /* Display buses in a column */
   margin-top: 16%; /* Adjusted margin-top value */
   align-items: center;
+  height: 650px;
+  overflow-y: scroll;
+  margin-bottom: 200px;
+  box-shadow: 0px 12px 10px -5px #707070;
+ 
+  
 }
+
+/* box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.75); */
 
 .bus-item {
   border: 5px solid #ccc;
@@ -305,6 +317,16 @@ th {
   margin-bottom: 20px; /* Add some spacing between buses */
   width: 100%;
   display: flex;
+}
+
+.list-and-image{
+  display: flex;
+  align-items: center; 
+  margin-top: 7.5%;
+  position: relative;
+  right: 150px;
+  /* background-image: url('/public/images/seats-background-book.png'); */
+
 }
 
 .bus-details {
@@ -329,6 +351,17 @@ th {
 .link-image{
   width: 170px;
 }
+
+/* .seats-image-background{
+position: absolute;
+z-index: -3;
+width: 120%;
+height: 100%;
+right: -5px;
+top: 500px;
+opacity: 0.08
+} */
+
 .list-div{
   position: relative;
   
@@ -537,4 +570,12 @@ th {
 .inpu{
   display:flex;
   flex-direction: column;
+}
+
+.pay-button{
+  color: #ffffff;
+  margin-top: 50px;
+  background-color: #034dee ;
+  font-size: 24px; /* Adjust the font size as desired */
+  padding: 22px 74px
 }
