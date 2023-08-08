@@ -1,128 +1,129 @@
-
 .home-page{
-position: relative;
-}
-
-.home-background{
-    width: 100vw;
-    height: 120vh;
-    margin: 0;
-    padding: 0;
-    background-image: url('../../public/images/Home-page-pic-no-slogan.png'); /* Replace with the actual image path */
-    background-size: cover;
-    background-repeat: no-repeat;
+  position: relative;
   }
   
-  .home-text{
-    position: absolute;
-    right: 5%;
-    top: 4%;
+  .home-background{
+      width: 100vw;
+      height: 120vh;
+      margin: 0;
+      padding: 0;
+      background-image: url('../../public/images/Home-page-pic-no-slogan.png'); /* Replace with the actual image path */
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    
+    .home-text{
+      position: absolute;
+      right: 5%;
+      top: 4%;
+      
+      
+    }
     
     
-  }
-  
-  
-  .title-div{
-    background-color: #ffffff;
-    width: 420px;
-    height: 120px;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    color: #0080DD;
-    font-size: 140%;
-  
-  }
-  
-  
-  .why-us-div{
-    color: #ffffff;
-    float: left;
-    font-size: 250%;
-    text-align: left;
-    margin-top: 40px;
+    .title-div{
+      background-color: #ffffff;
+      width: 420px;
+      height: 120px;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      color: #0080DD;
+      font-size: 140%;
     
-  }
+    }
+    
+    
+    .why-us-div{
+      color: #ffffff;
+      float: left;
+      font-size: 250%;
+      text-align: left;
+      margin-top: 40px;
+      
+    }
+    
+    .why-us-title{
+      text-decoration: underline;
+      font-size: 70px;
+    }
+    
+    .why-us-list{
+      text-decoration: none;
+      position: relative;
+      right: 40px;
+    }
   
-  .why-us-title{
-    text-decoration: underline;
-    font-size: 70px;
-  }
+    .home-book-button {
+      background-color: rgb(9, 9, 9);
+      border: 2px solid #ffffff;
+      color: #ffffff;
+      font-size: 15px;
+      
+      border-radius: 20px;
+      cursor: pointer;
+      margin-top: 40px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
   
-  .why-us-list{
-    text-decoration: none;
-    position: relative;
-    right: 40px;
-  }
-
-  .home-book-button {
-    background-color: transparent;
-    border: 2px solid #ffffff;
-    color: #ffffff;
-    font-size: 24px;
-    padding: 0px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 40px;
+    .navLink {
+      color: #ffffff;
+      margin-top: 23px;
+      padding-right: 69px;
+      font-size: 190%;
+      float: left;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      text-decoration: none;
+      /* text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5); */
+    }
+    
+    .home-book-button:hover {
+      color: #007bff !important; /* Blue text color on hover (with !important) */
+      background-color: #9eb2f5; /* White background on hover */
+    }
   
-  }
-
-  .navLink {
+   .navLink-book{
     color: #ffffff;
     margin-top: 23px;
-    padding-right: 69px;
+    padding-right: 10px;
+    padding-bottom: 15px;
+    padding-left: 10px;
     font-size: 190%;
     float: left;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     text-decoration: none;
-    /* text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5); */
-  }
+    font-weight: bold;
+   }
+    
   
-  .home-book-button:hover {
-    color: #007bff !important; /* Blue text color on hover (with !important) */
-    background-color: #9eb2f5; /* White background on hover */
-  }
-
- .navLink-book{
-  color: #ffffff;
-  margin-top: 23px;
-  padding-right: 30px;
-  font-size: 190%;
-  float: left;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  text-decoration: none;
- }
+    .middle-page{
+      padding: 5% 10%;
+    }
   
-
-  .middle-page{
-    padding: 5% 10%;
-  }
-
-  .how-it-works{
-    text-align: center;
-  }
-
-  .how-it-works-pic {
-    display: inline-block; /* Set the divs to display side by side */
-    margin-right: 40px; /* Add some spacing between the divs */
-  }
-
-  .how-it-works-pic img {
-    max-width: 350px;
-    max-height: 350px;
-    border-radius: 15px;
-  }
-
-  .home-bus-image-2{
-    width: 100%;
-    height: 100%;
-    margin-top: 50px;
-    margin-bottom: 40px;
-  }
-
-
-  .icon-section{
-    padding: 5% 10%;
-  }
+    .how-it-works{
+      text-align: center;
+    }
   
-  /* test */
+    .how-it-works-pic {
+      display: inline-block; /* Set the divs to display side by side */
+      margin-right: 40px; /* Add some spacing between the divs */
+    }
+  
+    .how-it-works-pic img {
+      max-width: 350px;
+      max-height: 350px;
+      border-radius: 15px;
+    }
+  
+    .home-bus-image-2{
+      width: 100%;
+      height: 100%;
+      margin-top: 50px;
+      margin-bottom: 40px;
+    }
+  
+  
+    .icon-section{
+      padding: 5% 10%;
+    }

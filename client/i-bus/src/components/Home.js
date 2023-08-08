@@ -24,7 +24,7 @@ function Home() {
       </ul>
       <h3 style={{ fontSize: '45px', marginTop: '50px' }}>YOUR SAFARI JUST <br></br>BEGUN</h3>
       <button className='home-book-button'><NavLink className='navLink-book' to='/Book'>
-        BOOK A RIDE
+        CLICK HERE TO BOOK
       </NavLink></button>
       </div>
       </div>
