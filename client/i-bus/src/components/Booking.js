@@ -1,71 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+// import './SeatSelector.css'; // Import your custom CSS file for styling
 import SeatKey from './SeatKey';
-import { Link } from 'react-router-dom';
 
-
-const numRows = 5;
-const numCols = 6;
-
-const Booking = ({costsArray}) => {
-  const [selectedSeats, setSelectedSeats] = useState(new Set());
-  const [selectedSeatForPayment, setSelectedSeatForPayment] = useState(null);
-  const [buses, setBuses] = useState([]);
-  const [selectedBus, setSelectedBus] = useState(null);
-  const [bookedSeats, setBookedSeats] = useState(new Set([5, 12, 15]));
-  const [paymentAmount, setPaymentAmount] = useState(0); // State for current payment amount
+const numRows = 5; // Number of rows of seats
+const numCols = 6; // Number of columns of seats
 
 
 
-        setSelectedBus(busesArray[0]);; // Set the default selected bus to the first one
-        setBuses(busesArray);
-      });
-  }, []);
+const Booking = () => {
+  const [selectedSeats, setSelectedSeats] = useState([]);
 
-  useEffect(() => {
-    if (selectedBus) {
-      const newPaymentAmount = selectedSeats.size * selectedBus.cost;
-      setPaymentAmount(newPaymentAmount); // Update the payment amount
-      setBuses((prevBuses) =>
-        prevBuses.map((bus) => ({
-          ...bus,
-          cost: bus.id === selectedBus.id ? newPaymentAmount : bus.cost,
-        }))
-      );
-    }
-  }, [selectedSeats, selectedBus]);
+  const bookedSeats = [5, 12, 15];
 
   const handleSeatClick = (seatNumber) => {
-    if (bookedSeats.has(seatNumber)) {
+    if (bookedSeats.includes(seatNumber)) {
       return;
     }
-
-    const updatedSelectedSeats = new Set(selectedSeats);
-    if (selectedSeats.has(seatNumber)) {
-      updatedSelectedSeats.delete(seatNumber);
-      // Remove the following line to prevent the button from disappearing when a seat is unselected.
-      // setSelectedSeatForPayment(null);
+    // Check if the seat is already selected
+    if (selectedSeats.includes(seatNumber)) {
+      // Seat is selected, remove it from the selectedSeats array
+      setSelectedSeats(selectedSeats.filter((s) => s !== seatNumber));
     } else {
-      updatedSelectedSeats.add(seatNumber);
-      setSelectedSeatForPayment(seatNumber); // Update the selected seat only when a new seat is selected
+      // Seat is unselected, add it to the selectedSeats array
+      setSelectedSeats([...selectedSeats, seatNumber]);
     }
-
-    setSelectedSeats(updatedSelectedSeats);
-
-    // Calculate the new payment amount and update the state
-    const newPaymentAmount = updatedSelectedSeats.size * selectedBus.cost;
-    setPaymentAmount(newPaymentAmount);
   };
 
   const renderSeats = () => {
     const seats = [];
-
+  
     for (let row = 1; row <= numRows; row++) {
       for (let col = 1; col <= numCols; col++) {
         const seatNumber = (row - 1) * numCols + col; // Calculate the seat number
-
-        const isSeatSelected = selectedSeats.has(seatNumber);
-        const isSeatBooked = bookedSeats.has(seatNumber);
-
+  
+        const isSeatSelected = selectedSeats.includes(seatNumber);
+        const isSeatBooked = bookedSeats.includes(seatNumber);
+  
         let seatClassName;
         if (isSeatSelected) {
           seatClassName = 'seat selected';
@@ -74,7 +44,7 @@ const Booking = ({costsArray}) => {
         } else {
           seatClassName = 'seat available';
         }
-
+  
         seats.push(
           <div
             key={seatNumber}
@@ -86,33 +56,17 @@ const Booking = ({costsArray}) => {
         );
       }
     }
-
+  
     return seats;
   };
-  console.log(costsArray)
+  
 
   return (
-    <>
-    <div>
-    {/* {costsArray.map((cost, index) => (
-      <p key={index}>Cost: {cost}</p>
-    ))} */}
-  </div>
     <div className="seat-selector-container">
-      <SeatKey />
-      <div className="seat-selector">{renderSeats()}</div>
-      {selectedSeatForPayment && (
-        <div className="payment-details">
-           <Link to={`/booking/${selectedBus.id}/Payment/${selectedSeats.size * selectedBus.cost}`}>
-      <button className="pay-button">
-        Pay for {selectedSeats.size} Seats ksh{selectedSeats.size * selectedBus.cost}
-      </button>
-          </Link>
-        </div>
-      )}
+    <SeatKey /> {/* Include the SeatKey component */}
+    <div className="seat-selector">{renderSeats()}</div>
+      
     </div>
-    </>
   );
 };
-
 export default Booking;
