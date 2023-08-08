@@ -109,9 +109,9 @@ const Book = () => {
     </div>
     <Footer />
     </div>
-    <div>
+    {/* <div>
       <Booking cost={cost}/>
-    </div>
+    </div> */}
     </>
   );
 };
