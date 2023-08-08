@@ -13,12 +13,16 @@ const Booking = ({cost}) => {
   const [bookedSeats, setBookedSeats] = useState(new Set([5, 12, 15]));
   const [paymentAmount, setPaymentAmount] = useState(0); // State for current payment amount
 
+  
+  useEffect(() => {
+    fetch('http://127.0.0.1:5555/buses')
+      .then((r) => r.json())
+      .then((busesArray) => {
+        console.log(busesArray);
 
-
-        setSelectedBus(busesArray[0]); // Set the default selected bus to the first one
+        setSelectedBus(busesArray[1]); // Set the default selected bus to the first one
       });
   }, []);
-
   useEffect(() => {
     if (selectedBus) {
       const newPaymentAmount = selectedSeats.size * selectedBus.cost;
