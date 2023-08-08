@@ -46,7 +46,7 @@ function Payment() {
     <div className='payment-div'>
       <img className='payment-page-image' src='images/bus-payment-page-image.png' alt='bus-payment-image' />
       <div className='form-div'>
-        <form onSubmit={handleFormSubmit}>
+         <form onSubmit={handleFormSubmit}>
           <div className='form-section'>
             <label>
               Full name: <br />
