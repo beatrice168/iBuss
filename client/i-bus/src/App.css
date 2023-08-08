@@ -155,7 +155,10 @@ th {
   font-weight: bold;
 }
 
-
+.uplift{
+  /* margin-bottom: 10px; */
+  margin-top: 10px;
+}
 /* SeatSelector.css */
 
 .seat-selector-container {
@@ -537,4 +540,12 @@ th {
 .inpu{
   display:flex;
   flex-direction: column;
+}
+
+
+@media all and (max-width:500px){
+  body{
+    color:#0DD73A
+
+  }
 }

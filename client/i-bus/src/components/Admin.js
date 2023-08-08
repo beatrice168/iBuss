@@ -6,6 +6,7 @@ import UpdateDeleteBusForm from "./UpdateDeleteBusForm";
 import AddBookingForm from "./AddBookingForm";
 import UpdateDeleteBookingForm from "./UpdateDeleteBookingForm";
 import UploadFile from "./UploadFile";
+import './Admin.css'
 
 function Admin() {
   const [buses, setBuses] = useState([]);
@@ -137,26 +138,28 @@ function Admin() {
 
   const cardStyle = {
     borderRadius: "20px",
-    backgroundColor: "blue",
+    backgroundColor: "#ADE8F4",
     width: "25vw",
-    color: "white",
+    color: "black",
   };
 
   const cardStyle3 = {
     marginTop: "20px",
     borderRadius: "20px",
-    width: "15vw",
+    width: "25vw",
     height: "10vh",
     flexWrap: "nowrap",
-    backgroundColor: "blue",
-    color: "white",
+    backgroundColor: "#ADE8F4",
+    color: "black",
+    padding: "20px"
+    
   };
 
   const chartContainerStyle = {
     marginTop: "50px",
   };
   const miniStyle = {
-    backgroundColor: "#57A0D2",
+    backgroundColor: "48CAE4",
   };
 
   return (
@@ -165,13 +168,16 @@ function Admin() {
         <div className="row">
           <div className="col-md-12">
             <h1>Admin Dashboard</h1>
-            <UploadFile />
+
           </div>
         </div>
         <div className="row">
           <div className="col-md-6">
             <AddBusForm onAddBus={addBus} />
           </div>
+
+         
+          
           <div className="col-md-6">
             <UpdateDeleteBusForm
               buses={buses}
@@ -180,6 +186,8 @@ function Admin() {
             />
           </div>
         </div>
+        <div className="uplift"><UploadFile /></div>
+        
         <div className="row">
           <div className="col-md-6">
             <AddBookingForm onAddBooking={addBooking} />
@@ -207,7 +215,7 @@ function Admin() {
               <p className="nums">ksh 30,000</p>
             </div>
           </div>
-          <div className="card">
+          <div className="card" style={{ backgroundColor: '#87CEEB' }}>
             <div className="card-body">
               <h2>Company Comparison</h2>
               <PieChart width={300} height={300}>
@@ -265,7 +273,7 @@ function Admin() {
           </div>
           <div className="row" style={chartContainerStyle}>
             <div className="col-md-12">
-              <div className="card">
+              <div className="card" style={{ backgroundColor: "#cccccc" }}>
                 <div className="card-body">
                   <h2>Analysis Chart</h2>
                   <LineChart width={600} height={400} data={data}>

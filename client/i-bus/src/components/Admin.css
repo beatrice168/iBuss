@@ -1,0 +1,63 @@
+/* admin.css */
+
+/* Overall styling */
+.mini {
+    background-color: #628eac;
+    padding: 20px;
+    color: black;
+  }
+  
+  .container {
+    margin-top: 95px;
+  }
+  
+  /* Card styling */
+  .card-style {
+    border-radius: 20px;
+    background-color: #3498db;
+    width: 25vw;
+    color: rgb(43, 133, 197);
+    padding: 10px;
+  }
+  
+  .card-style3 {
+    margin-top: 20px;
+    border-radius: 20px;
+    width: 15vw;
+    height: 10vh;
+    flex-wrap: nowrap;
+    background-color: #3498db;
+    color: white;
+    padding: 10px;
+  }
+  
+  /* Chart container */
+  .chart-container {
+    margin-top: 50px;
+  }
+  
+  /* Additional styles for specific elements */
+  .card-style3 p.nums {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .chart-title {
+    font-size: 24px;
+    color: rgb(38, 84, 114);
+    margin-bottom: 10px;
+  }
+
+
+
+
+
+  
+  /* Media query for responsiveness */
+  @media (max-width: 768px) {
+    .card-style,
+    .card-style3 {
+      width: 100%;
+    }
+  }
+  

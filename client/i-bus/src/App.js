@@ -2,7 +2,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import { Routes, Route } from "react-router-dom";
-import Booking from './components/Booking'
+import Booking from './components/Booking'; 
 import Signup from './components/signup';
 import Customer from './components/Customer';
 import Signin from './components/Signin'
