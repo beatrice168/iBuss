@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const BusList = ({ buses }) => {
   return (
+    
     <div className="bus-list-container">
       {buses.map((bus) => (
         <div key={bus.id} className="bus-item">

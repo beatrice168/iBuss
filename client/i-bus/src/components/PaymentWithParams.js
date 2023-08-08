@@ -2,6 +2,7 @@
 import React,{useState} from 'react';
 import { useParams } from 'react-router-dom'; // Import the useParams hook
 import './Payment1.css'; // Import the CSS file
+import busPaymentPageImage from '../images/bus-payment-page-image.png';
 
 const PaymentWithParams = () => {
   const { busId, paymentAmount } = useParams(); // Get the URL parameters
@@ -53,7 +54,9 @@ const PaymentWithParams = () => {
 
   return (
     <div className="payment-di">
-    <img src="https://i.pinimg.com/236x/1e/c3/bc/1ec3bc2666d9534eae03bc085a572cab.jpg"className="payment-page-imag" alt="Payment" />
+   <img src={busPaymentPageImage} className="payment-page-imag" alt="Payment" />
+    {/* <img src='./images/bus-payment-page-image.png'className="payment-page-imag" alt="Payment" /> */}
+    {/* <img src="https://i.pinimg.com/236x/1e/c3/bc/1ec3bc2666d9534eae03bc085a572cab.jpg"className="payment-page-imag" alt="Payment" /> */}
     <div className="form-di">
       <form onSubmit={handleFormSubmit}>
         <div className="form-sectio">

@@ -41,6 +41,7 @@ class Bus(db.Model,SerializerMixin):
     departure = db.Column(db.String)
     cost = db.Column(db.Integer)
     bookings = db.relationship('Booking', backref='bus')
+    company_id = db.Column(db.Integer, db.ForeignKey('companies.id'))
     def to_dict(self):
         return {
             "id":self.id,
@@ -60,6 +61,7 @@ class User(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String)
+    password = db.Column(db.String)
     _password_hash = db.Column(db.String)
     company=db.Column(db.String)
     role = db.Column(db.String)
@@ -120,5 +122,22 @@ class Uploads(db.Model,SerializerMixin):
     visits = db.Column(db.Integer) 
     bus_id = db.Column(db.Integer, db.ForeignKey('buses.id'))
 
-    # visits = db.Column(db.Integer) 
-    # bus_id = db.Column(db.Integer, db.ForeignKey('buses.id'))
+class Company(db.Model, SerializerMixin):
+    __tablename__ = 'companies'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    email = db.Column(db.String)
+    password = db.Column(db.String)
+    password_hash = db.Column(db.String)
+    buses = db.relationship('Bus', backref='company')
+   
+    
+    # Set the password using a method
+    def set_password(self, password):
+        self.password = password  # Store the plain password
+        self.password_hash = bcrypt.generate_password_hash(password.encode("utf-8")).decode("utf-8")
+
+    # Check the password using a method
+    def check_password(self, password):
+        return bcrypt.check_password_hash(self.password_hash, password.encode("utf-8"))

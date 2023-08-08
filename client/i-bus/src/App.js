@@ -24,12 +24,16 @@ function App() {
         <Route path="/Book" element={<Book />}/>
         <Route path="/booking/:busId" element={<Booking />} />
         <Route path="/booking/:busId/Payment/:paymentAmount" element={<PaymentWithParams />} />
-        <Route path="/payment" element={<PaymentWithoutParams />} />     
+        {/* <Route path="/payment" element={<PaymentWithoutParams />} />      */}
         <Route path='signin' element={<Signin/>}/>
-        {/* <Route path='/payment' element={<Payment/>}/> */}
+        <Route path='/payment' element={<Payment/>}/>
         <Route path='Customer' element={<Customer/>}/>
         <Route path="/admin" element={<Admin />}/>
         <Route  path="Contact" element={<Contact/>}/>
+        </Routes>
+        <Routes>
+        <Route  path="Signup" element={<Signup/>}/>
+        
         </Routes>
     </div>
     </>
