@@ -398,12 +398,12 @@ th {
 /* Custom CSS for social icons */
 .social-icon {
   font-size: 34px; /* Adjust the icon size */
-  color: #071c49; /* Facebook icon color */
+  color: #3B5998; /* Facebook icon color */
   margin: 5px; /* Add some space between icons */
 }
 .social-icon:hover {
   /* Add hover effects if desired */
-  color: #2c4f7ebe; /* Change color on hover for Facebook icon */
+  color: #1877F2; /* Change color on hover for Facebook icon */
 }
 .instagram{
   font-size: 34px; /* Adjust the icon size */
@@ -431,12 +431,8 @@ th {
 }
 .whatsapp-icon:hover {
   /* Add hover effects if desired */
-  color: rgb(86, 245, 13); /* Change color on hover for Whatsapp icon */
+  color: rgb(86, 245, 13); /* Change color on hover for Facebook icon */
 }
-<<<<<<< HEAD
-  
- 
-=======
     /* Assuming the class name of the image is '.location' */
  .location {
   width: 200px;
@@ -542,4 +538,10 @@ th {
   display:flex;
   flex-direction: column;
 }
->>>>>>> de610c9c9f4f086dd9c7746454be60f24c45e664
+.pay-button{
+  color: #ffffff;
+  margin-top: 50px;
+  background-color: #034dee ;
+  font-size: 24px; /* Adjust the font size as desired */
+  padding: 22px 74px
+}
