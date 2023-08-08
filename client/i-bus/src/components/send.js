@@ -42,6 +42,17 @@ function Send() {
       <form onSubmit={handleSubmit}>
         <div>
           <label>Recipient:</label>
+<<<<<<< HEAD
+          <input type="email" value={recipient} onChange={(e) => setRecipient(e.target.value)} required />
+        </div>
+        <div>
+          <label>Subject:</label>
+          <input type="text" value={subject} onChange={(e) => setSubject(e.target.value)} required />
+        </div>
+        <div>
+          <label>Message:</label>
+          <textarea value={message} onChange={(e) => setMessage(e.target.value)} required />
+=======
           <input type="email" value={recipient} className='inpu' onChange={(e) => setRecipient(e.target.value)} required />
         </div>
         <div>
@@ -51,6 +62,7 @@ function Send() {
         <div>
           <label>Message:</label>
           <textarea value={message} className='inpu' onChange={(e) => setMessage(e.target.value)} required />
+>>>>>>> de610c9c9f4f086dd9c7746454be60f24c45e664
         </div>
         <button type="submit">Send Email</button>
       </form>

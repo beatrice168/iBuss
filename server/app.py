@@ -2,7 +2,7 @@ import os
 from flask import Flask, jsonify, request, make_response, render_template,request
 from flask_migrate import Migrate
 from flask_restful import Api, Resource, reqparse
-from models import db, Bus, User, Booking, Uploads,Payments
+from models import db, Bus, User, Booking, Uploads,Payments, Company
 import datetime
 from flask_cors import CORS, cross_origin
 from sqlalchemy.exc import IntegrityError
@@ -16,7 +16,7 @@ import base64
 import requests
 from datetime import datetime
 import smtplib
-
+# from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity
 
 
 
@@ -46,6 +46,7 @@ app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = 'helgapaul389@gmail.com'
 app.config['MAIL_PASSWORD'] = 'eocectdkjtieaasu'
 app.config['MAIL_USE_SSL'] = False
+
 
 mail = Mail(app)
 
@@ -144,7 +145,7 @@ class Signin(Resource):
                 payload = {
                     "user_id": user.id,
                     "email": user.email,
-                    "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=30)  # Token expiration time
+                    # "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=30)  # Token expiration time
                 }
                 token = jwt.encode(payload,secret, algorithm="HS256")
                 print({"token":token})
@@ -152,6 +153,7 @@ class Signin(Resource):
         return {"error": "Invalid details"}, 401
 
 api.add_resource(Signin, "/signin")
+
 my_endpoint = 'https://ab92-102-213-93-55.ngrok-free.app'
 # @app.route('/')
 # def index():
@@ -434,7 +436,7 @@ class BookingsByID(Resource):
         booking = Booking.query.filter_by(id=id).first()
         db.session.delete(booking)
         db.session.commit()
-        response_dict = "Bus deleted Successfull"
+        response_dict = "Booking deleted Successfull"
         response = make_response(
             jsonify(response_dict),
             200,
@@ -443,6 +445,18 @@ class BookingsByID(Resource):
 
 api.add_resource(BookingsByID,"/bookings/<int:id>")
 
+
+@app.route('/buses/company/<int:company_id>', methods=['GET'])
+def get_buses_by_company_id(company_id):
+    buses = Bus.query.filter_by(company_id=company_id).all()
     
+    if not buses:
+        return jsonify({'message': 'No buses for the specified company ID'}), 404
+    
+    buses_dict = [bus.to_dict() for bus in buses]
+    return jsonify(buses_dict), 200
+
+
+
 if __name__ == '__main__':
     app.run(port=5555,debug=True)

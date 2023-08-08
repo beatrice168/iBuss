@@ -522,13 +522,6 @@ opacity: 0.08
   display:flex;
   flex-direction: column;
 }
-.pay-button{
-  color: #ffffff;
-  margin-top: 50px;
-  background-color: #034dee ;
-  font-size: 24px; /* Adjust the font size as desired */
-  padding: 22px 74px
-}
 
 .pay-button{
   color: #ffffff;
