@@ -102,7 +102,7 @@ const Book = () => {
       )}
       </div>
       <BusList buses={buses} handleBook={handleBook} />
-      {/* <img className='seats-image-background' src='images/seats-background-book.png' alt='seats-background'/> */}
+      {/* <img className='seatss-image-background' src='images/seats-background-book.png' alt='seats-background'/> */}
       </div>
     </div>
     <Footer />
