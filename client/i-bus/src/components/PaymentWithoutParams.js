@@ -1,53 +1,53 @@
-import React, { useState } from 'react';
-import './Payment.css';
+// Assuming PaymentWithoutParams.js
+// import React from 'react';
+import './Payment.css'; // Import the CSS file
 import { useParams } from 'react-router-dom';
+import React, { useState } from 'react';
 
-function Payment(props) {
-  const {paymentAmount } = useParams();
-  const [fullName, setFullName] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [idOrPassportNumber, setIdOrPassportNumber] = useState('');
-  const [nationality, setNationality] = useState('');
-  const amount = paymentAmount;
-  console.log(amount);
-
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-
-    try {
-      const response = await fetch('http://127.0.0.1:5555/pay', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          fullName: fullName,
-          phoneNumber: phoneNumber,
-          idOrPassportNumber: idOrPassportNumber,
-          nationality: nationality,
-          amount: amount,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-
-      const responseData = await response.json();
-      console.log('Response:', responseData);
-    } catch (error) {
-      console.error('Error:', error.message);
-    }
-
-    setFullName('');
-    setPhoneNumber('');
-    setIdOrPassportNumber('');
-    setNationality('');
-  };
-
+const PaymentWithoutParams = () => {
+    const {paymentAmount } = useParams();
+    const [fullName, setFullName] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [idOrPassportNumber, setIdOrPassportNumber] = useState('');
+    const [nationality, setNationality] = useState('');
+    const amount = paymentAmount;
+    console.log(amount);
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
+    
+        try {
+          const response = await fetch('http://127.0.0.1:5555/pay', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              fullName: fullName,
+              phoneNumber: phoneNumber,
+              idOrPassportNumber: idOrPassportNumber,
+              nationality: nationality,
+              amount: amount,
+            }),
+          });
+    
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+    
+          const responseData = await response.json();
+          console.log('Response:', responseData);
+        } catch (error) {
+          console.error('Error:', error.message);
+        }
+    
+        setFullName('');
+        setPhoneNumber('');
+        setIdOrPassportNumber('');
+        setNationality('');
+      };
   return (
     <div className="payment-div">
-      <img className="payment-page-image" src="images/bus-payment-page-image.png" alt="bus-payment-image" />
+      <img src="images/bus-payment-page-image.png" className="payment-page-image" alt="Payment" />
       <div className="form-div">
         <form onSubmit={handleFormSubmit}>
           <div className="form-section">
@@ -106,10 +106,11 @@ function Payment(props) {
             An stk push will be sent to your <br /> mobile number. Before you proceed, <br /> please confirm you have enough money <br /> in your M-Pesa.
           </div>
           <button className="submit-pay-button" type="submit">SUBMIT AND PAY</button>
-        </form>
-      </div>
-    </div>
+          </form>
+          </div>
+          </div>
   );
-}
+};
 
-export default Payment;
+export default PaymentWithoutParams;
+///the main payment

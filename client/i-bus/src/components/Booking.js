@@ -1,25 +1,55 @@
-import React, { useState } from 'react';
-// import './SeatSelector.css'; // Import your custom CSS file for styling
+import React, { useState, useEffect } from 'react';
 import SeatKey from './SeatKey';
+import { Link } from 'react-router-dom';
 
-const numRows = 5; // Number of rows of seats
-const numCols = 6; // Number of columns of seats
+const numRows = 5;
+const numCols = 6;
 
-const Booking = () => {
-  const [selectedSeats, setSelectedSeats] = useState([]);
-  const [bookedSeats, setBookedSeats] = useState([5, 12, 15]); // Initialize with the initial booked seats
+const Booking = ({cost}) => {
+  const [selectedSeats, setSelectedSeats] = useState(new Set());
+  const [selectedSeatForPayment, setSelectedSeatForPayment] = useState(null);
+  const [buses, setBuses] = useState([]);
+  const [selectedBus, setSelectedBus] = useState(null);
+  const [bookedSeats, setBookedSeats] = useState(new Set([5, 12, 15]));
+  const [paymentAmount, setPaymentAmount] = useState(0); // State for current payment amount
 
+  
+  useEffect(() => {
+    const storedCost = JSON.parse(localStorage.getItem('cost'));
+    console.log(storedCost); // This will log the cost value stored in the previous component
+    setSelectedBus(storedCost);
+
+    if (selectedBus) {
+      const newPaymentAmount = selectedSeats.size * storedCost;
+      setPaymentAmount(newPaymentAmount); // Update the payment amount
+      setBuses((prevBuses) =>
+        prevBuses.map((bus) => ({
+          ...bus,
+          cost: bus.id === selectedBus.id ? newPaymentAmount : bus.cost,
+        }))
+      );
+    }
+  }, [selectedSeats, selectedBus]);
   const handleSeatClick = (seatNumber) => {
-    if (bookedSeats.includes(seatNumber)) {
+    if (bookedSeats.has(seatNumber)) {
       return;
     }
 
-    // Check if the seat is already selected
-    if (selectedSeats.includes(seatNumber)) {
-      setSelectedSeats(selectedSeats.filter((s) => s !== seatNumber));
+    const updatedSelectedSeats = new Set(selectedSeats);
+    if (selectedSeats.has(seatNumber)) {
+      updatedSelectedSeats.delete(seatNumber);
+      // Remove the following line to prevent the button from disappearing when a seat is unselected.
+      // setSelectedSeatForPayment(null);
     } else {
-      setSelectedSeats([...selectedSeats, seatNumber]);
+      updatedSelectedSeats.add(seatNumber);
+      setSelectedSeatForPayment(seatNumber); // Update the selected seat only when a new seat is selected
     }
+
+    setSelectedSeats(updatedSelectedSeats);
+
+    // Calculate the new payment amount and update the state
+    const newPaymentAmount = updatedSelectedSeats.size * selectedBus.cost;
+    setPaymentAmount(newPaymentAmount);
   };
 
   const handlePayment = () => {
@@ -33,10 +63,10 @@ const Booking = () => {
 
     for (let row = 1; row <= numRows; row++) {
       for (let col = 1; col <= numCols; col++) {
-        const seatNumber = (row - 1) * numCols + col;
+        const seatNumber = (row - 1) * numCols + col; // Calculate the seat number
 
-        const isSeatSelected = selectedSeats.includes(seatNumber);
-        const isSeatBooked = bookedSeats.includes(seatNumber);
+        const isSeatSelected = selectedSeats.has(seatNumber);
+        const isSeatBooked = bookedSeats.has(seatNumber);
 
         let seatClassName;
         if (isSeatSelected) {
@@ -61,15 +91,29 @@ const Booking = () => {
 
     return seats;
   };
+  // console.log(cost)
 
   return (
+    <>
+    <div>
+    {/* {costsArray.map((cost, index) => (
+      <p key={index}>Cost: {cost}</p>
+    ))} */}
+  </div>
     <div className="seat-selector-container">
       <SeatKey />
       <div className="seat-selector">{renderSeats()}</div>
-      <button onClick={handlePayment} disabled={!selectedSeats.length}>
-        Make Payment
-      </button>
+      {selectedSeatForPayment && (
+        <div className="payment-details">
+          <Link to={`/booking/${selectedBus.id}/Payment/${paymentAmount}`}>
+            <button className="pay-button">
+              Pay for {selectedSeats.size} Seats ksh{paymentAmount}
+            </button>
+          </Link>
+        </div>
+      )}
     </div>
+    </>
   );
 };
 

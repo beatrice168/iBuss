@@ -25,7 +25,7 @@ function UploadFile() {
     <button onClick={uploadImage}>Upload</button>
     </div>
     <div>
-    <h1>Uploaded image will be displayed here</h1>
+    {/* <h1>Uploaded image will be displayed here</h1> */}
     <img src={url}/>
     </div>
     </div>

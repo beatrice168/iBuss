@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {AiOutlineMail, AiOutlinePhone, AiOutlineEnvironment } from 'react-icons/ai';
 import { FaInstagram, FaFacebook, FaTwitter, FaWhatsapp } from 'react-icons/fa'; // Import the provided icons
 import './Contact.css'; // Import your custom CSS file for styling
+import Footer from './Footer'
 
 
 const Contact = () => {
@@ -51,8 +52,8 @@ const Contact = () => {
 
  
   return (
-    
-    <div className="contact-container">
+    <>
+    <div className="contact-container" style={{marginBottom:"40px",marginTop:"50px"}}>
       <h2>Get in Touch</h2>
       <div className="contact-info">
         <div className="contact-item">
@@ -110,9 +111,10 @@ const Contact = () => {
         </a>
       </div>
     </div>
+    <Footer/>
+    </>
     
   );
 };
 
 export default Contact
-// import React from "react"
