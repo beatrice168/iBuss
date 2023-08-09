@@ -20,8 +20,6 @@ import smtplib
 
 
 
-
-
 app = Flask(__name__)
 CORS(app)
 migrate = Migrate(app, db)
@@ -141,15 +139,17 @@ class Signin(Resource):
         email = data.get("email")
         password = data.get("password")
         user = User.query.filter(User.email == email).first()
-
-        if user and user.authenticate(password):
-            payload = {
-                "user_id": user.id,
-                "email": user.email,
-            }
-            token = jwt.encode(payload, secret, algorithm="HS256")
-            return {"token": token}
-
+        if user:
+            # return "user exist"
+            if user.authenticate(password):
+                payload = {
+                    "user_id": user.id,
+                    "email": user.email,
+                    # "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=30)  # Token expiration time
+                }
+                token = jwt.encode(payload,secret, algorithm="HS256")
+                print({"token":token})
+                return {"token": token}
         return {"error": "Invalid details"}, 401
 
 api.add_resource(Signin, "/signin")

@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import './Payment.css';
+import { useParams } from 'react-router-dom';
 
-function Payment() {
+function Payment(props) {
+  const {paymentAmount } = useParams();
   const [fullName, setFullName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [idOrPassportNumber, setIdOrPassportNumber] = useState('');
   const [nationality, setNationality] = useState('');
+  const amount = paymentAmount;
+  console.log(amount);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    const amount = 5000; 
     try {
       const response = await fetch('http://127.0.0.1:5555/pay', {
         method: 'POST',
@@ -18,11 +21,11 @@ function Payment() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          fullName:fullName,
-          phoneNumber:phoneNumber,
-          idOrPassportNumber:idOrPassportNumber,
-          nationality:nationality,
-          amount:amount,
+          fullName: fullName,
+          phoneNumber: phoneNumber,
+          idOrPassportNumber: idOrPassportNumber,
+          nationality: nationality,
+          amount: amount,
         }),
       });
 
@@ -43,52 +46,52 @@ function Payment() {
   };
 
   return (
-    <div className='payment-div'>
-      <img className='payment-page-image' src='images/bus-payment-page-image.png' alt='bus-payment-image' />
-      <div className='form-div'>
-         <form onSubmit={handleFormSubmit}>
-          <div className='form-section'>
+    <div className="payment-div">
+      <img className="payment-page-image" src="images/bus-payment-page-image.png" alt="bus-payment-image" />
+      <div className="form-div">
+        <form onSubmit={handleFormSubmit}>
+          <div className="form-section">
             <label>
               Full name: <br />
               <input
-                placeholder='Full Name'
-                type='text'
+                placeholder="Full Name"
+                type="text"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 required
               />
             </label>
           </div>
-          <div className='form-section'>
+          <div className="form-section">
             <label>
               Phone Number: <br />
               <input
-                placeholder='Phone Number'
-                type='tel'
+                placeholder="Phone Number"
+                type="tel"
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
                 required
               />
             </label>
           </div>
-          <div className='form-section'>
+          <div className="form-section">
             <label>
-              ID or Passport:  <br />
+              ID or Passport: <br />
               <input
-                placeholder='ID or Passport'
-                type='text'
+                placeholder="ID or Passport"
+                type="text"
                 value={idOrPassportNumber}
                 onChange={(e) => setIdOrPassportNumber(e.target.value)}
                 required
               />
             </label>
           </div>
-          <div className='form-section'>
+          <div className="form-section">
             <label>
-              Nationality:  <br />
+              Nationality: <br />
               <input
-                placeholder='Nationality'
-                type='text'
+                placeholder="Nationality"
+                type="text"
                 value={nationality}
                 onChange={(e) => setNationality(e.target.value)}
                 required
@@ -96,13 +99,13 @@ function Payment() {
             </label>
           </div>
 
-          <div className='pay-with-mpesa'>
-            Pay with   <img className='mpesa-image' src='images/2560px-M-PESA_LOGO-01.svg.png' alt='bus-payment-image' />
+          <div className="pay-with-mpesa">
+            Pay with <img className="mpesa-image" src="images/2560px-M-PESA_LOGO-01.svg.png" alt="bus-payment-image" />
           </div>
-          <div className='stk-push'>
-            An stk push will be sent on your <br /> mobile number Before you proceed, <br />please confirm you have enough money <br /> in your M-Pesa.
+          <div className="stk-push">
+            An stk push will be sent to your <br /> mobile number. Before you proceed, <br /> please confirm you have enough money <br /> in your M-Pesa.
           </div>
-          <button className='submit-pay-button' type='submit'>SUBMIT AND PAY</button>
+          <button className="submit-pay-button" type="submit">SUBMIT AND PAY</button>
         </form>
       </div>
     </div>

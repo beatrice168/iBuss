@@ -31,9 +31,10 @@ const Book = () => {
     const filteredBuses = buses.filter((bus) => bus.From === searchFrom && bus.To ===searchTo)
     const busesWithIndex = filteredBuses.map((bus, index) => ({ ...bus, index: 0 }));
     const costsArray = busesWithIndex.map((bus) => bus.cost);
+    const cost=costsArray[0]
 
     // Log the array of costs
-    console.log('Costs:', costsArray);
+    console.log(cost);
     setBuses(busesWithIndex);
     setnoRoutesAvailable(filteredBuses.length ===0);
     console.log('From:', searchFrom);
@@ -57,7 +58,8 @@ const Book = () => {
   const filteredBuses = buses.filter((bus) => bus.From === searchFrom && bus.To ===searchTo)
   const busesWithIndex = filteredBuses.map((bus, index) => ({ ...bus, index: 0 }));
   const costsArray = busesWithIndex.map((bus) => bus.cost);
-  console.log(costsArray)
+  const cost=costsArray[0]
+  console.log(cost)
   return (
     <>
     <div>
@@ -107,10 +109,15 @@ const Book = () => {
     </div>
     <Footer />
     </div>
-    <div>
-      {/* <Booking costsArray={costsArray}/> */}
-    </div>
+    {/* <div>
+      <Booking cost={cost}/>
+    </div> */}
     </>
   );
 };
 export default Book;
+
+
+
+
+
