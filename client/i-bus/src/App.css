@@ -396,6 +396,28 @@ opacity: 0.08
   color: #ffffff;
   margin-top: 50px;
   background-color: #034dee ;
+  font-size: 34px; /* Adjust the font size as desired */
+  padding: 12px 50px;
+  border-radius: 10px;
+}
+
+
+.confirm-button{
+  color: #ffffff;
+  margin-top: 50px;
+  background-color: #034dee ;
   font-size: 24px; /* Adjust the font size as desired */
-  padding: 22px 74px
+  padding: 12px 20px;
+  border-radius: 10px;
+}
+
+
+.selected-seats{
+  color: #034dee;
+  margin-top: 50px;
+  background-color: #ffffff;
+  font-size: 24px; /* Adjust the font size as desired */
+  padding: 12px 20px;
+  border: none;
+  
 }
