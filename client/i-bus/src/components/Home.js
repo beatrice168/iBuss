@@ -19,7 +19,7 @@ function Home() {
       <ul className='why-us-list'>
         <li>We cover multiple routes </li>
         <li>We are affordable </li>
-        <li>We ensure you comfort</li>
+        <li>We ensure your comfort</li>
         <li>Easy booking and payment</li>
       </ul>
       <h3 style={{ fontSize: '45px', marginTop: '50px' }}>YOUR SAFARI JUST <br></br>BEGUN</h3>
