@@ -32,8 +32,9 @@ function AddBookingForm({ onAddBooking }) {
     <div>
       <h2>Add Booking</h2>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="bok">
           <label htmlFor="customerId">Customer ID:</label>
+          <br></br>
           <input
             type="text"
             id="customerId"
@@ -44,6 +45,7 @@ function AddBookingForm({ onAddBooking }) {
         </div>
         <div>
           <label htmlFor="busId">Bus ID:</label>
+          <br></br>
           <input
             type="text"
             id="busId"
@@ -54,6 +56,7 @@ function AddBookingForm({ onAddBooking }) {
         </div>
         <div>
           <label htmlFor="date">Date:</label>
+          <br></br>
           <input
             type="date"
             id="date"

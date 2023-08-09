@@ -15,17 +15,12 @@ const Booking = ({cost}) => {
 
   
   useEffect(() => {
-    fetch('http://127.0.0.1:5555/buses')
-      .then((r) => r.json())
-      .then((busesArray) => {
-        console.log(busesArray);
+    const storedCost = JSON.parse(localStorage.getItem('cost'));
+    console.log(storedCost); // This will log the cost value stored in the previous component
+    setSelectedBus(storedCost);
 
-        setSelectedBus(busesArray[1]); // Set the default selected bus to the first one
-      });
-  }, []);
-  useEffect(() => {
     if (selectedBus) {
-      const newPaymentAmount = selectedSeats.size * selectedBus.cost;
+      const newPaymentAmount = selectedSeats.size * storedCost;
       setPaymentAmount(newPaymentAmount); // Update the payment amount
       setBuses((prevBuses) =>
         prevBuses.map((bus) => ({
@@ -35,7 +30,6 @@ const Booking = ({cost}) => {
       );
     }
   }, [selectedSeats, selectedBus]);
-
   const handleSeatClick = (seatNumber) => {
     if (bookedSeats.has(seatNumber)) {
       return;
@@ -56,6 +50,12 @@ const Booking = ({cost}) => {
     // Calculate the new payment amount and update the state
     const newPaymentAmount = updatedSelectedSeats.size * selectedBus.cost;
     setPaymentAmount(newPaymentAmount);
+  };
+
+  const handlePayment = () => {
+    // Update the bookedSeats array with the selected seats
+    setBookedSeats([...bookedSeats, ...selectedSeats]);
+    setSelectedSeats([]); // Clear the selected seats after payment
   };
 
   const renderSeats = () => {
