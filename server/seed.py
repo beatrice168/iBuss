@@ -11,11 +11,10 @@ with app.app_context():
     Bus.query.delete()
     Booking.query.delete()
     Company.query.delete()
-
+    buses=[]
     availability = ['True', 'False']
-    From = ["Bumala", "Kericho", "Homabay", "Bungoma", "Nairobi"]
-    To = ["Bumala", "Kericho", "Homabay", "Bungoma", "Nairobi"]
-    buses = []
+    From = ["Bumala", "Kericho", "Homabay", "Bungoma", "Nairobi" ]
+    To = ["Bumala", "Kericho", "Homabay", "Bungoma", "Nairobi" ]
     for from_loc in From:
         for to_loc in To:
             if from_loc != to_loc:

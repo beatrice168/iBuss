@@ -141,51 +141,7 @@ th {
   background-color: #fff; /* Seat background color: white */
 }
 /* BusSearch.css */
-.bus-booking-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 60px; /* Adjust the margin-top value to move it downwards */
-}
-.search-form {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px; /* Add some space between the search form and the bus list */
-  justify-content: center;
-  padding: 30px;
-  background-size: cover;
-  /*background-image: url(/home/rolex/Development/code/iBus/client/i-bus/src/images/book.jpeg);*/
-   width: 100vw;
-  height: 10vh;
-}
-.search-form::placeholder{
-  font-size: 200;
-}
-.search-form form {
-  margin-top: 200px;
-  display: flex;
-  align-items: center;
-  margin-left: 100pc;
-  margin-right: 100pc;
-  text-align: center;
-}
-.search-form input {
-  margin-right: 10px;
-  padding: 13px 50px;
-}
-.search-form select{
-  margin-right: 10px;
-  padding: 15px 50px;
-  margin-bottom: 20px;
-  color: #616161;
-}
-.bus-and-text{
-  margin-right: 40px;
-}
 
-.bus-and-text{
-  margin-right: 40px;
-}
 
 /* BusList.css */
 .bus-list-container {
@@ -256,24 +212,8 @@ opacity: 0.08
 .list-div{
   position: relative;
 }
-.Search {
-  background-color:#0DD73A;
-  /* color: #fff; */
-  font-weight: bold;
-  padding: 20px 40px;
-  margin-bottom: 23px;
-}
- .book-page-image {
-  position: absolute;
-  z-index: -1;
-  display: block;
-  width: 100vw;
-  height: 45vh;
-  margin-right: -60px;
-  margin-top: -60px;
-  margin-left: -60px;
-  z-index: -2;
-  }
+
+ 
 .Book {
   color:rgb(245, 241, 241);
   text-decoration: none;

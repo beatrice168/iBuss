@@ -4,6 +4,7 @@
   
   .home-background{
       width: 100vw;
+      top:-80px;
       height: 120vh;
       margin: 0;
       padding: 0;
@@ -118,3 +119,59 @@
     .icon-section{
       padding: 5% 10%;
     }
+    /* Media Query for screens smaller than 768px */
+@media (max-width: 767px) {
+  .home-text {
+    right: 2%;
+    top: 2%;
+  }
+  
+  .title-div {
+    width: 300px;
+    height: 90px;
+    font-size: 120%;
+  }
+  
+  .why-us-div {
+    font-size: 200%;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .why-us-title {
+    font-size: 50px;
+  }
+  
+  .navLink, .navLink-book {
+    font-size: 140%;
+    padding-right: 40px;
+    margin-top: 10px;
+  }
+  
+  .how-it-works-pic img {
+    max-width: 250px;
+    max-height: 250px;
+  }
+  
+  .home-bus-image-2 {
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+  
+  .middle-page, .icon-section {
+    padding: 5% 5%;
+  }
+}
+
+/* Media Query for screens between 768px and 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .title-div {
+    width: 350px;
+    height: 100px;
+  }
+  
+  .navLink, .navLink-book {
+    font-size: 160%;
+    padding-right: 50px;
+  }
+}

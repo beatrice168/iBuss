@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import BusList from './BusList';
 import Footer from './Footer';
 import Booking from './Booking';
+import './Book.css'; // Import the CSS file
 const Book = () => {
   const [originalBuses, setOriginalBuses] = useState([])
   const [buses, setBuses] = useState([]);
@@ -56,7 +57,7 @@ const Book = () => {
     console.log('Booking Bus:', busId);
   };
   const AllLocations = [
-    "Bumala", "Kericho", "Homabay", "Bungoma", "Nairobi",
+    "Bumala", "Kericho", "Homabay", "Bungoma", "Nairobi"
   ];
   const locations = AllLocations.sort();
 
@@ -64,6 +65,8 @@ const Book = () => {
   const busesWithIndex = filteredBuses.map((bus, index) => ({ ...bus, index: 0 }));
   const costsArray = busesWithIndex.map((bus) => bus.cost);
   const cost=costsArray[0]
+  localStorage.setItem('cost', JSON.stringify(cost));
+
   console.log(cost)
   return (
     <>

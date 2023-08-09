@@ -131,36 +131,77 @@ function Admin() {
     { name: "Company D", income: 15000 },
     { name: "Company E", income: 9000 },
   ];
-
   const containerStyle = {
-    marginTop: "95px",
+    marginTop: "0px",
   };
-
+  
   const cardStyle = {
     borderRadius: "20px",
-    backgroundColor: "#ADE8F4",
-    width: "25vw",
-    color: "black",
+    backgroundColor: "blue",
+    width: "20vw",
+    color: "white",
+    paddingLeft: "10px",
+    fontSize: "30px",
   };
-
+  
   const cardStyle3 = {
     marginTop: "20px",
+    paddingLeft: "10px",
     borderRadius: "20px",
-    width: "25vw",
-    height: "10vh",
-    flexWrap: "nowrap",
-    backgroundColor: "#ADE8F4",
-    color: "black",
-    padding: "20px"
-    
+    width: "15vw",
+    backgroundColor: "blue",
+    color: "white",
+    padding: "30px",
+    fontSize: "30px",
   };
-
+  
   const chartContainerStyle = {
     marginTop: "50px",
   };
+  
   const miniStyle = {
     backgroundColor: "48CAE4",
   };
+  
+  const adm = {
+    fontSize: "50px",
+    marginBottom: "50px",
+  };
+  
+  const pi = {
+    backgroundColor: "#57A0D2",
+  };
+  
+  // Media queries
+  const mediaQueryMedium = '@media (max-width: 768px)';
+  
+  const containerStyleMobile = {
+    marginTop: "20px", // Adjust the marginTop value for mobile devices
+  };
+  
+  const cardStyleMobile = {
+    width: "90vw", // Adjust the width for mobile devices
+    paddingLeft: "20px", // Adjust the paddingLeft for mobile devices
+  };
+  
+  const cardStyle3Mobile = {
+    width: "30vw", 
+    padding: "10px", 
+  };
+  
+  const admMobile = {
+    fontSize: "40px", // Adjust the font size for mobile devices
+    marginBottom: "30px", // Adjust the marginBottom for mobile devices
+  };
+  
+  // Apply media query styles
+  if (window.innerWidth <= 768) {
+    Object.assign(containerStyle, containerStyleMobile);
+    Object.assign(cardStyle, cardStyleMobile);
+    Object.assign(cardStyle3, cardStyle3Mobile);
+    Object.assign(adm, admMobile);
+  }
+  
   
 
   return (
@@ -168,40 +209,8 @@ function Admin() {
       <div className="container" style={containerStyle}>
         <div className="row">
           <div className="col-md-12">
-            <h1>Admin Dashboard</h1>
-
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-6">
-            <AddBusForm onAddBus={addBus} />
-          </div>
-
-         
-          
-          <div className="col-md-6">
-            <UpdateDeleteBusForm
-              buses={buses}
-              onUpdateBus={updateBus}
-              onDeleteBus={deleteBus}
-            />
-          </div>
-        </div>
-        <div className="uplift"><UploadFile /></div>
-        
-        <div className="row">
-          <div className="col-md-6">
-            <AddBookingForm onAddBooking={addBooking} />
-          </div>
-          <div className="col-md-6">
-            <UpdateDeleteBookingForm
-              bookings={bookings}
-              onUpdateBooking={updateBooking}
-              onDeleteBooking={deleteBooking}
-            />
-          </div>
-        </div>
-        <div className="row">
+            <h1 style={adm}>Admin Dashboard </h1>
+            <div className="row">
         <div className="col-md-6">
           <h2>Admin Statistics</h2>
           <div className="card" style={cardStyle}>
@@ -216,11 +225,12 @@ function Admin() {
               <p className="nums">ksh 30,000</p>
             </div>
           </div>
-          <div className="card" style={{ backgroundColor: '#87CEEB' }}>
+          <div className="card" style={{backgroundColor:"#57A0D2"}}>
             <div className="card-body">
               <h2>Company Comparison</h2>
-              <PieChart width={300} height={300}>
+              <PieChart width={600} height={300}>
                 <Pie
+                 style={pi}
                   dataKey="income"
                   data={companyComparisonData}
                   cx="50%"
@@ -289,9 +299,39 @@ function Admin() {
                 </div>
               </div>
             </div>
+          </div>     
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-6">
+            <AddBusForm onAddBus={addBus} />
+            <br></br>
+            <UploadFile />
+          </div>
+          
+          <div className="col-md-6">
+            <UpdateDeleteBusForm
+              buses={buses}
+              onUpdateBus={updateBus}
+              onDeleteBus={deleteBus}
+            />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-6">
+            <AddBookingForm onAddBooking={addBooking} />
+          </div>
+          <div className="col-md-6">
+            <UpdateDeleteBookingForm
+              bookings={bookings}
+              onUpdateBooking={updateBooking}
+              onDeleteBooking={deleteBooking}
+            />
           </div>
         </div>
         </div>
+        </div>
+
       );
     }
     
