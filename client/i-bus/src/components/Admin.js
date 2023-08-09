@@ -6,6 +6,7 @@ import UpdateDeleteBusForm from "./UpdateDeleteBusForm";
 import AddBookingForm from "./AddBookingForm";
 import UpdateDeleteBookingForm from "./UpdateDeleteBookingForm";
 import UploadFile from "./UploadFile";
+import './Admin.css'
 
 function Admin() {
   const [buses, setBuses] = useState([]);
@@ -159,7 +160,7 @@ function Admin() {
   };
   
   const miniStyle = {
-    backgroundColor: "#57A0D2",
+    backgroundColor: "48CAE4",
   };
   
   const adm = {
@@ -283,7 +284,7 @@ function Admin() {
           </div>
           <div className="row" style={chartContainerStyle}>
             <div className="col-md-12">
-              <div className="card">
+              <div className="card" style={{ backgroundColor: "#cccccc" }}>
                 <div className="card-body">
                   <h2>Analysis Chart</h2>
                   <LineChart width={600} height={400} data={data}>
