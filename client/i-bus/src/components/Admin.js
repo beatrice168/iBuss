@@ -5,10 +5,8 @@ import AddBusForm from "./AddBusForm";
 import UpdateDeleteBusForm from "./UpdateDeleteBusForm";
 import AddBookingForm from "./AddBookingForm";
 import UpdateDeleteBookingForm from "./UpdateDeleteBookingForm";
-<<<<<<< HEAD
-=======
 import UploadFile from "./UploadFile";
->>>>>>> de610c9c9f4f086dd9c7746454be60f24c45e664
+import "./Admin.css";
 
 function Admin() {
   const [buses, setBuses] = useState([]);
@@ -161,16 +159,6 @@ function Admin() {
   const miniStyle = {
     backgroundColor: "#57A0D2",
   };
-<<<<<<< HEAD
-
-  
-
- 
-
-   
-
-=======
->>>>>>> de610c9c9f4f086dd9c7746454be60f24c45e664
 
   return (
     <div className="mini" style={miniStyle}>
@@ -178,10 +166,7 @@ function Admin() {
         <div className="row">
           <div className="col-md-12">
             <h1>Admin Dashboard</h1>
-<<<<<<< HEAD
-=======
             <UploadFile />
->>>>>>> de610c9c9f4f086dd9c7746454be60f24c45e664
           </div>
         </div>
         <div className="row">
@@ -298,7 +283,7 @@ function Admin() {
             </div>
           </div>
         </div>
-        </div>
+        </div>\
       );
     }
     
