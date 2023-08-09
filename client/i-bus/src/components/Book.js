@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import BusList from './BusList';
 import Footer from './Footer';
 import Booking from './Booking';
+import './Book.css'; // Import the CSS file
 const Book = () => {
   const [buses, setBuses] = useState([]);
   const [noRoutesAvailable, setnoRoutesAvailable] = useState(false);
@@ -49,9 +50,7 @@ const Book = () => {
     console.log('Booking Bus:', busId);
   };
   const AllLocations = [
-    "Bumala", "Kericho", "Homabay", "Bungoma", "Nairobi",
-    "Sirare", "Bondo", "Malaba", "Bomet",
-    "Kisumu", "Eldoret", "Kakamega", "Kitale", "Kisii", "Mumias"
+    "Bumala", "Kericho", "Homabay", "Bungoma", "Nairobi"
   ];
   const locations = AllLocations.sort();
 
@@ -59,6 +58,8 @@ const Book = () => {
   const busesWithIndex = filteredBuses.map((bus, index) => ({ ...bus, index: 0 }));
   const costsArray = busesWithIndex.map((bus) => bus.cost);
   const cost=costsArray[0]
+  localStorage.setItem('cost', JSON.stringify(cost));
+
   console.log(cost)
   return (
     <>
@@ -99,7 +100,7 @@ const Book = () => {
           ) : (
             <>
       <p style={{fontWeight:'bold', fontSize:'60px', color:'#016DB4', lineHeight:'1.1'}}>PICK A BUS AND <br /> BOOK YOUR<br />SEAT</p>
-      <img style={{width: '500px'}} src='images/blue-bus.png' alt='blue bus'  />
+      <img style={{width: '500px'}} src='images/blue-bus.png' alt='blue bus' />
       </>
       )}
       </div>
@@ -109,9 +110,9 @@ const Book = () => {
     </div>
     <Footer />
     </div>
-    <div>
+    {/* <div>
       <Booking cost={cost}/>
-    </div>
+    </div> */}
     </>
   );
 };

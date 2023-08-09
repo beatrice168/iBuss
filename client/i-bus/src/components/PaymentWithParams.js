@@ -17,7 +17,16 @@ const PaymentWithParams = () => {
     return <div>Loading...</div>;
   }
 //   const {paymentAmount } = useParams();
- 
+const handlePhoneNumberChange = (e) => {
+  let value = e.target.value;
+  
+  // Ensure the input starts with "254"
+  if (!value.startsWith('254')) {
+    value = '254' + value;
+  }
+  
+  setPhoneNumber(value);
+};
   const handleFormSubmit = async (event) => {
       event.preventDefault();
   
@@ -78,7 +87,7 @@ const PaymentWithParams = () => {
               placeholder="Phone Number"
               type="tel"
               value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
+              onChange={handlePhoneNumberChange}
               required
             />
           </label>

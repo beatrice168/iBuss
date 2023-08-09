@@ -1,26 +1,22 @@
-payment.css
+/* Initial styling */
+.payment-details-form {
+  position: absolute;
+}
 
-.payment-details-form{
-    position: absolute;
-  }
-  
-  .payment-page-imag{
-       position: absolute;
-    right: -20px;
-    z-index: -1;
-    
-  }
+.payment-page-imag {
+  position: absolute;
+  right: -20px;
+  z-index: -1;
+}
 
-  .form-di{
-      position: absolute;
-    text-align: left;
-    margin-left: 3vw;
-    margin-top: 5vw;
-    
-  }
-  
-  .form-sectio{
-    /* margin-bottom: 50px; */
+.form-di {
+  position: absolute;
+  text-align: left;
+  margin-left: 3vw;
+  margin-top: 5vw;
+}
+
+.form-sectio {
   display: inline-block;
   padding: 10px;
   width: 65%;
@@ -31,57 +27,80 @@ payment.css
   font-weight: bold;
 }
 
-  
-  .form-sectio:last-child{
+.form-sectio:last-child {
+  margin-right: 0;
+}
+
+.form-sectio input::placeholder {
+  color: #d8d8d8;
+  font-size: 200;
+}
+
+.form-sectio input {
+  font-size: 20px;
+}
+
+.payment-di {
+  position: relative;
+}
+
+.mpesa-imag {
+  width: 20%;
+  margin-left: 10px;
+}
+
+.pay-with-mpesa {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  font-weight: bolder;
+  font-size: 30px;
+}
+
+.submi-pay-button {
+  color: #ffffff;
+  margin-top: 50px;
+  background-color: #0d77ef;
+  font-size: 24px;
+  padding: 22px 74px;
+}
+
+.st-push {
+  font-size: 20px;
+}
+
+/* Media query for screens up to 1300px width */
+@media screen and (max-width: 1300px) {
+  .form-sectio {
+    display: block;
+    width: 100%;
     margin-right: 0;
   }
-  
-  .form-sectio input::placeholder{
-    color: #d8d8d8;
-    font-size: 200;
+}
+
+/* Media query for screens up to 768px width */
+@media screen and (max-width: 768px) {
+  .form-di {
+    margin-left: 5vw;
   }
-  
-  @media screen and (max-width: 1300px){
-    .form-sectio{
-      display: block;
-      width: 100%;
-  
-    }
+
+  .form-sectio {
+    font-size: 130%;
   }
-  
-  .form-sectio input {
-    font-size: 20px; 
-    /* display: flex; */
-    /* Adjust the font size as desired */
+
+  .mpesa-imag {
+    width: 30%;
   }
-  
-  .payment-di{
-    position: relative;
-  }
-  
-  .mpesa-imag{
-    width: 20%;
-    margin-left: 10px;
-    
-  }
-  
+
   .pay-with-mpesa {
-    display: flex; /* Use flexbox */
-    align-items: center; /* Vertically center the content */
-    margin-bottom: 30px;
-    font-weight: bolder;
-    font-size: 30px;
+    font-size: 24px;
   }
-  
-  
-  .submi-pay-button{
-    color: #ffffff;
-    margin-top: 50px;
-    background-color: #0d77ef ;
-    font-size: 24px; /* Adjust the font size as desired */
-    padding: 22px 74px; /* Adjust the padding as desired */
+
+  .submi-pay-button {
+    padding: 18px 60px;
   }
-  
-  .st-push{
-    font-size: 20px;
+
+  .st-push {
+    font-size: 18px;
   }
+}

@@ -1,0 +1,99 @@
+/* Base Styles */
+.bus-booking-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+  }
+  
+  .book-page-image {
+    position: absolute;
+    z-index: -1;
+    display: block;
+    width: 100vw;
+    height: 45vh;
+    margin-right: -60px;
+    margin-top: -60px;
+    margin-left: -60px;
+    z-index: -2;
+  }
+  
+  .Search {
+    background-color: #0DD73A;
+    font-weight: bold;
+    padding: 20px 40px;
+    margin-bottom: 23px;
+  }
+  
+  .list-and-image {
+    display: flex;
+    align-items: center;
+    margin-top: 7.5%;
+    position: relative;
+    right: 150px;
+  }
+  
+  .bus-and-text {
+    margin-right: 40px;
+  }
+  
+  .search-form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-content: center;
+    padding: 30px;
+    background-size: cover;
+    width: 100vw;
+    height: 10vh;
+  }
+  
+  .search-form::placeholder {
+    font-size: 200;
+  }
+  
+  .search-form form {
+    margin-top: 200px;
+    display: flex;
+    align-items: center;
+    margin-left: 100pc;
+    margin-right: 100pc;
+    text-align: center;
+  }
+  
+  .search-form input {
+    margin-right: 10px;
+    padding: 13px 50px;
+  }
+  
+  .search-form select {
+    margin-right: 10px;
+    padding: 15px 50px;
+    margin-bottom: 20px;
+    color: #616161;
+  }
+  
+  /* Media Queries */
+  @media screen and (max-width: 768px) {
+    .list-and-image {
+      right: 0;
+    }
+    
+    .search-form {
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    
+    .search-form input,
+    .search-form select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .search-form form {
+      margin-top: 0;
+    }
+  }
+  
