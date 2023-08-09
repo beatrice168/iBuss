@@ -7,7 +7,7 @@ const BusList = ({ buses }) => {
     <div className="bus-list-container">
       {buses.map((bus) => (
         <div key={bus.id} className="bus-item">
-          <h3>Bus {bus.id}</h3>
+          <h3 style={{color: 'black'}}>Bus {bus.id}</h3>
           <div className="bus-details">
             <p style={{ width: '350px', textAlign: "center" }}>
               <div className='to-from-div'><span>{bus.From}</span> <img className='link-image' src='/images/link-icon-long.png' alt='link-image' /> <span>{bus.To}</span></div>

@@ -161,6 +161,7 @@ function Admin() {
   const miniStyle = {
     backgroundColor: "48CAE4",
   };
+  
 
   return (
     <div className="mini" style={miniStyle}>

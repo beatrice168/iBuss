@@ -3,14 +3,17 @@ import BusList from './BusList';
 import Footer from './Footer';
 import Booking from './Booking';
 const Book = () => {
+  const [originalBuses, setOriginalBuses] = useState([])
   const [buses, setBuses] = useState([]);
   const [noRoutesAvailable, setnoRoutesAvailable] = useState(false);
+  
   // const [uniqueFromValues, setUniqueFromValues] = useState([]); // To store unique 'From' values
   // const [uniqueToValues, setUniqueToValues] = useState([]); // To store unique 'To' values
   useEffect(() => {
     fetch('http://127.0.0.1:5555/buses')
       .then((r) => r.json())
       .then((busesArray) => {
+        setOriginalBuses(busesArray)
         setBuses(busesArray);
         // Extract unique 'From' and 'To' values from the buses data
         // const fromValues = Array.from(new Set(busesArray.map((bus) => bus.From)));
@@ -28,15 +31,19 @@ const Book = () => {
     // Implement the search logic here based on searchFrom, searchTo, and searchDate
     // You can update the 'buses' state based on the search criteria
     // For now, we'll just console.log the search data
-    const filteredBuses = buses.filter((bus) => bus.From === searchFrom && bus.To ===searchTo)
+    const filteredBuses = originalBuses.filter((bus) => bus.From === searchFrom && bus.To ===searchTo)
     const busesWithIndex = filteredBuses.map((bus, index) => ({ ...bus, index: 0 }));
     const costsArray = busesWithIndex.map((bus) => bus.cost);
     const cost=costsArray[0]
 
     // Log the array of costs
     console.log(cost);
-    setBuses(busesWithIndex);
-    setnoRoutesAvailable(filteredBuses.length ===0);
+    setBuses(filteredBuses);
+    if(filteredBuses.length ===0){
+      setnoRoutesAvailable(true)
+    }else{
+      setnoRoutesAvailable(false)
+    }
     console.log('From:', searchFrom);
     console.log('To:', searchTo);
     console.log('Date:', searchDate);
@@ -50,8 +57,6 @@ const Book = () => {
   };
   const AllLocations = [
     "Bumala", "Kericho", "Homabay", "Bungoma", "Nairobi",
-    "Sirare", "Bondo", "Malaba", "Bomet",
-    "Kisumu", "Eldoret", "Kakamega", "Kitale", "Kisii", "Mumias"
   ];
   const locations = AllLocations.sort();
 
@@ -98,7 +103,7 @@ const Book = () => {
           <img style={{width: '900px'}} src='images/Route-unavailable.png' alt='unavailable' />
           ) : (
             <>
-      <p style={{fontWeight:'bold', fontSize:'60px', color:'#016DB4', lineHeight:'1.1'}}>PICK A BUS AND <br /> BOOK YOUR<br />SEAT</p>
+      <p style={{fontWeight:'bold', fontSize:'55px', color:'#016DB4', lineHeight:'1.1'}}>PICK A BUS AND <br /> BOOK YOUR<br />SEAT</p>
       <img style={{width: '500px'}} src='images/blue-bus.png' alt='blue bus'  />
       </>
       )}

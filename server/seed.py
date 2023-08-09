@@ -13,8 +13,8 @@ with app.app_context():
     Company.query.delete()
 
     availability = ['True', 'False']
-    From = ["Bumala", "Kericho", "Homabay", "Bungoma", "Nairobi", "Sirare", "Bondo", "Malaba", "Bomet", "Kisumu", "Eldoret", "Kakamega", "Kitale", "Kisii", "Mumias"]
-    To = ["Bumala", "Kericho", "Homabay", "Bungoma", "Nairobi", "Sirare", "Bondo", "Malaba", "Bomet", "Kisumu", "Eldoret", "Kakamega", "Kitale", "Kisii", "Mumias"]
+    From = ["Bumala", "Kericho", "Homabay", "Bungoma", "Nairobi"]
+    To = ["Bumala", "Kericho", "Homabay", "Bungoma", "Nairobi"]
     buses = []
     for from_loc in From:
         for to_loc in To:
