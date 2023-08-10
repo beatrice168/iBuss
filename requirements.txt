@@ -4,7 +4,7 @@ aniso8601==9.0.1
 blinker==1.6.2 ; python_version >= '3.7'
 click==8.1.4 ; python_version >= '3.7'
 faker==18.13.0
-flask==2.3.2
+flask==2.2.5
 flask-cors==4.0.0
 flask-migrate==4.0.4
 flask-restful==0.3.10
