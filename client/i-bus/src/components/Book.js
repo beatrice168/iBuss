@@ -74,7 +74,7 @@ const Book = () => {
     <>
     <div>
     <div className="bus-booking-page">
-      <img className='book-page-image' src='images/book-image-clear.png' alt='book-bus-image'/>
+      <img className='book-page-image' src='images/book-image-clear.png' alt='book-bus'/>
       <div className="search-form">
         <form onSubmit={handleSearch}>
           <select value={searchFrom} onChange={(e) => setSearchFrom(e.target.value)}>
