@@ -19,10 +19,6 @@ function Navbar() {
       <NavLink className='navLink' exact to='/'>
         Home 
       </NavLink>
-      <NavLink className='navLink' to='/AboutUs'>
-        About
-      </NavLink>
-      
       <NavLink className='navLink' to='/Book'>
         Book
       </NavLink>
@@ -31,6 +27,9 @@ function Navbar() {
       </NavLink> */}
       <NavLink className='navLink' to='/Contact'>
         Contact 
+      </NavLink>
+      <NavLink className='navLink' to='/AboutUs'>
+        About
       </NavLink>
       {showAdminSignIn && (
         <div className='sign-in-container'>
