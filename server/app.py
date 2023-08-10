@@ -18,12 +18,17 @@ from datetime import datetime
 import smtplib
 # from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity
 from dotenv import load_dotenv
-
-
-
-app = Flask(__name__)
 load_dotenv()
+
+app = Flask(
+    __name__,
+    static_url_path='',
+    static_folder='../client/build',
+    template_folder='../client/build'
+)
+
 CORS(app)
+
 migrate = Migrate(app, db)
 secret=app.config["SECRET_KEY"] =b"b\xfe5'\x02\xc5\x9c\xa7\x8d\x96\xcf\xf0)\x05h\t"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///buses.db'
