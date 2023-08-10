@@ -31,7 +31,7 @@ CORS(app)
 
 migrate = Migrate(app, db)
 secret=app.config["SECRET_KEY"] =b"b\xfe5'\x02\xc5\x9c\xa7\x8d\x96\xcf\xf0)\x05h\t"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///buses.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("sqlite:///buses.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
