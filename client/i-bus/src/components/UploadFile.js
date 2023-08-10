@@ -26,7 +26,7 @@ function UploadFile() {
     </div>
     <div>
     {/* <h1>Uploaded image will be displayed here</h1> */}
-    <img src={url}/>
+    <img src={url} alt="a"/>
     </div>
     </div>
     )

@@ -18,23 +18,14 @@ const Footer = () => {
 
             {/* Right */}
             <div>
-              <a href="#" className="text-white me-4">
+              <a href="https://www.facebook.com/your-facebook-page" className="text-white me-4">
                 <i className="fab fa-facebook-f"></i>
               </a>
-              <a href="#" className="text-white me-4">
+              <a href="https://twitter.com/your-twitter-page" className="text-white me-4">
                 <i className="fab fa-twitter"></i>
               </a>
-              <a href="#" className="text-white me-4">
-                <i className="fab fa-google"></i>
-              </a>
-              <a href="#" className="text-white me-4">
+              <a href="https://www.instagram.com/your-instagram-page" className="text-white me-4">
                 <i className="fab fa-instagram"></i>
-              </a>
-              <a href="#" className="text-white me-4">
-                <i className="fab fa-linkedin"></i>
-              </a>
-              <a href="#" className="text-white me-4">
-                <i className="fab fa-github"></i>
               </a>
             </div>
             {/* Right */}

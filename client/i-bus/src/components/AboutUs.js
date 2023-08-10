@@ -1,6 +1,5 @@
 import React from 'react';
 import './AboutUs.css'; 
-import Footer from './Footer';
 
 function AboutUs() {
     return (
@@ -16,13 +15,13 @@ function AboutUs() {
                         travel planning.
                     </h4>
                 </div> 
-                <img className='woman-about-image' src='images/girl-in-bus.png' alt='woman image'/>
+                <img className='woman-about-image' src='images/girl-in-bus.png' alt='woman'/>
             </div>
             <div className='about-div-2'>
                 <div className='about-div-2-text'>
                     <h1>YOUR ULTIMATE BUS BOOKING PLATFORM</h1>
                 </div>
-                <img className='bus-and-city' src='images/bus-and-city.png' alt='woman image'/>
+                <img className='bus-and-city' src='images/bus-and-city.png' alt='woman'/>
             </div>
             <div className='about-div-3'>
                 <div className='about-div-3-point-1'>

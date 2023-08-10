@@ -10,7 +10,7 @@ const BusList = ({ buses }) => {
           <h3 style={{color: 'black'}}>Bus {bus.id}</h3>
           <div className="bus-details">
             <p style={{ width: '350px', textAlign: "center" }}>
-              <div className='to-from-div'><span>{bus.From}</span> <img className='link-image' src='/images/link-icon-long.png' alt='link-image' /> <span>{bus.To}</span></div>
+              <div className='to-from-div'><span>{bus.From}</span> <img className='link-image' src='/images/link-icon-long.png' alt='link' /> <span>{bus.To}</span></div>
               <br />
               Departure: <span>{bus.departure}</span>
             </p>

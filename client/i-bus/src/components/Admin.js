@@ -173,7 +173,6 @@ function Admin() {
   };
   
   // Media queries
-  const mediaQueryMedium = '@media (max-width: 768px)';
   
   const containerStyleMobile = {
     marginTop: "20px", // Adjust the marginTop value for mobile devices

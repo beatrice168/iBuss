@@ -4,7 +4,7 @@ import './Payment1.css';
 import busPaymentPageImage from '../images/bus-payment-page-image.png';
 
 const PaymentWithParams = () => {
-  const { busId, paymentAmount } = useParams();
+  const { paymentAmount } = useParams();
   const [fullName, setFullName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [idOrPassportNumber, setIdOrPassportNumber] = useState('');
@@ -119,7 +119,7 @@ const PaymentWithParams = () => {
          </div>
  
          <div className="pay-with-mpesa">
-           Pay with <img className="mpesa-imag" src="https://i.pinimg.com/236x/99/7b/33/997b335c2a4050bff99d1fd741bac6c3.jpg" alt="bus-payment-image" />
+           Pay with <img className="mpesa-imag" src="https://i.pinimg.com/236x/99/7b/33/997b335c2a4050bff99d1fd741bac6c3.jpg" alt="bus-payment" />
          </div>
          <div className="st-push">
            An stk push will be sent to your <br /> mobile number. Before you proceed, <br /> please confirm you have enough money <br /> in your M-Pesa.

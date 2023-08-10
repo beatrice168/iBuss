@@ -100,7 +100,7 @@ const PaymentWithoutParams = () => {
           </div>
 
           <div className="pay-with-mpesa">
-            Pay with <img className="mpesa-image" src="images/2560px-M-PESA_LOGO-01.svg.png" alt="bus-payment-image" />
+            Pay with <img className="mpesa-image" src="images/2560px-M-PESA_LOGO-01.svg.png" alt="bus-payment" />
           </div>
           <div className="stk-push">
             An stk push will be sent to your <br /> mobile number. Before you proceed, <br /> please confirm you have enough money <br /> in your M-Pesa.
