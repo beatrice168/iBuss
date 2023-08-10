@@ -18,20 +18,21 @@ from datetime import datetime
 import smtplib
 # from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity
 from dotenv import load_dotenv
-load_dotenv()
+
 
 app = Flask(
     __name__,
     static_url_path='',
-    static_folder='../client/build',
-    template_folder='../client/build'
+    static_folder='../i-bus/build',
+    template_folder='../i-bus/build'
 )
 
 CORS(app)
+load_dotenv()
 
 migrate = Migrate(app, db)
 secret=app.config["SECRET_KEY"] =b"b\xfe5'\x02\xc5\x9c\xa7\x8d\x96\xcf\xf0)\x05h\t"
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("sqlite:///buses.db")
+app.config['SQLALCHEMY_DATABASE_URI'] =  'sqlite:///buses.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
@@ -97,18 +98,18 @@ class EmailResource(Resource):
 
 api.add_resource(EmailResource, '/email')
 
-class Index(Resource):
-    def get(self):
-        response_dict={
-            "index":
-            "Welcome to I-Bus API"
-        }
-        response = make_response(
-           jsonify(response_dict),
-           200,
-        )
-        return response
-api.add_resource(Index, '/')
+# class Index(Resource):
+#     def get(self):
+#         response_dict={
+#             "index":
+#             "Welcome to I-Bus API"
+#         }
+#         response = make_response(
+#            jsonify(response_dict),
+#            200,
+#         )
+#         return response
+# api.add_resource(Index, '/')
 # users = {
 #     "user1": ("password1", 1),
 #     "user2": ("password2", 2),
