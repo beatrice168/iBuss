@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import BusList from './BusList';
 import Footer from './Footer';
-import Booking from './Booking';
 import './Book.css'; // Import the CSS file
 const Book = () => {
   const [originalBuses, setOriginalBuses] = useState([])
