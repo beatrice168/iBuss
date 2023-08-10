@@ -7,7 +7,6 @@ import Signup from './components/signup';
 import Customer from './components/Customer';
 import Signin from './components/Signin'
 import PaymentWithParams from './components/PaymentWithParams';
-import PaymentWithoutParams from './components/PaymentWithoutParams';
 import Payment from "./components/Payment";
 import AboutUs from './components/AboutUs';
 
