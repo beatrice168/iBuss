@@ -9,6 +9,7 @@ import Signin from './components/Signin'
 import PaymentWithParams from './components/PaymentWithParams';
 import PaymentWithoutParams from './components/PaymentWithoutParams';
 import Payment from "./components/Payment";
+import AboutUs from './components/AboutUs';
 
 
 import Book from './components/Book';
@@ -32,6 +33,7 @@ function App() {
         <Route path='Customer' element={<Customer/>}/>
         <Route path="/admin" element={<Admin />}/>
         <Route  path="Contact" element={<Contact/>}/>
+        <Route  path="AboutUs" element={<AboutUs/>}/>
         </Routes>
         <Routes>
         <Route  path="Signup" element={<Signup/>}/>

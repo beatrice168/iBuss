@@ -1,0 +1,93 @@
+.about-top-div{
+    width: 100%;
+    background-color: #ebefff;
+    display: flex;
+    margin-bottom: 150px;
+}
+
+.top-div-text{
+    color: #016DB4;
+    padding: 90px;
+    font-size: 40px;
+    font-weight: bold;
+    position: relative;
+    top: 140px;
+    
+}
+
+.woman-about-image{
+    width: 93%;
+    
+}
+
+.about-div-2{
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 150px;
+}
+
+.about-div-2-text {
+    color: #034dee;
+    margin-top: 50px;
+    font-size: 24px;
+    padding: 12px 20px;
+    margin-bottom: 100px;
+    width: 890px;
+    text-align: center; /* Center align the text */
+    margin: 0 auto;
+    font-weight: 'bold';
+    margin-bottom: 60px;
+  }
+
+.bus-and-city{
+    width: 80%;
+}
+
+.about-div-3{
+    padding-left: 400px;
+    padding-right: 400px;
+}
+
+
+.about-div-3-point-1{
+    text-align: left;
+    float: left;
+    width: 1400px;
+
+}
+
+.about-div-3-heading{
+    color: #034dee;
+    
+}
+
+.phone-ticket{
+    margin-right: 100px;
+    position: relative;
+    bottom: 70px;
+}
+
+
+
+/* ----------------------------- */
+
+
+.about-div-3-point-2{
+    text-align: left;
+    float: right;
+    width: 1400px;
+
+}
+
+.about-div-3-heading{
+    color: #034dee;
+    
+}
+
+.blue-bus-icon{
+    margin-left: 100px;
+    position: relative;
+    bottom: 120px;
+}
+
+
