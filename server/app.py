@@ -38,6 +38,11 @@ app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 db.init_app(app)
 api= Api(app)
 
+@app.route('/')
+@app.route('/<int:id>')
+def index(id=0):
+    return render_template("index.html")
+
 cloudinary.config(
     cloud_name=('buscommute'),
     api_key=('776315843379566'),
