@@ -10,7 +10,10 @@ const Book = () => {
   
   // const [uniqueFromValues, setUniqueFromValues] = useState([]); // To store unique 'From' values
   // const [uniqueToValues, setUniqueToValues] = useState([]); // To store unique 'To' values
+  
   useEffect(() => {
+    alert('Please sign in or sign up first to continue.');
+
     fetch('http://127.0.0.1:5555/buses')
       .then((r) => r.json())
       .then((busesArray) => {

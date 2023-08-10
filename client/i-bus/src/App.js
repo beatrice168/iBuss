@@ -9,11 +9,13 @@ import Signin from './components/Signin'
 import PaymentWithParams from './components/PaymentWithParams';
 import PaymentWithoutParams from './components/PaymentWithoutParams';
 import Payment from "./components/Payment";
+import AboutUs from './components/AboutUs';
 
 
 import Book from './components/Book';
 import Admin from './components/Admin';
 import Contact from './components/Contact'
+import Paysuccess from './components/Paysuccess';
 function App() {
   return (
     <>
@@ -27,13 +29,14 @@ function App() {
         {/* <Route path="/payment" element={<PaymentWithoutParams />} />      */}
         <Route path='signin' element={<Signin/>}/>
         <Route path='/payment' element={<Payment/>}/>
+        <Route path='/Paysuccess' element={<Paysuccess/>}/>
         <Route path='Customer' element={<Customer/>}/>
         <Route path="/admin" element={<Admin />}/>
         <Route  path="Contact" element={<Contact/>}/>
+        <Route  path="AboutUs" element={<AboutUs/>}/>
         </Routes>
         <Routes>
         <Route  path="Signup" element={<Signup/>}/>
-        
         </Routes>
     </div>
     </>
