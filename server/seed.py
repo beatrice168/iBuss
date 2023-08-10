@@ -20,7 +20,7 @@ with app.app_context():
             if from_loc != to_loc:
                 b = Bus(name=fake.name(),
                         seats=random.randint(1, 40),
-                        cost=random.randint(1000, 2000),
+                        cost=random.randint(1, 5),
                         From=from_loc,
                         To=to_loc,
                         departure=fake.time(),
