@@ -21,9 +21,8 @@ function LoginPage() {
       alert("Invalid email address.");
       return;
     } 
-    // else {
-    //   navigate('/admin');
-    // }
+    
+   
     fetch('http://127.0.0.1:5555/signin', {
       method: 'POST',
       headers: {
@@ -38,6 +37,9 @@ function LoginPage() {
       .then((response) => {
         if (response.ok) {
           // alert("Signin successful!");
+          setEmail('');
+          setCompany('');
+          setPassword('');
           navigate('/admin');
         } else {
           alert("invalid details.");
@@ -77,6 +79,10 @@ function LoginPage() {
     })
       .then((response) => {
         if (response.ok) {
+          setNewEmail('');
+          setNewCompany('');
+          setNewPassword('');
+          setConfirmPassword('');
           alert("Signup successful! A welcome email has been sent to your email address.");
           navigate('/admin');
         } else {
@@ -87,6 +93,7 @@ function LoginPage() {
         console.error('Error signing up:', error);
         alert("Error signing up. Please try again later.");
       });
+      
   };
 
   return (

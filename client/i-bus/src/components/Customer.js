@@ -3,9 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import './Customer.css'; 
 
-const Customer = () => {
-  // State variables for login and sign up forms
- 
+const Customer = () => { 
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
   const [signupEmail, setSignupEmail] = useState('');
@@ -13,7 +11,6 @@ const Customer = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const navigate = useNavigate();
 
-  // Handle login form submission
   const handleLoginSubmit = (e) => {
     e.preventDefault();
   if (loginPassword.length < 7) {
@@ -39,7 +36,8 @@ const Customer = () => {
     })
       .then((response) => {
         if (response.ok) {
-          // alert("Signin successful!");
+          setLoginEmail('');
+          setLoginPassword('');
           navigate('/Book');
         } else {
           alert("invalid details.");
@@ -83,6 +81,9 @@ const Customer = () => {
     })
       .then((response) => {
         if (response.ok) {
+          setSignupEmail('');
+          setSignupPassword('');
+          setConfirmPassword('');
           alert("Signup successful! A welcome email has been sent to your email address.");
           navigate('/Book');
         } else {

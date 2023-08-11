@@ -5,7 +5,6 @@ function SignupPage() {
     username: '',
     password: '',
     email: '',
-    // Add other signup fields as needed
   });
 
   const handleChange = (e) => {
@@ -15,8 +14,7 @@ function SignupPage() {
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
-    // Your signup logic here
-    console.log('Signup form submitted:', formData); // Replace with your actual signup logic
+    console.log('Signup form submitted:', formData); 
   };
 
   return (
